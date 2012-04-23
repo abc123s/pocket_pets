@@ -13,14 +13,8 @@
 		F0B12BA51545E70400F608A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0B12BA31545E70400F608A6 /* InfoPlist.strings */; };
 		F0B12BA71545E70400F608A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BA61545E70400F608A6 /* main.m */; };
 		F0B12BAB1545E70400F608A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BAA1545E70400F608A6 /* AppDelegate.m */; };
-		F0B12BAE1545E70400F608A6 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BAD1545E70400F608A6 /* FirstViewController.m */; };
-		F0B12BB01545E70400F608A6 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B12BAF1545E70400F608A6 /* first.png */; };
-		F0B12BB21545E70400F608A6 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B12BB11545E70400F608A6 /* first@2x.png */; };
-		F0B12BB51545E70400F608A6 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BB41545E70400F608A6 /* SecondViewController.m */; };
-		F0B12BB71545E70400F608A6 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B12BB61545E70400F608A6 /* second.png */; };
-		F0B12BB91545E70400F608A6 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B12BB81545E70400F608A6 /* second@2x.png */; };
-		F0B12BBC1545E70400F608A6 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0B12BBA1545E70400F608A6 /* FirstViewController.xib */; };
-		F0B12BBF1545E70400F608A6 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0B12BBD1545E70400F608A6 /* SecondViewController.xib */; };
+		F0B12BAE1545E70400F608A6 /* PetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BAD1545E70400F608A6 /* PetViewController.m */; };
+		F0B12BBC1545E70400F608A6 /* PetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0B12BBA1545E70400F608A6 /* PetViewController.xib */; };
 		F0B12BC71545E70400F608A6 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12BC61545E70400F608A6 /* SenTestingKit.framework */; };
 		F0B12BC81545E70400F608A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12B9A1545E70400F608A6 /* UIKit.framework */; };
 		F0B12BC91545E70400F608A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12B9C1545E70400F608A6 /* Foundation.framework */; };
@@ -30,6 +24,13 @@
 		F0B12BE71545E74900F608A6 /* BattleState.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BE61545E74900F608A6 /* BattleState.m */; };
 		F0B12BEA1545E74E00F608A6 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BE91545E74E00F608A6 /* Pet.m */; };
 		F0B12BED1545E75500F608A6 /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BEC1545E75500F608A6 /* Action.m */; };
+		F0B12BF51545EEB400F608A6 /* StoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BF31545EEB400F608A6 /* StoreViewController.m */; };
+		F0B12BF61545EEB400F608A6 /* StoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0B12BF41545EEB400F608A6 /* StoreViewController.xib */; };
+		F0B12C061545FC7700F608A6 /* InvenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12C041545FC7600F608A6 /* InvenViewController.m */; };
+		F0B12C071545FC7700F608A6 /* InvenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0B12C051545FC7600F608A6 /* InvenViewController.xib */; };
+		F0B12C161546007300F608A6 /* 23-bird.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B12C131546007300F608A6 /* 23-bird.png */; };
+		F0B12C171546007300F608A6 /* 24-gift.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B12C141546007300F608A6 /* 24-gift.png */; };
+		F0B12C181546007300F608A6 /* 36-toolbox.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B12C151546007300F608A6 /* 36-toolbox.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,16 +54,9 @@
 		F0B12BA81545E70400F608A6 /* project3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "project3-Prefix.pch"; sourceTree = "<group>"; };
 		F0B12BA91545E70400F608A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F0B12BAA1545E70400F608A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F0B12BAC1545E70400F608A6 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		F0B12BAD1545E70400F608A6 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		F0B12BAF1545E70400F608A6 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		F0B12BB11545E70400F608A6 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		F0B12BB31545E70400F608A6 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		F0B12BB41545E70400F608A6 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		F0B12BB61545E70400F608A6 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		F0B12BB81545E70400F608A6 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		F0B12BBB1545E70400F608A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
-		F0B12BBE1545E70400F608A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
+		F0B12BAC1545E70400F608A6 /* PetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PetViewController.h; sourceTree = "<group>"; };
+		F0B12BAD1545E70400F608A6 /* PetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PetViewController.m; sourceTree = "<group>"; };
+		F0B12BBB1545E70400F608A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PetViewController.xib; sourceTree = "<group>"; };
 		F0B12BC51545E70400F608A6 /* project3Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = project3Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0B12BC61545E70400F608A6 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F0B12BCE1545E70400F608A6 /* project3Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "project3Tests-Info.plist"; sourceTree = "<group>"; };
@@ -77,6 +71,15 @@
 		F0B12BE91545E74E00F608A6 /* Pet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet.m; sourceTree = "<group>"; };
 		F0B12BEB1545E75500F608A6 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		F0B12BEC1545E75500F608A6 /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
+		F0B12BF21545EEB400F608A6 /* StoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoreViewController.h; sourceTree = "<group>"; };
+		F0B12BF31545EEB400F608A6 /* StoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoreViewController.m; sourceTree = "<group>"; };
+		F0B12BF41545EEB400F608A6 /* StoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StoreViewController.xib; sourceTree = "<group>"; };
+		F0B12C031545FC7600F608A6 /* InvenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvenViewController.h; sourceTree = "<group>"; };
+		F0B12C041545FC7600F608A6 /* InvenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvenViewController.m; sourceTree = "<group>"; };
+		F0B12C051545FC7600F608A6 /* InvenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InvenViewController.xib; sourceTree = "<group>"; };
+		F0B12C131546007300F608A6 /* 23-bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "23-bird.png"; sourceTree = "<group>"; };
+		F0B12C141546007300F608A6 /* 24-gift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "24-gift.png"; sourceTree = "<group>"; };
+		F0B12C151546007300F608A6 /* 36-toolbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "36-toolbox.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,17 +141,15 @@
 			children = (
 				F0B12BA91545E70400F608A6 /* AppDelegate.h */,
 				F0B12BAA1545E70400F608A6 /* AppDelegate.m */,
-				F0B12BAC1545E70400F608A6 /* FirstViewController.h */,
-				F0B12BAD1545E70400F608A6 /* FirstViewController.m */,
-				F0B12BAF1545E70400F608A6 /* first.png */,
-				F0B12BB11545E70400F608A6 /* first@2x.png */,
-				F0B12BB31545E70400F608A6 /* SecondViewController.h */,
-				F0B12BB41545E70400F608A6 /* SecondViewController.m */,
-				F0B12BB61545E70400F608A6 /* second.png */,
-				F0B12BB81545E70400F608A6 /* second@2x.png */,
-				F0B12BBA1545E70400F608A6 /* FirstViewController.xib */,
-				F0B12BBD1545E70400F608A6 /* SecondViewController.xib */,
-				F0B12BA11545E70400F608A6 /* Supporting Files */,
+				F0B12BAC1545E70400F608A6 /* PetViewController.h */,
+				F0B12BAD1545E70400F608A6 /* PetViewController.m */,
+				F0B12BBA1545E70400F608A6 /* PetViewController.xib */,
+				F0B12BF21545EEB400F608A6 /* StoreViewController.h */,
+				F0B12BF31545EEB400F608A6 /* StoreViewController.m */,
+				F0B12BF41545EEB400F608A6 /* StoreViewController.xib */,
+				F0B12C031545FC7600F608A6 /* InvenViewController.h */,
+				F0B12C041545FC7600F608A6 /* InvenViewController.m */,
+				F0B12C051545FC7600F608A6 /* InvenViewController.xib */,
 				F0B12BE11545E74200F608A6 /* Battle.h */,
 				F0B12BE21545E74200F608A6 /* Battle.m */,
 				F0B12BE51545E74900F608A6 /* BattleState.h */,
@@ -157,6 +158,7 @@
 				F0B12BE91545E74E00F608A6 /* Pet.m */,
 				F0B12BEB1545E75500F608A6 /* Action.h */,
 				F0B12BEC1545E75500F608A6 /* Action.m */,
+				F0B12BA11545E70400F608A6 /* Supporting Files */,
 			);
 			path = project3;
 			sourceTree = "<group>";
@@ -164,6 +166,9 @@
 		F0B12BA11545E70400F608A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F0B12C131546007300F608A6 /* 23-bird.png */,
+				F0B12C141546007300F608A6 /* 24-gift.png */,
+				F0B12C151546007300F608A6 /* 36-toolbox.png */,
 				F0B12BA21545E70400F608A6 /* project3-Info.plist */,
 				F0B12BA31545E70400F608A6 /* InfoPlist.strings */,
 				F0B12BA61545E70400F608A6 /* main.m */,
@@ -263,12 +268,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0B12BA51545E70400F608A6 /* InfoPlist.strings in Resources */,
-				F0B12BB01545E70400F608A6 /* first.png in Resources */,
-				F0B12BB21545E70400F608A6 /* first@2x.png in Resources */,
-				F0B12BB71545E70400F608A6 /* second.png in Resources */,
-				F0B12BB91545E70400F608A6 /* second@2x.png in Resources */,
-				F0B12BBC1545E70400F608A6 /* FirstViewController.xib in Resources */,
-				F0B12BBF1545E70400F608A6 /* SecondViewController.xib in Resources */,
+				F0B12BBC1545E70400F608A6 /* PetViewController.xib in Resources */,
+				F0B12BF61545EEB400F608A6 /* StoreViewController.xib in Resources */,
+				F0B12C071545FC7700F608A6 /* InvenViewController.xib in Resources */,
+				F0B12C161546007300F608A6 /* 23-bird.png in Resources */,
+				F0B12C171546007300F608A6 /* 24-gift.png in Resources */,
+				F0B12C181546007300F608A6 /* 36-toolbox.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,12 +310,13 @@
 			files = (
 				F0B12BA71545E70400F608A6 /* main.m in Sources */,
 				F0B12BAB1545E70400F608A6 /* AppDelegate.m in Sources */,
-				F0B12BAE1545E70400F608A6 /* FirstViewController.m in Sources */,
-				F0B12BB51545E70400F608A6 /* SecondViewController.m in Sources */,
+				F0B12BAE1545E70400F608A6 /* PetViewController.m in Sources */,
 				F0B12BE31545E74200F608A6 /* Battle.m in Sources */,
 				F0B12BE71545E74900F608A6 /* BattleState.m in Sources */,
 				F0B12BEA1545E74E00F608A6 /* Pet.m in Sources */,
 				F0B12BED1545E75500F608A6 /* Action.m in Sources */,
+				F0B12BF51545EEB400F608A6 /* StoreViewController.m in Sources */,
+				F0B12C061545FC7700F608A6 /* InvenViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,20 +347,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		F0B12BBA1545E70400F608A6 /* FirstViewController.xib */ = {
+		F0B12BBA1545E70400F608A6 /* PetViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				F0B12BBB1545E70400F608A6 /* en */,
 			);
-			name = FirstViewController.xib;
-			sourceTree = "<group>";
-		};
-		F0B12BBD1545E70400F608A6 /* SecondViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F0B12BBE1545E70400F608A6 /* en */,
-			);
-			name = SecondViewController.xib;
+			name = PetViewController.xib;
 			sourceTree = "<group>";
 		};
 		F0B12BCF1545E70400F608A6 /* InfoPlist.strings */ = {

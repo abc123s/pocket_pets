@@ -1,5 +1,5 @@
 //
-//  FirstViewController.h
+//  PetViewController.h
 //  project3
 //
 //  Created by Will Sun on 4/23/12.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController
+@interface PetViewController : UIViewController
 
 @end

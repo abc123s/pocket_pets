@@ -1,25 +1,25 @@
 //
-//  FirstViewController.m
+//  PetViewController.m
 //  project3
 //
 //  Created by Will Sun on 4/23/12.
 //  Copyright (c) 2012 Harvard University. All rights reserved.
 //
 
-#import "FirstViewController.h"
+#import "PetViewController.h"
 
-@interface FirstViewController ()
+@interface PetViewController ()
 
 @end
 
-@implementation FirstViewController
+@implementation PetViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"First", @"First");
-        self.tabBarItem.image = [UIImage imageNamed:@"first"];
+        self.title = NSLocalizedString(@"Pets", @"Pets");
+        self.tabBarItem.image = [UIImage imageNamed:@"23-bird"];
     }
     return self;
 }
