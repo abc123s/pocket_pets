@@ -8,9 +8,9 @@
 
 #import "AppDelegate.h"
 
-#import "FirstViewController.h"
-
-#import "SecondViewController.h"
+#import "PetViewController.h"
+#import "InvenViewController.h"
+#import "StoreViewController.h"
 
 @implementation AppDelegate
 
@@ -21,10 +21,13 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    UIViewController *viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
-    UIViewController *viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
+    UIViewController *pets = [[PetViewController alloc] initWithNibName:@"PetViewController" bundle:nil];
+    UIViewController *inven = [[InvenViewController alloc] initWithStyle:UITableViewStylePlain];
+    UIViewController *store = [[StoreViewController alloc] initWithStyle:UITableViewStylePlain];
+    UINavigationController *invenNav = [[UINavigationController alloc] initWithRootViewController:inven];
+    UINavigationController *storeNav = [[UINavigationController alloc] initWithRootViewController:store];
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:viewController1, viewController2, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:pets, invenNav, storeNav, nil];
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

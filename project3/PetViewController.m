@@ -1,25 +1,25 @@
 //
-//  SecondViewController.m
+//  PetViewController.m
 //  project3
 //
 //  Created by Will Sun on 4/23/12.
 //  Copyright (c) 2012 Harvard University. All rights reserved.
 //
 
-#import "SecondViewController.h"
+#import "PetViewController.h"
 
-@interface SecondViewController ()
+@interface PetViewController ()
 
 @end
 
-@implementation SecondViewController
+@implementation PetViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = NSLocalizedString(@"Second", @"Second");
-        self.tabBarItem.image = [UIImage imageNamed:@"second"];
+        self.title = NSLocalizedString(@"Pets", @"Pets");
+        self.tabBarItem.image = [UIImage imageNamed:@"23-bird"];
     }
     return self;
 }
