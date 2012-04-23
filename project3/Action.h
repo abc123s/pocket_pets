@@ -8,6 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Action : NSObject
+@interface Action : NSObject {
+}
+
++ (int)lookupMoveDamageWithName:(NSString *)name 
+                andAttack:(int)attack
+               andDefense:(int)defense
+                 andSpeed:(int)speed 
+               andSpecial:(int)special;
 
 @end

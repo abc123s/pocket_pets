@@ -33,11 +33,11 @@
             andExp:(int)exp
           andMoves:(NSArray *)actions;
 
-// Level up the current pet, returning an array of moves to choose
+// Level up the current pet, returning an array of actions to choose
 // from if applicable.
 - (NSArray *)levelUp;
 
-// Update the pet's moves. 
-- (void)updateMoves:(NSArray *)moves; 
+// Update the pet's actions. 
+- (void)updateActions:(NSArray *)actions; 
 
 @end
