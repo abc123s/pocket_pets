@@ -26,6 +26,10 @@
 		F0B12BC91545E70400F608A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12B9C1545E70400F608A6 /* Foundation.framework */; };
 		F0B12BD11545E70400F608A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0B12BCF1545E70400F608A6 /* InfoPlist.strings */; };
 		F0B12BD41545E70400F608A6 /* project3Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BD31545E70400F608A6 /* project3Tests.m */; };
+		F0B12BE31545E74200F608A6 /* Battle.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BE21545E74200F608A6 /* Battle.m */; };
+		F0B12BE71545E74900F608A6 /* BattleState.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BE61545E74900F608A6 /* BattleState.m */; };
+		F0B12BEA1545E74E00F608A6 /* Pet.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BE91545E74E00F608A6 /* Pet.m */; };
+		F0B12BED1545E75500F608A6 /* Action.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BEC1545E75500F608A6 /* Action.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,17 +47,17 @@
 		F0B12B9A1545E70400F608A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F0B12B9C1545E70400F608A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F0B12B9E1545E70400F608A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		F0B12BA21545E70400F608A6 /* project3-Info.plist */ = {isa = PBXFileReference; path = "project3-Info.plist"; sourceTree = "<group>"; };
+		F0B12BA21545E70400F608A6 /* project3-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "project3-Info.plist"; sourceTree = "<group>"; };
 		F0B12BA41545E70400F608A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F0B12BA61545E70400F608A6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F0B12BA81545E70400F608A6 /* project3-Prefix.pch */ = {isa = PBXFileReference; path = "project3-Prefix.pch"; sourceTree = "<group>"; };
-		F0B12BA91545E70400F608A6 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		F0B12BA81545E70400F608A6 /* project3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "project3-Prefix.pch"; sourceTree = "<group>"; };
+		F0B12BA91545E70400F608A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F0B12BAA1545E70400F608A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F0B12BAC1545E70400F608A6 /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		F0B12BAC1545E70400F608A6 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		F0B12BAD1545E70400F608A6 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		F0B12BAF1545E70400F608A6 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		F0B12BB11545E70400F608A6 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		F0B12BB31545E70400F608A6 /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		F0B12BB31545E70400F608A6 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		F0B12BB41545E70400F608A6 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		F0B12BB61545E70400F608A6 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		F0B12BB81545E70400F608A6 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
@@ -61,10 +65,18 @@
 		F0B12BBE1545E70400F608A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
 		F0B12BC51545E70400F608A6 /* project3Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = project3Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0B12BC61545E70400F608A6 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		F0B12BCE1545E70400F608A6 /* project3Tests-Info.plist */ = {isa = PBXFileReference; path = "project3Tests-Info.plist"; sourceTree = "<group>"; };
+		F0B12BCE1545E70400F608A6 /* project3Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "project3Tests-Info.plist"; sourceTree = "<group>"; };
 		F0B12BD01545E70400F608A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F0B12BD21545E70400F608A6 /* project3Tests.h */ = {isa = PBXFileReference; path = project3Tests.h; sourceTree = "<group>"; };
+		F0B12BD21545E70400F608A6 /* project3Tests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = project3Tests.h; sourceTree = "<group>"; };
 		F0B12BD31545E70400F608A6 /* project3Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = project3Tests.m; sourceTree = "<group>"; };
+		F0B12BE11545E74200F608A6 /* Battle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Battle.h; sourceTree = "<group>"; };
+		F0B12BE21545E74200F608A6 /* Battle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Battle.m; sourceTree = "<group>"; };
+		F0B12BE51545E74900F608A6 /* BattleState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleState.h; sourceTree = "<group>"; };
+		F0B12BE61545E74900F608A6 /* BattleState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleState.m; sourceTree = "<group>"; };
+		F0B12BE81545E74E00F608A6 /* Pet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pet.h; sourceTree = "<group>"; };
+		F0B12BE91545E74E00F608A6 /* Pet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Pet.m; sourceTree = "<group>"; };
+		F0B12BEB1545E75500F608A6 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
+		F0B12BEC1545E75500F608A6 /* Action.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Action.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +149,14 @@
 				F0B12BBA1545E70400F608A6 /* FirstViewController.xib */,
 				F0B12BBD1545E70400F608A6 /* SecondViewController.xib */,
 				F0B12BA11545E70400F608A6 /* Supporting Files */,
+				F0B12BE11545E74200F608A6 /* Battle.h */,
+				F0B12BE21545E74200F608A6 /* Battle.m */,
+				F0B12BE51545E74900F608A6 /* BattleState.h */,
+				F0B12BE61545E74900F608A6 /* BattleState.m */,
+				F0B12BE81545E74E00F608A6 /* Pet.h */,
+				F0B12BE91545E74E00F608A6 /* Pet.m */,
+				F0B12BEB1545E75500F608A6 /* Action.h */,
+				F0B12BEC1545E75500F608A6 /* Action.m */,
 			);
 			path = project3;
 			sourceTree = "<group>";
@@ -287,6 +307,10 @@
 				F0B12BAB1545E70400F608A6 /* AppDelegate.m in Sources */,
 				F0B12BAE1545E70400F608A6 /* FirstViewController.m in Sources */,
 				F0B12BB51545E70400F608A6 /* SecondViewController.m in Sources */,
+				F0B12BE31545E74200F608A6 /* Battle.m in Sources */,
+				F0B12BE71545E74900F608A6 /* BattleState.m in Sources */,
+				F0B12BEA1545E74E00F608A6 /* Pet.m in Sources */,
+				F0B12BED1545E75500F608A6 /* Action.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +488,7 @@
 				F0B12BD91545E70400F608A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F0B12BDA1545E70400F608A6 /* Build configuration list for PBXNativeTarget "project3Tests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +497,7 @@
 				F0B12BDC1545E70400F608A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
