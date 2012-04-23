@@ -68,4 +68,15 @@
     return self;
 }
 
+// Implement later
+- (NSArray *)levelUp 
+{
+    return [NSArray init];
+}
+
+//Implement later
+- (id)updateActions
+{
+}
+
 @end
