@@ -8,6 +8,36 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Pet : NSObject
+@interface Pet : NSObject {
+}
+
+// Pet properties:
+
+@property (assign, nonatomic) int level;
+@property (assign, nonatomic) int hp;
+@property (assign, nonatomic) int exp;
+@property (assign, nonatomic) int attack;
+@property (assign, nonatomic) int defense;
+@property (assign, nonatomic) int speed;
+@property (assign, nonatomic) int special;
+
+@property (strong, nonatomic) NSMutableString *name;
+@property (strong, nonatomic) NSMutableArray *moves; 
+@property (strong, nonatomic) NSString *spritePath;
+
+// Pet functions:
+
+// Initialize a new pet.
+- (id)initWithName:(NSString *)name 
+          andLevel:(int)level
+            andExp:(int)exp
+          andMoves:(int)moves;
+
+// Level up the current pet, returning an array of moves to choose
+// from if applicable.
+- (NSArray *)levelUp;
+
+// Update the pet's moves. 
+- (void)updateMoves:(NSArray *)moves; 
 
 @end
