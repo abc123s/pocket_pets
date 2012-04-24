@@ -116,7 +116,7 @@
 - (IBAction)attack:(id)sender
 {
     // Make an attack
-    self.state = [self.battle doAction1:[self.pet.actions objectAtIndex:0] 
+    self.state = [self.battle doAction1:[self.pet.actions objectAtIndex:0]  
                              andAction2:[self.opponent.actions objectAtIndex:0]];
     
     // Show results

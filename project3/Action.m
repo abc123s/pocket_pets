@@ -17,8 +17,8 @@
                      andSpecial:(int)special
 {
     // load dictionary of base moves
-    NSDictionary *moves = [NSMutableArray arrayWithContentsOfFile: 
-                          [[NSBundle mainBundle] pathForResource:@"actions" 
+    NSDictionary *moves = [NSDictionary dictionaryWithContentsOfFile: 
+                          [[NSBundle mainBundle] pathForResource:@"moves" 
                                                           ofType:@"plist"]];
     // find our move
     NSDictionary *mymove = [moves objectForKey:name];
