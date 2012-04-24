@@ -24,8 +24,8 @@
 @synthesize type = _type;
 @synthesize actions = _actions; 
 @synthesize spritePath = _spritePath;
-@synthesize spritePath = _battlePath;
-@synthesize spritePath = _oppPath;
+@synthesize battlePath = _battlePath;
+@synthesize oppPath = _oppPath;
 
 
 // initialize pet

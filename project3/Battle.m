@@ -44,17 +44,17 @@
                 self.pet1.name, action1, self.pet2.name];
         
         self.pet2.hp = self.pet2.hp - 
-                       [Action lookupMoveDamageWithName:action1 
-                                              andAttack:self.pet1.attack 
-                                             andDefense:self.pet1.defense
-                                               andSpeed:self.pet1.speed
-                                             andSpecial:self.pet1.special];
+        [Action lookupMoveDamageWithName:action1 
+                               andAttack:self.pet1.attack 
+                              andDefense:self.pet1.defense
+                                andSpeed:self.pet1.speed
+                              andSpecial:self.pet1.special];
     }
     else 
     {
         msg1 = [NSString stringWithFormat:
-                          @"%@ used %@ on %@. It misses!", self.pet1.name,
-                          action1, self.pet2.name];
+                @"%@ used %@ on %@. It misses!", self.pet1.name,
+                action1, self.pet2.name];
     }
     if ((arc4random() % 100) > missProb2)
     {
@@ -73,9 +73,9 @@
         msg2 = [NSString stringWithFormat: @"%@ used %@ on %@. It misses!", 
                 self.pet2.name, action2, self.pet1.name];
     }
-
+    
     BattleState *curState = [[BattleState alloc] initWithAttack1Message:msg1
-                                         andAttack2Message:msg2];
+                                                      andAttack2Message:msg2];
     return curState;
 }
 

@@ -11,6 +11,7 @@
 #import "PetViewController.h"
 #import "InvenViewController.h"
 #import "StoreViewController.h"
+#import "WelcomeViewController.h"
 
 @implementation AppDelegate
 
@@ -37,6 +38,11 @@
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
+    
+    // welcome modal
+    UIViewController *welcomeView = [[WelcomeViewController alloc] initWithNibName:@"WelcomeViewController" bundle:nil];
+    [self.window.rootViewController presentModalViewController:welcomeView animated:NO];
+    
     return YES;
 }
 

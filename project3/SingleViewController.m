@@ -56,7 +56,7 @@
 // load the view nib and initialize pageNumber
 - (id)initWithPageNumber:(int)page
 {
-    if (self = [super initWithNibName:@"SingleView" bundle:nil])
+    if (self = [super initWithNibName:@"SingleViewController" bundle:nil])
     {
         self.pageNumber = page;
     }

@@ -39,9 +39,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];    
-    
-    [self show];
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [self show];
 }
 
 - (void)viewDidUnload
@@ -87,7 +89,6 @@
     // pages are created on demand
     // load the visible page
     // load the page on either side to avoid flashes when the user starts scrolling
-    
     [self loadScrollViewWithPage:0];
     [self loadScrollViewWithPage:1];
 }
@@ -115,7 +116,7 @@
         frame.origin.x = frame.size.width * page;
         frame.origin.y = 0;
         controller.view.frame = frame;
-        [self.scrollView addSubview:controller.view];
+
         
         Pet *selected = [self.pets objectAtIndex:page];
         controller.petImage.image = [UIImage imageNamed:selected.spritePath];

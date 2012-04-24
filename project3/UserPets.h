@@ -10,8 +10,8 @@
 
 @interface UserPets : NSObject
 
-// Return true if there is a previous game going on
-+ (BOOL)anyPets;
+// Return true if there is no previous game
++ (BOOL)noPets;
 
 // Create a new NSUserDefaults with a first pet
 + (void)initNewWithName:(NSString *)name;

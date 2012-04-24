@@ -12,13 +12,13 @@
 @implementation UserPets
 
 // Return true if there is a previous game going on
-+ (BOOL)anyPets
++ (BOOL)noPets
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if ([defaults objectForKey:@"pets"])
-        return YES;
-    else 
         return NO;
+    else 
+        return YES;
 }
 
 // Create new NSUserDefaults with first pet
