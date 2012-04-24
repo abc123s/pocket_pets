@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
 
-@property (weak, nonatomic) NSMutableArray *viewControllers;
+@property (strong, nonatomic) NSMutableArray *viewControllers;
 
 @property (strong, nonatomic) NSArray *pets;
 @property (assign, nonatomic) NSUInteger pages;
