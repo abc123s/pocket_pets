@@ -53,11 +53,6 @@
                                            andExp:0 
                                        andActions:[NSArray arrayWithObject:@"Tackle"]];        
         
-        // Take in pet
-        self.pet = [self.delegate passPet];
-        
-        // Initialize battle
-        self.battle = [[Battle alloc] initWithPet1:self.delegate.passPet andPet2:self.opponent];
     }
     return self;
 }
