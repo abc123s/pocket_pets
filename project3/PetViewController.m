@@ -35,7 +35,7 @@
     }
     return self;
 }
-							
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];    
@@ -43,6 +43,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
     [self show];
 }
 
@@ -70,7 +71,7 @@
     NSMutableArray *controllers = [[NSMutableArray alloc] init];
     for (unsigned i = 0; i < self.pages; i++)
     {
-		[controllers addObject:[NSNull null]];
+        [controllers addObject:[NSNull null]];
     }
     self.viewControllers = controllers;
     
@@ -116,36 +117,38 @@
         frame.origin.x = frame.size.width * page;
         frame.origin.y = 0;
         controller.view.frame = frame;
-
         
         Pet *selected = [self.pets objectAtIndex:page];
         controller.petImage.image = [UIImage imageNamed:selected.spritePath];
         controller.name.text = selected.name;
+        controller.level.text = [NSString stringWithFormat:@"%d", selected.level];
         controller.atk.text = [NSString stringWithFormat:@"%d", selected.attack];
         controller.def.text = [NSString stringWithFormat:@"%d", selected.defense];
         controller.spd.text = [NSString stringWithFormat:@"%d", selected.speed];        
         controller.spc.text = [NSString stringWithFormat:@"%d", selected.special];
         controller.exp.text = [NSString stringWithFormat:@"%d", selected.exp];
         controller.hp.progress = (float)selected.hp / (float)selected.full;
+        
+        [self.scrollView addSubview:controller.view];
     }
 }
 
 - (IBAction)changePage:(id)sender
 {
     int page = self.pageControl.currentPage;
-	
+    
     // load the visible page and the page on either side of it (to avoid flashes when the user starts scrolling)
     [self loadScrollViewWithPage:page - 1];
     [self loadScrollViewWithPage:page];
     [self loadScrollViewWithPage:page + 1];
     
-	// update the scroll view to the appropriate page
+    // update the scroll view to the appropriate page
     CGRect frame = self.scrollView.frame;
     frame.origin.x = frame.size.width * page;
     frame.origin.y = 0;
     [self.scrollView scrollRectToVisible:frame animated:YES];
     
-	// Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
+    // Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
     pageControlUsed = YES;
 }
 
@@ -161,7 +164,7 @@
         // do nothing - the scroll was initiated from the page control, not the user dragging
         return;
     }
-	
+    
     // Switch the indicator when more than 50% of the previous/next page is visible
     CGFloat pageWidth = self.scrollView.frame.size.width;
     int page = floor((self.scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;

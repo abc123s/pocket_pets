@@ -35,7 +35,7 @@
           andActions:(NSArray *)actions 
 {
     // load dictionary of base pets
-    NSDictionary *pets = [NSMutableArray arrayWithContentsOfFile: 
+    NSDictionary *pets = [NSDictionary dictionaryWithContentsOfFile: 
                           [[NSBundle mainBundle] pathForResource:@"pets" 
                                                           ofType:@"plist"]];
     NSDictionary *mypet = [pets objectForKey:name];

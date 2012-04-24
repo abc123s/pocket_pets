@@ -7,6 +7,8 @@
 //
 
 #import "SingleViewController.h"
+#import "BattleViewController.h"
+#import "UserPets.h"
 
 @interface SingleViewController ()
 
@@ -17,6 +19,7 @@
 @synthesize pageNumber = _pageNumber;
 
 @synthesize name = _name;
+@synthesize level = _level;
 @synthesize atk = _atk;
 @synthesize def = _def;
 @synthesize spd = _spd;
@@ -62,5 +65,29 @@
     }
     return self;
 }
+
+- (IBAction)battle:(id)sender
+{
+    BattleViewController *controller = [[BattleViewController alloc] 
+                                          initWithNibName:@"BattleViewController" 
+                                          bundle:nil];
+    controller.delegate = self;
+    [self presentModalViewController:controller animated:YES];
+}
+
+#pragma mark - BattleViewControllerDelegate
+
+- (void)battleViewControllerDidFinish:(BattleViewController *)controller
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (Pet *)passPet
+{
+    return [UserPets findPetWithName: self.name.text];
+}
+
+
+
 
 @end

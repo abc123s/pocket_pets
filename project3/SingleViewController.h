@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BattleViewController.h"
 
-@interface SingleViewController : UIViewController
+@interface SingleViewController : UIViewController <BattleViewControllerDelegate>
 {
     int pageNumber;
 }
 
 @property (nonatomic, weak) IBOutlet UILabel *name;
+@property (nonatomic, weak) IBOutlet UILabel *level;
 @property (nonatomic, weak) IBOutlet UILabel *atk;
 @property (nonatomic, weak) IBOutlet UILabel *def;
 @property (nonatomic, weak) IBOutlet UILabel *spd;
@@ -25,5 +27,6 @@
 @property (nonatomic, assign) int pageNumber;
 
 - (id)initWithPageNumber:(int)page;
+- (IBAction)battle:(id)sender;
 
 @end

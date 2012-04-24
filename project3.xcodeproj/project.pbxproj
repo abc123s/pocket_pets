@@ -13,14 +13,25 @@
 		F0A4ADB815466BAE00C9DFA4 /* SingleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADB615466BAD00C9DFA4 /* SingleViewController.xib */; };
 		F0A4ADC01546896B00C9DFA4 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A4ADBE1546896B00C9DFA4 /* WelcomeViewController.m */; };
 		F0A4ADC11546896B00C9DFA4 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADBF1546896B00C9DFA4 /* WelcomeViewController.xib */; };
+		F0A4ADD015469BEF00C9DFA4 /* Bulbasaurbattle.png in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADC715469BEF00C9DFA4 /* Bulbasaurbattle.png */; };
+		F0A4ADD115469BEF00C9DFA4 /* Bulbasauropp.png in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADC815469BEF00C9DFA4 /* Bulbasauropp.png */; };
+		F0A4ADD215469BEF00C9DFA4 /* Bulbasaursprite.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADC915469BEF00C9DFA4 /* Bulbasaursprite.jpg */; };
+		F0A4ADD315469BEF00C9DFA4 /* Charmanderbattle.png in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADCA15469BEF00C9DFA4 /* Charmanderbattle.png */; };
+		F0A4ADD415469BEF00C9DFA4 /* Charmanderopp.png in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADCB15469BEF00C9DFA4 /* Charmanderopp.png */; };
+		F0A4ADD515469BEF00C9DFA4 /* Charmandersprite.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADCC15469BEF00C9DFA4 /* Charmandersprite.jpg */; };
+		F0A4ADD615469BEF00C9DFA4 /* Pikachubattle.png in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADCD15469BEF00C9DFA4 /* Pikachubattle.png */; };
+		F0A4ADD715469BEF00C9DFA4 /* Pikachuopp.png in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADCE15469BEF00C9DFA4 /* Pikachuopp.png */; };
+		F0A4ADD815469BEF00C9DFA4 /* Pikachusprite.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADCF15469BEF00C9DFA4 /* Pikachusprite.jpg */; };
+		F0A4ADDE1546A15800C9DFA4 /* PetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A4ADDC1546A15700C9DFA4 /* PetViewController.m */; };
+		F0A4ADDF1546A15800C9DFA4 /* PetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADDD1546A15700C9DFA4 /* PetViewController.xib */; };
+		F0A4ADEB1546B69B00C9DFA4 /* BattleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A4ADE91546B69A00C9DFA4 /* BattleViewController.m */; };
+		F0A4ADEC1546B69B00C9DFA4 /* BattleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADEA1546B69A00C9DFA4 /* BattleViewController.xib */; };
 		F0B12B9B1545E70400F608A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12B9A1545E70400F608A6 /* UIKit.framework */; };
 		F0B12B9D1545E70400F608A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12B9C1545E70400F608A6 /* Foundation.framework */; };
 		F0B12B9F1545E70400F608A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12B9E1545E70400F608A6 /* CoreGraphics.framework */; };
 		F0B12BA51545E70400F608A6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0B12BA31545E70400F608A6 /* InfoPlist.strings */; };
 		F0B12BA71545E70400F608A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BA61545E70400F608A6 /* main.m */; };
 		F0B12BAB1545E70400F608A6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BAA1545E70400F608A6 /* AppDelegate.m */; };
-		F0B12BAE1545E70400F608A6 /* PetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12BAD1545E70400F608A6 /* PetViewController.m */; };
-		F0B12BBC1545E70400F608A6 /* PetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0B12BBA1545E70400F608A6 /* PetViewController.xib */; };
 		F0B12BC71545E70400F608A6 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12BC61545E70400F608A6 /* SenTestingKit.framework */; };
 		F0B12BC81545E70400F608A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12B9A1545E70400F608A6 /* UIKit.framework */; };
 		F0B12BC91545E70400F608A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12B9C1545E70400F608A6 /* Foundation.framework */; };
@@ -62,6 +73,21 @@
 		F0A4ADBD1546896B00C9DFA4 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		F0A4ADBE1546896B00C9DFA4 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		F0A4ADBF1546896B00C9DFA4 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
+		F0A4ADC715469BEF00C9DFA4 /* Bulbasaurbattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bulbasaurbattle.png; sourceTree = "<group>"; };
+		F0A4ADC815469BEF00C9DFA4 /* Bulbasauropp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bulbasauropp.png; sourceTree = "<group>"; };
+		F0A4ADC915469BEF00C9DFA4 /* Bulbasaursprite.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bulbasaursprite.jpg; sourceTree = "<group>"; };
+		F0A4ADCA15469BEF00C9DFA4 /* Charmanderbattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Charmanderbattle.png; sourceTree = "<group>"; };
+		F0A4ADCB15469BEF00C9DFA4 /* Charmanderopp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Charmanderopp.png; sourceTree = "<group>"; };
+		F0A4ADCC15469BEF00C9DFA4 /* Charmandersprite.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Charmandersprite.jpg; sourceTree = "<group>"; };
+		F0A4ADCD15469BEF00C9DFA4 /* Pikachubattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pikachubattle.png; sourceTree = "<group>"; };
+		F0A4ADCE15469BEF00C9DFA4 /* Pikachuopp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pikachuopp.png; sourceTree = "<group>"; };
+		F0A4ADCF15469BEF00C9DFA4 /* Pikachusprite.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Pikachusprite.jpg; sourceTree = "<group>"; };
+		F0A4ADDB1546A15600C9DFA4 /* PetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PetViewController.h; sourceTree = "<group>"; };
+		F0A4ADDC1546A15700C9DFA4 /* PetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PetViewController.m; sourceTree = "<group>"; };
+		F0A4ADDD1546A15700C9DFA4 /* PetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PetViewController.xib; sourceTree = "<group>"; };
+		F0A4ADE81546B69900C9DFA4 /* BattleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BattleViewController.h; sourceTree = "<group>"; };
+		F0A4ADE91546B69A00C9DFA4 /* BattleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BattleViewController.m; sourceTree = "<group>"; };
+		F0A4ADEA1546B69A00C9DFA4 /* BattleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BattleViewController.xib; sourceTree = "<group>"; };
 		F0B12B961545E70400F608A6 /* project3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0B12B9A1545E70400F608A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F0B12B9C1545E70400F608A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -72,9 +98,6 @@
 		F0B12BA81545E70400F608A6 /* project3-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "project3-Prefix.pch"; sourceTree = "<group>"; };
 		F0B12BA91545E70400F608A6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F0B12BAA1545E70400F608A6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F0B12BAC1545E70400F608A6 /* PetViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PetViewController.h; sourceTree = "<group>"; };
-		F0B12BAD1545E70400F608A6 /* PetViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PetViewController.m; sourceTree = "<group>"; };
-		F0B12BBB1545E70400F608A6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/PetViewController.xib; sourceTree = "<group>"; };
 		F0B12BC51545E70400F608A6 /* project3Tests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = project3Tests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0B12BC61545E70400F608A6 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F0B12BCE1545E70400F608A6 /* project3Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "project3Tests-Info.plist"; sourceTree = "<group>"; };
@@ -169,9 +192,9 @@
 				F0A4ADBD1546896B00C9DFA4 /* WelcomeViewController.h */,
 				F0A4ADBE1546896B00C9DFA4 /* WelcomeViewController.m */,
 				F0A4ADBF1546896B00C9DFA4 /* WelcomeViewController.xib */,
-				F0B12BAC1545E70400F608A6 /* PetViewController.h */,
-				F0B12BAD1545E70400F608A6 /* PetViewController.m */,
-				F0B12BBA1545E70400F608A6 /* PetViewController.xib */,
+				F0A4ADDB1546A15600C9DFA4 /* PetViewController.h */,
+				F0A4ADDC1546A15700C9DFA4 /* PetViewController.m */,
+				F0A4ADDD1546A15700C9DFA4 /* PetViewController.xib */,
 				F0A4ADB415466BAD00C9DFA4 /* SingleViewController.h */,
 				F0A4ADB515466BAD00C9DFA4 /* SingleViewController.m */,
 				F0A4ADB615466BAD00C9DFA4 /* SingleViewController.xib */,
@@ -181,6 +204,9 @@
 				F0B12C031545FC7600F608A6 /* InvenViewController.h */,
 				F0B12C041545FC7600F608A6 /* InvenViewController.m */,
 				F0B12C051545FC7600F608A6 /* InvenViewController.xib */,
+				F0A4ADE81546B69900C9DFA4 /* BattleViewController.h */,
+				F0A4ADE91546B69A00C9DFA4 /* BattleViewController.m */,
+				F0A4ADEA1546B69A00C9DFA4 /* BattleViewController.xib */,
 				F0B12BE11545E74200F608A6 /* Battle.h */,
 				F0B12BE21545E74200F608A6 /* Battle.m */,
 				F0B12BE51545E74900F608A6 /* BattleState.h */,
@@ -199,6 +225,15 @@
 		F0B12BA11545E70400F608A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F0A4ADC715469BEF00C9DFA4 /* Bulbasaurbattle.png */,
+				F0A4ADC815469BEF00C9DFA4 /* Bulbasauropp.png */,
+				F0A4ADC915469BEF00C9DFA4 /* Bulbasaursprite.jpg */,
+				F0A4ADCA15469BEF00C9DFA4 /* Charmanderbattle.png */,
+				F0A4ADCB15469BEF00C9DFA4 /* Charmanderopp.png */,
+				F0A4ADCC15469BEF00C9DFA4 /* Charmandersprite.jpg */,
+				F0A4ADCD15469BEF00C9DFA4 /* Pikachubattle.png */,
+				F0A4ADCE15469BEF00C9DFA4 /* Pikachuopp.png */,
+				F0A4ADCF15469BEF00C9DFA4 /* Pikachusprite.jpg */,
 				F0B12C8515464C7700F608A6 /* project3.xcdatamodel */,
 				EED25EA41546296700863984 /* actions.plist */,
 				EED25EA11546272F00863984 /* pets.plist */,
@@ -304,7 +339,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0B12BA51545E70400F608A6 /* InfoPlist.strings in Resources */,
-				F0B12BBC1545E70400F608A6 /* PetViewController.xib in Resources */,
 				F0B12BF61545EEB400F608A6 /* StoreViewController.xib in Resources */,
 				F0B12C071545FC7700F608A6 /* InvenViewController.xib in Resources */,
 				F0B12C161546007300F608A6 /* 23-bird.png in Resources */,
@@ -314,6 +348,17 @@
 				EED25EA51546296700863984 /* actions.plist in Resources */,
 				F0A4ADB815466BAE00C9DFA4 /* SingleViewController.xib in Resources */,
 				F0A4ADC11546896B00C9DFA4 /* WelcomeViewController.xib in Resources */,
+				F0A4ADD015469BEF00C9DFA4 /* Bulbasaurbattle.png in Resources */,
+				F0A4ADD115469BEF00C9DFA4 /* Bulbasauropp.png in Resources */,
+				F0A4ADD215469BEF00C9DFA4 /* Bulbasaursprite.jpg in Resources */,
+				F0A4ADD315469BEF00C9DFA4 /* Charmanderbattle.png in Resources */,
+				F0A4ADD415469BEF00C9DFA4 /* Charmanderopp.png in Resources */,
+				F0A4ADD515469BEF00C9DFA4 /* Charmandersprite.jpg in Resources */,
+				F0A4ADD615469BEF00C9DFA4 /* Pikachubattle.png in Resources */,
+				F0A4ADD715469BEF00C9DFA4 /* Pikachuopp.png in Resources */,
+				F0A4ADD815469BEF00C9DFA4 /* Pikachusprite.jpg in Resources */,
+				F0A4ADDF1546A15800C9DFA4 /* PetViewController.xib in Resources */,
+				F0A4ADEC1546B69B00C9DFA4 /* BattleViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,7 +395,6 @@
 			files = (
 				F0B12BA71545E70400F608A6 /* main.m in Sources */,
 				F0B12BAB1545E70400F608A6 /* AppDelegate.m in Sources */,
-				F0B12BAE1545E70400F608A6 /* PetViewController.m in Sources */,
 				F0B12BE31545E74200F608A6 /* Battle.m in Sources */,
 				F0B12BE71545E74900F608A6 /* BattleState.m in Sources */,
 				F0B12BEA1545E74E00F608A6 /* Pet.m in Sources */,
@@ -361,6 +405,8 @@
 				F0B12C8615464C7700F608A6 /* project3.xcdatamodel in Sources */,
 				F0A4ADB715466BAE00C9DFA4 /* SingleViewController.m in Sources */,
 				F0A4ADC01546896B00C9DFA4 /* WelcomeViewController.m in Sources */,
+				F0A4ADDE1546A15800C9DFA4 /* PetViewController.m in Sources */,
+				F0A4ADEB1546B69B00C9DFA4 /* BattleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,14 +435,6 @@
 				F0B12BA41545E70400F608A6 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F0B12BBA1545E70400F608A6 /* PetViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F0B12BBB1545E70400F608A6 /* en */,
-			);
-			name = PetViewController.xib;
 			sourceTree = "<group>";
 		};
 		F0B12BCF1545E70400F608A6 /* InfoPlist.strings */ = {

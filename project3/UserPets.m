@@ -7,11 +7,10 @@
 //
 
 #import "UserPets.h"
-#import "Pet.h"
 
 @implementation UserPets
 
-// Return true if there is a previous game going on
+// Return false if there is a previous game going on
 + (BOOL)noPets
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -30,10 +29,15 @@
                                                                     [NSNumber numberWithInt:1] , @"level", 
                                                                     [NSNumber numberWithInt:0], @"xp", 
                                                                     actions, @"actions", nil];
+    NSDictionary *petx = [NSDictionary dictionaryWithObjectsAndKeys: @"Bulbasaur", @"name",
+                         [NSNumber numberWithInt:1] , @"level", 
+                         [NSNumber numberWithInt:0], @"xp", 
+                         actions, @"actions", nil];
     
     // create pets dictionary
     NSMutableDictionary *pets = [[NSMutableDictionary alloc] init];
     [pets setObject:pet forKey:[pet objectForKey:@"name"]];
+    [pets setObject:petx forKey:[petx objectForKey:@"name"]];
     
     // create user dictionary
     NSMutableDictionary *user = [[NSMutableDictionary alloc] init];
@@ -42,6 +46,7 @@
     // register user
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults registerDefaults:user];
+    [defaults synchronize];
 }
 
 // Create new user pet
@@ -56,13 +61,10 @@
     
     // create pets dictionary
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *pets = [defaults objectForKey:@"pets"];
     
     // TODO: validation to ensure no duplicates?
-    [pets setObject:pet forKey:[pet objectForKey:@"name"]];
-    
-    // register new pet
-    [defaults setObject:pets forKey:@"pets"];    
+    [[defaults objectForKey:@"pets"] setObject:pet forKey:[pet objectForKey:@"name"]];
+    [defaults synchronize];
 }
 
 
@@ -73,10 +75,41 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     // retrieve pets
-    NSMutableDictionary *pets = [defaults objectForKey:@"pets"];
+    NSArray *pets = [[defaults objectForKey:@"pets"] allValues];
     
     // construct array
-    return [pets allValues];
+    NSMutableArray *new = [NSMutableArray arrayWithCapacity:7];
+    for (NSDictionary *pet in pets) 
+    {
+        [new addObject:[[Pet alloc] initWithName:[pet objectForKey:@"name"]
+                                        andLevel:[[pet objectForKey:@"level"] intValue]
+                                          andExp:[[pet objectForKey:@"xp"] intValue]
+                                      andActions:[pet objectForKey:@"actions"]]];
+    }
+     
+    return new;
+}
+
+// Retrieve info on a given pet
++ (Pet *)findPetWithName:(NSString *)name
+{
+    // retrieve defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // retrieve pet
+    NSDictionary *target = [[defaults objectForKey:@"pets"] objectForKey:name];
+
+    // create pet
+    return [[Pet alloc] initWithName:[target objectForKey:@"name"]
+                            andLevel:[[target objectForKey:@"level"] intValue]
+                              andExp:[[target objectForKey:@"xp"] intValue]
+                          andActions:[target objectForKey:@"actions"]];
+}
+
+// Save pet info
++ (void)savePet:(Pet *)pet
+{
+    
 }
 
 @end

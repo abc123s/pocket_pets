@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "Pet.h"
 #import "BattleState.h"
+
 @interface Battle : NSObject {
 }
 

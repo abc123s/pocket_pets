@@ -49,6 +49,8 @@
                               andDefense:self.pet1.defense
                                 andSpeed:self.pet1.speed
                               andSpecial:self.pet1.special];
+        if (self.pet2.hp < 0)
+            self.pet2.hp = 0;
     }
     else 
     {
@@ -67,6 +69,8 @@
                               andDefense:self.pet2.defense
                                 andSpeed:self.pet2.speed
                               andSpecial:self.pet2.special];
+        if (self.pet1.hp < 0)
+            self.pet1.hp = 0;
     }
     else 
     {
