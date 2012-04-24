@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		EED25EA21546272F00863984 /* pets.plist in Resources */ = {isa = PBXBuildFile; fileRef = EED25EA11546272F00863984 /* pets.plist */; };
 		EED25EA51546296700863984 /* actions.plist in Resources */ = {isa = PBXBuildFile; fileRef = EED25EA41546296700863984 /* actions.plist */; };
+		EED25EAF154681A900863984 /* Pikachusprite.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EED25EAA154681A900863984 /* Pikachusprite.jpg */; };
+		EED25EB0154681A900863984 /* Charmanderopp.png in Resources */ = {isa = PBXBuildFile; fileRef = EED25EAB154681A900863984 /* Charmanderopp.png */; };
+		EED25EB1154681A900863984 /* Pikachuopp.png in Resources */ = {isa = PBXBuildFile; fileRef = EED25EAC154681A900863984 /* Pikachuopp.png */; };
+		EED25EB2154681A900863984 /* Bulbasaursprite.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EED25EAD154681A900863984 /* Bulbasaursprite.jpg */; };
+		EED25EB3154681A900863984 /* Charmandersprite.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EED25EAE154681A900863984 /* Charmandersprite.jpg */; };
+		EED25EB9154681C500863984 /* Charmanderbattle.png in Resources */ = {isa = PBXBuildFile; fileRef = EED25EB5154681C500863984 /* Charmanderbattle.png */; };
+		EED25EBA154681C500863984 /* Pikachubattle.png in Resources */ = {isa = PBXBuildFile; fileRef = EED25EB6154681C500863984 /* Pikachubattle.png */; };
+		EED25EBB154681C500863984 /* Bulbasauropp.png in Resources */ = {isa = PBXBuildFile; fileRef = EED25EB7154681C500863984 /* Bulbasauropp.png */; };
+		EED25EBC154681C500863984 /* Bulbasaurbattle.png in Resources */ = {isa = PBXBuildFile; fileRef = EED25EB8154681C500863984 /* Bulbasaurbattle.png */; };
 		F0B12B9B1545E70400F608A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12B9A1545E70400F608A6 /* UIKit.framework */; };
 		F0B12B9D1545E70400F608A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12B9C1545E70400F608A6 /* Foundation.framework */; };
 		F0B12B9F1545E70400F608A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12B9E1545E70400F608A6 /* CoreGraphics.framework */; };
@@ -52,6 +61,15 @@
 /* Begin PBXFileReference section */
 		EED25EA11546272F00863984 /* pets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pets.plist; sourceTree = "<group>"; };
 		EED25EA41546296700863984 /* actions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = actions.plist; sourceTree = "<group>"; };
+		EED25EAA154681A900863984 /* Pikachusprite.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Pikachusprite.jpg; sourceTree = "<group>"; };
+		EED25EAB154681A900863984 /* Charmanderopp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Charmanderopp.png; sourceTree = "<group>"; };
+		EED25EAC154681A900863984 /* Pikachuopp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pikachuopp.png; sourceTree = "<group>"; };
+		EED25EAD154681A900863984 /* Bulbasaursprite.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Bulbasaursprite.jpg; sourceTree = "<group>"; };
+		EED25EAE154681A900863984 /* Charmandersprite.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Charmandersprite.jpg; sourceTree = "<group>"; };
+		EED25EB5154681C500863984 /* Charmanderbattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Charmanderbattle.png; sourceTree = "<group>"; };
+		EED25EB6154681C500863984 /* Pikachubattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pikachubattle.png; sourceTree = "<group>"; };
+		EED25EB7154681C500863984 /* Bulbasauropp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bulbasauropp.png; sourceTree = "<group>"; };
+		EED25EB8154681C500863984 /* Bulbasaurbattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bulbasaurbattle.png; sourceTree = "<group>"; };
 		F0B12B961545E70400F608A6 /* project3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0B12B9A1545E70400F608A6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F0B12B9C1545E70400F608A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -183,6 +201,15 @@
 		F0B12BA11545E70400F608A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EED25EB5154681C500863984 /* Charmanderbattle.png */,
+				EED25EB6154681C500863984 /* Pikachubattle.png */,
+				EED25EB7154681C500863984 /* Bulbasauropp.png */,
+				EED25EB8154681C500863984 /* Bulbasaurbattle.png */,
+				EED25EAA154681A900863984 /* Pikachusprite.jpg */,
+				EED25EAB154681A900863984 /* Charmanderopp.png */,
+				EED25EAC154681A900863984 /* Pikachuopp.png */,
+				EED25EAD154681A900863984 /* Bulbasaursprite.jpg */,
+				EED25EAE154681A900863984 /* Charmandersprite.jpg */,
 				F0B12C8515464C7700F608A6 /* project3.xcdatamodel */,
 				EED25EA41546296700863984 /* actions.plist */,
 				EED25EA11546272F00863984 /* pets.plist */,
@@ -296,6 +323,15 @@
 				F0B12C181546007300F608A6 /* 36-toolbox.png in Resources */,
 				EED25EA21546272F00863984 /* pets.plist in Resources */,
 				EED25EA51546296700863984 /* actions.plist in Resources */,
+				EED25EAF154681A900863984 /* Pikachusprite.jpg in Resources */,
+				EED25EB0154681A900863984 /* Charmanderopp.png in Resources */,
+				EED25EB1154681A900863984 /* Pikachuopp.png in Resources */,
+				EED25EB2154681A900863984 /* Bulbasaursprite.jpg in Resources */,
+				EED25EB3154681A900863984 /* Charmandersprite.jpg in Resources */,
+				EED25EB9154681C500863984 /* Charmanderbattle.png in Resources */,
+				EED25EBA154681C500863984 /* Pikachubattle.png in Resources */,
+				EED25EBB154681C500863984 /* Bulbasauropp.png in Resources */,
+				EED25EBC154681C500863984 /* Bulbasaurbattle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

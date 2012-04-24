@@ -26,6 +26,10 @@
 @property (strong, nonatomic) NSMutableString *type;
 @property (strong, nonatomic) NSMutableArray *actions; 
 @property (strong, nonatomic) NSString *spritePath;
+@property (strong, nonatomic) NSString *battlePath;
+@property (strong, nonatomic) NSString *oppPath;
+
+
 
 // Pet functions:
 

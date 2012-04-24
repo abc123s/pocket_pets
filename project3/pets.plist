@@ -4,6 +4,12 @@
 <dict>
 	<key>Pikachu</key>
 	<dict>
+		<key>battlepath</key>
+		<string>Pikachubattle.png</string>
+		<key>opppath</key>
+		<string>Pikachuopp.png</string>
+		<key>spritepath</key>
+		<string>Pikachusprite.jpg</string>
 		<key>type</key>
 		<string>ground</string>
 		<key>hpbase</key>
@@ -29,6 +35,12 @@
 	</dict>
 	<key>Charmander</key>
 	<dict>
+		<key>battlepath</key>
+		<string>Charmanderbattle.png</string>
+		<key>opppath</key>
+		<string>Charmanderopp.png</string>
+		<key>spritepath</key>
+		<string>Charmandersprite.jpg</string>
 		<key>type</key>
 		<string>ground</string>
 		<key>hpbase</key>
@@ -54,6 +66,12 @@
 	</dict>
 	<key>Bulbasaur</key>
 	<dict>
+		<key>battlepath</key>
+		<string>Bulbasaurbattle.png</string>
+		<key>opppath</key>
+		<string>Bulbasauropp.png</string>
+		<key>spritepath</key>
+		<string>Bulbasaursprite.jpg</string>
 		<key>type</key>
 		<string>ground</string>
 		<key>hpbase</key>

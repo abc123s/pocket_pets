@@ -24,6 +24,9 @@
 @synthesize type = _type;
 @synthesize actions = _actions; 
 @synthesize spritePath = _spritePath;
+@synthesize spritePath = _battlePath;
+@synthesize spritePath = _oppPath;
+
 
 // initialize pet
 - (id)initWithName:(NSString *)name 
@@ -42,7 +45,9 @@
         self.level = level;
         self.exp = exp;
         self.type = [mypet objectForKey:@"type"];
-        self.spritePath = [mypet objectForKey:@"spritePath"];
+        self.spritePath = [mypet objectForKey:@"spritepath"];
+        self.battlePath = [mypet objectForKey:@"battlepath"];
+        self.oppPath = [mypet objectForKey:@"opppath"];
         self.full = [[mypet objectForKey:@"hpbase"] intValue] + 
         [[mypet objectForKey:@"hpmult"] intValue] * level; 
         self.hp = self.full;
