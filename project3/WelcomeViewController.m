@@ -33,6 +33,8 @@
     // Hide continue game button if nothing to continue
     if ([UserPets noPets])
         self.continueGame.hidden = YES;
+    else
+        self.continueGame.hidden = NO;
 }
 
 - (void)viewDidUnload

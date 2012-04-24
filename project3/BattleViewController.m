@@ -82,6 +82,10 @@
 
 - (void)show
 {
+    // hide page control and tabs
+    
+    
+    
     self.proPetName.text = self.pet.name;
     self.oppPetName.text = self.opponent.name;
     self.proPetPic.image = [UIImage imageNamed:self.pet.battlePath];

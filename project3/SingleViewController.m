@@ -9,6 +9,7 @@
 #import "SingleViewController.h"
 #import "BattleViewController.h"
 #import "UserPets.h"
+#import "PetViewController.h"
 
 @interface SingleViewController ()
 
@@ -72,14 +73,19 @@
                                           initWithNibName:@"BattleViewController" 
                                           bundle:nil];
     controller.delegate = self;
-    [self presentModalViewController:controller animated:YES];
+    
+    // [self presentModalViewController:controller animated:YES];
+    [self presentViewController:controller animated:YES completion:NULL];
+
 }
 
 #pragma mark - BattleViewControllerDelegate
 
 - (void)battleViewControllerDidFinish:(BattleViewController *)controller
 {
-    [self dismissModalViewControllerAnimated:YES];
+    // [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:NULL];
+
 }
 
 - (Pet *)passPet
