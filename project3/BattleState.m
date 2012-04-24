@@ -10,4 +10,15 @@
 
 @implementation BattleState
 
+@synthesize attack1Message = _attack1Message;
+@synthesize attack2Message = _attack2Message;
+
+- (id)initWithAttack1Message:(NSString *)msg1 andAttack2Message:(NSString *)msg2
+{
+    self.attack1Message = msg1;
+    self.attack2Message = msg2;
+    
+    return self;
+}
+
 @end

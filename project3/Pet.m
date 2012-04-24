@@ -61,7 +61,8 @@
                                             andDefense:self.defense
                                               andSpeed:self.speed
                                             andSpecial:self.special]];
-            NSArray *move = [NSArray arrayWithObjects: action, damage, nil];
+            NSString *actioncopy = [NSString stringWithString: action];
+            NSArray *move = [NSArray arrayWithObjects: actioncopy, damage, nil];
             [self.actions addObject:move]; 
         }
     }
@@ -75,7 +76,7 @@
 }
 
 //Implement later
-- (id)updateActions
+- (void)updateActions
 {
 }
 

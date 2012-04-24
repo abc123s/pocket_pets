@@ -7,7 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Pet.h"
+#import "BattleState.h"
+@interface Battle : NSObject {
+}
 
-@interface Battle : NSObject
+- (id)initWithPet1:(Pet *)pet1 andPet2:(Pet *)pet2;
+
+- (BattleState *)doAction1:(NSString *)action1 andAction2:(NSString *)action2;
 
 @end
