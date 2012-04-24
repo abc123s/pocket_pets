@@ -77,8 +77,11 @@
 
 - (void)show
 {
-    // hide page control and tabs
+    // Take in pet
+    self.pet = [self.delegate passPet];
     
+    // Initialize battle
+    self.battle = [[Battle alloc] initWithPet1:self.delegate.passPet andPet2:self.opponent];
     
     
     self.proPetName.text = self.pet.name;
