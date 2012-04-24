@@ -17,18 +17,18 @@
                      andSpecial:(int)special
 {
     // load dictionary of base moves
-    NSDictionary *moves = [NSDictionary dictionaryWithContentsOfFile: 
-                          [[NSBundle mainBundle] pathForResource:@"moves" 
+    NSDictionary *actions = [NSDictionary dictionaryWithContentsOfFile: 
+                          [[NSBundle mainBundle] pathForResource:@"actions" 
                                                           ofType:@"plist"]];
     // find our move
-    NSDictionary *mymove = [moves objectForKey:name];
+    NSDictionary *myaction = [actions objectForKey:name];
     
     // calculate total damage dealt by move
-    int damage = [[mymove objectForKey:@"damagebase"] intValue] + 
-    [[mymove objectForKey:@"attackmult"] intValue] * attack +
-    [[mymove objectForKey:@"defensemult"] intValue] * defense +
-    [[mymove objectForKey:@"speedmult"] intValue] * speed +
-    [[mymove objectForKey:@"specialmult"] intValue] * special; 
+    int damage = ([[myaction objectForKey:@"damagebase"] intValue] + 
+    [[myaction objectForKey:@"attackmult"] intValue] * attack +
+    [[myaction objectForKey:@"defensemult"] intValue] * defense +
+    [[myaction objectForKey:@"speedmult"] intValue] * speed +
+    [[myaction objectForKey:@"specialmult"] intValue] * special)/100; 
     
     return damage;
 }
