@@ -101,7 +101,7 @@
     }
 
     // delay
-    NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 1 ];
+    NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 5 ];
     [NSThread sleepUntilDate:future];
 
     // register the attack on user
@@ -114,13 +114,6 @@
     {
         [self end:@"Defeat."];
     }
-    
-    // delay
-    future = [NSDate dateWithTimeIntervalSinceNow: 1 ];
-    [NSThread sleepUntilDate:future];
-    
-    // clear
-    self.msg.text = @"";
 }
 
 - (IBAction)attack:(id)sender

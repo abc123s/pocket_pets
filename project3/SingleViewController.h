@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BattleViewController.h"
 
-@interface SingleViewController : UIViewController <BattleViewControllerDelegate>
+@interface SingleViewController : UIViewController
 {
     int pageNumber;
 }
@@ -27,6 +27,5 @@
 @property (nonatomic, assign) int pageNumber;
 
 - (id)initWithPageNumber:(int)page;
-- (IBAction)battle:(id)sender;
 
 @end

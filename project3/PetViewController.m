@@ -8,6 +8,7 @@
 
 #import "PetViewController.h"
 #import "SingleViewController.h"
+#import "BattleViewController.h"
 #import "Pet.h"
 #import "UserPets.h"
 
@@ -151,6 +152,34 @@
     // Set the boolean used when scrolls originate from the UIPageControl. See scrollViewDidScroll: above.
     pageControlUsed = YES;
 }
+
+- (IBAction)battle:(id)sender
+{
+    BattleViewController *controller = [[BattleViewController alloc] 
+                                        initWithNibName:@"BattleViewController" 
+                                        bundle:nil];
+    controller.delegate = self;
+    
+    [self presentModalViewController:controller animated:YES];
+    // [self presentViewController:controller animated:YES completion:NULL];
+    
+}
+
+#pragma mark - BattleViewControllerDelegate
+
+- (void)battleViewControllerDidFinish:(BattleViewController *)controller
+{
+    [self dismissModalViewControllerAnimated:YES];
+    // [self dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (Pet *)passPet
+{
+    return [self.pets objectAtIndex:self.pageControl.currentPage];
+    // return [UserPets findPetWithName: self.name.text];
+}
+
 
 #pragma mark - scrollview
 
