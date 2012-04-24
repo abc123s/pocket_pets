@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BattleState : NSObject
+@interface BattleState : NSObject {
+}
+
+@property (weak, nonatomic) NSString *attack1Message;
+@property (weak, nonatomic) NSString *attack2Message;
+
+- (id)initWithAttack1Message:(NSString *)msg1 andAttack2Message:(NSString *)msg2;
 
 @end

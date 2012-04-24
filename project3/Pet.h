@@ -15,6 +15,7 @@
 
 @property (assign, nonatomic) int level;
 @property (assign, nonatomic) int hp;
+@property (assign, nonatomic) int full;
 @property (assign, nonatomic) int exp;
 @property (assign, nonatomic) int attack;
 @property (assign, nonatomic) int defense;
@@ -25,6 +26,10 @@
 @property (strong, nonatomic) NSMutableString *type;
 @property (strong, nonatomic) NSMutableArray *actions; 
 @property (strong, nonatomic) NSString *spritePath;
+@property (strong, nonatomic) NSString *battlePath;
+@property (strong, nonatomic) NSString *oppPath;
+
+
 
 // Pet functions:
 

@@ -13,6 +13,7 @@
 
 @synthesize level = _level;
 @synthesize hp = _hp;
+@synthesize full = _full;
 @synthesize exp = _exp;
 @synthesize attack = _attack;
 @synthesize defense = _defense;
@@ -23,6 +24,9 @@
 @synthesize type = _type;
 @synthesize actions = _actions; 
 @synthesize spritePath = _spritePath;
+@synthesize spritePath = _battlePath;
+@synthesize spritePath = _oppPath;
+
 
 // initialize pet
 - (id)initWithName:(NSString *)name 
@@ -41,9 +45,12 @@
         self.level = level;
         self.exp = exp;
         self.type = [mypet objectForKey:@"type"];
-        self.spritePath = [mypet objectForKey:@"spritePath"];
-        self.hp = [[mypet objectForKey:@"hpbase"] intValue] + 
+        self.spritePath = [mypet objectForKey:@"spritepath"];
+        self.battlePath = [mypet objectForKey:@"battlepath"];
+        self.oppPath = [mypet objectForKey:@"opppath"];
+        self.full = [[mypet objectForKey:@"hpbase"] intValue] + 
         [[mypet objectForKey:@"hpmult"] intValue] * level; 
+        self.hp = self.full;
         self.attack = [[mypet objectForKey:@"attackbase"] intValue] + 
         [[mypet objectForKey:@"attackmult"] intValue] * level; 
         self.defense = [[mypet objectForKey:@"defensebase"] intValue] + 
@@ -61,7 +68,8 @@
                                             andDefense:self.defense
                                               andSpeed:self.speed
                                             andSpecial:self.special]];
-            NSArray *move = [NSArray arrayWithObjects: action, damage, nil];
+            NSString *actioncopy = [NSString stringWithString: action];
+            NSArray *move = [NSArray arrayWithObjects: actioncopy, damage, nil];
             [self.actions addObject:move]; 
         }
     }
@@ -75,7 +83,7 @@
 }
 
 //Implement later
-- (id)updateActions
+- (void)updateActions
 {
 }
 

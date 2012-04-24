@@ -191,6 +191,15 @@
 		F0B12BA11545E70400F608A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EED25EB5154681C500863984 /* Charmanderbattle.png */,
+				EED25EB6154681C500863984 /* Pikachubattle.png */,
+				EED25EB7154681C500863984 /* Bulbasauropp.png */,
+				EED25EB8154681C500863984 /* Bulbasaurbattle.png */,
+				EED25EAA154681A900863984 /* Pikachusprite.jpg */,
+				EED25EAB154681A900863984 /* Charmanderopp.png */,
+				EED25EAC154681A900863984 /* Pikachuopp.png */,
+				EED25EAD154681A900863984 /* Bulbasaursprite.jpg */,
+				EED25EAE154681A900863984 /* Charmandersprite.jpg */,
 				F0B12C8515464C7700F608A6 /* project3.xcdatamodel */,
 				EED25EA41546296700863984 /* actions.plist */,
 				EED25EA11546272F00863984 /* pets.plist */,

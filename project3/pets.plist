@@ -2,12 +2,20 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>Pikachu</key>    
+	<key>Pikachu</key>
 	<dict>
+		<key>battlepath</key>
+		<string>Pikachubattle.png</string>
+		<key>opppath</key>
+		<string>Pikachuopp.png</string>
+		<key>spritepath</key>
+		<string>Pikachusprite.jpg</string>
+		<key>type</key>
+		<string>ground</string>
 		<key>hpbase</key>
 		<integer>20</integer>
 		<key>hpmult</key>
-        <integer>4</integer>
+		<integer>4</integer>
 		<key>attackbase</key>
 		<integer>40</integer>
 		<key>attackmult</key>
@@ -24,13 +32,21 @@
 		<integer>30</integer>
 		<key>specialmult</key>
 		<integer>5</integer>
-    </dict>
-    <key>Charmander</key>    
+	</dict>
+	<key>Charmander</key>
 	<dict>
+		<key>battlepath</key>
+		<string>Charmanderbattle.png</string>
+		<key>opppath</key>
+		<string>Charmanderopp.png</string>
+		<key>spritepath</key>
+		<string>Charmandersprite.jpg</string>
+		<key>type</key>
+		<string>ground</string>
 		<key>hpbase</key>
 		<integer>25</integer>
 		<key>hpmult</key>
-        <integer>5</integer>
+		<integer>5</integer>
 		<key>attackbase</key>
 		<integer>50</integer>
 		<key>attackmult</key>
@@ -46,14 +62,22 @@
 		<key>specialbase</key>
 		<integer>10</integer>
 		<key>specialmult</key>
-        <integer>2</integer>
-    </dict>
-    <key>Bulbasaur</key>    
+		<integer>2</integer>
+	</dict>
+	<key>Bulbasaur</key>
 	<dict>
+		<key>battlepath</key>
+		<string>Bulbasaurbattle.png</string>
+		<key>opppath</key>
+		<string>Bulbasauropp.png</string>
+		<key>spritepath</key>
+		<string>Bulbasaursprite.jpg</string>
+		<key>type</key>
+		<string>ground</string>
 		<key>hpbase</key>
 		<integer>30</integer>
 		<key>hpmult</key>
-        <integer>6</integer>
+		<integer>6</integer>
 		<key>attackbase</key>
 		<integer>30</integer>
 		<key>attackmult</key>
@@ -69,7 +93,7 @@
 		<key>specialbase</key>
 		<integer>40</integer>
 		<key>specialmult</key>
-        <integer>8</integer>
-    </dict>
+		<integer>8</integer>
+	</dict>
 </dict>
 </plist>
