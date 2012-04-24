@@ -22,6 +22,7 @@
 @property (assign, nonatomic) int special;
 
 @property (strong, nonatomic) NSMutableString *name;
+@property (strong, nonatomic) NSMutableString *type;
 @property (strong, nonatomic) NSMutableArray *actions; 
 @property (strong, nonatomic) NSString *spritePath;
 
@@ -31,7 +32,7 @@
 - (id)initWithName:(NSString *)name 
           andLevel:(int)level
             andExp:(int)exp
-          andMoves:(NSArray *)actions;
+          andActions:(NSArray *)actions;
 
 // Level up the current pet, returning an array of actions to choose
 // from if applicable.

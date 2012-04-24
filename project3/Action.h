@@ -12,9 +12,9 @@
 }
 
 + (int)lookupMoveDamageWithName:(NSString *)name 
-                andAttack:(int)attack
-               andDefense:(int)defense
-                 andSpeed:(int)speed 
-               andSpecial:(int)special;
+                      andAttack:(int)attack
+                     andDefense:(int)defense
+                       andSpeed:(int)speed 
+                     andSpecial:(int)special;
 
 @end
