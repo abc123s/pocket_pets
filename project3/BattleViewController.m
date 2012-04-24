@@ -43,15 +43,25 @@
 @synthesize msg = _msg;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil 
+           controller:(id)controller
+               bundle:(NSBundle *)nibBundleOrNil;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        self.delegate = controller;
+        
         // Generate opponent, currently hardcoded
         self.opponent = [[Pet alloc] initWithName:@"Pikachu" 
                                          andLevel:1 
                                            andExp:0 
-                                       andActions:[NSArray arrayWithObject:@"Tackle"]];        
+                                       andActions:[NSArray arrayWithObject:@"Tackle"]];   
+        
+        // Take in pet
+        self.pet = [self.delegate passPet];
+        
+        // Initialize battle
+        self.battle = [[Battle alloc] initWithPet1:self.pet andPet2:self.opponent];
         
     }
     return self;
@@ -77,12 +87,6 @@
 
 - (void)show
 {
-    // Take in pet
-    self.pet = [self.delegate passPet];
-    
-    // Initialize battle
-    self.battle = [[Battle alloc] initWithPet1:self.delegate.passPet andPet2:self.opponent];
-    
     // first attack
     self.proPetName.text = self.pet.name;
     self.oppPetName.text = self.opponent.name;
@@ -120,12 +124,11 @@
     [NSThread sleepUntilDate:future];
     
     // clear
-    self.msg.text = @"";
 }
 
 - (IBAction)attack:(id)sender
 {
-    // Make an attack
+    // Make an attack    
     self.state = [self.battle doAction1:[self.pet.actions objectAtIndex:0]  
                              andAction2:[self.opponent.actions objectAtIndex:0]];
     

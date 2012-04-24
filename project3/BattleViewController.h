@@ -30,6 +30,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *oppPetPic;
 @property (weak, nonatomic) IBOutlet UILabel *msg;
 
+- (id)initWithNibName:(NSString *)nibNameOrNil 
+           controller:(id)controller
+               bundle:(NSBundle *)nibBundleOrNil;
+
 - (IBAction)attack:(id)sender;
 
 @end
