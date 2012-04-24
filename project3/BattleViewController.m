@@ -83,7 +83,7 @@
     // Initialize battle
     self.battle = [[Battle alloc] initWithPet1:self.delegate.passPet andPet2:self.opponent];
     
-    
+    // first attack
     self.proPetName.text = self.pet.name;
     self.oppPetName.text = self.opponent.name;
     self.proPetPic.image = [UIImage imageNamed:self.pet.battlePath];
@@ -99,7 +99,11 @@
     {
         [self end:@"Victorious!"];
     }
-    
+
+    // delay
+    NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 1 ];
+    [NSThread sleepUntilDate:future];
+
     // register the attack on user
     self.msg.text = self.state.attack2Message;
     self.proPetHP.text = [NSString stringWithFormat:@"%d/%d", self.pet.hp, self.pet.full];
@@ -111,12 +115,18 @@
         [self end:@"Defeat."];
     }
     
+    // delay
+    future = [NSDate dateWithTimeIntervalSinceNow: 1 ];
+    [NSThread sleepUntilDate:future];
+    
+    // clear
+    self.msg.text = @"";
 }
 
 - (IBAction)attack:(id)sender
 {
     // Make an attack
-    self.state = [self.battle doAction1:[self.pet.actions objectAtIndex:0] 
+    self.state = [self.battle doAction1:[self.pet.actions objectAtIndex:0]
                              andAction2:[self.opponent.actions objectAtIndex:0]];
     
     // Show results
