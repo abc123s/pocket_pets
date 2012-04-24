@@ -26,6 +26,7 @@
     UIViewController *store = [[StoreViewController alloc] initWithStyle:UITableViewStylePlain];
     UINavigationController *invenNav = [[UINavigationController alloc] initWithRootViewController:inven];
     UINavigationController *storeNav = [[UINavigationController alloc] initWithRootViewController:store];
+    
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:pets, invenNav, storeNav, nil];
     self.window.rootViewController = self.tabBarController;
