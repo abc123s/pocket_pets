@@ -61,7 +61,7 @@
                                             andDefense:self.defense
                                               andSpeed:self.speed
                                             andSpecial:self.special]];
-            NSArray *move = [NSArray arrayWithObjects: action, damage nil];
+            NSArray *move = [NSArray arrayWithObjects: action, damage, nil];
             [self.actions addObject:move]; 
         }
     }

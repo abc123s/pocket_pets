@@ -10,4 +10,6 @@
 
 @interface PetViewController : UIViewController
 
+@property (strong, nonatomic) NSArray *pets;
+
 @end

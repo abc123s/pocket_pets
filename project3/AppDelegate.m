@@ -20,6 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
     // Override point for customization after application launch.
     UIViewController *pets = [[PetViewController alloc] initWithNibName:@"PetViewController" bundle:nil];
     UIViewController *inven = [[InvenViewController alloc] initWithStyle:UITableViewStylePlain];
@@ -29,6 +30,7 @@
     
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:pets, invenNav, storeNav, nil];
+    
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;

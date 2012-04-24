@@ -7,12 +7,15 @@
 //
 
 #import "PetViewController.h"
+#import "UserPets.h"
 
 @interface PetViewController ()
 
 @end
 
 @implementation PetViewController
+
+@synthesize pets = _pets;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +31,16 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    /*
+    // Retrieve all pets
+    self.pets = [UserPets currentPets];
+    
+    // Find number of user pets
+    NSUInteger pages = [self.pets count];
+    */
+    
+    
 }
 
 - (void)viewDidUnload
