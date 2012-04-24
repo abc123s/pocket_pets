@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BattleViewController.h"
 
-@interface PetViewController : UIViewController <UIScrollViewDelegate> 
+@interface PetViewController : UIViewController <UIScrollViewDelegate, 
+                                                BattleViewControllerDelegate> 
 {
     BOOL pageControlUsed;
 }
@@ -21,7 +23,7 @@
 @property (strong, nonatomic) NSArray *pets;
 @property (assign, nonatomic) NSUInteger pages;
 
-
 - (IBAction)changePage:(id)sender;
+- (IBAction)battle:(id)sender;
 
 @end

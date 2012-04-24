@@ -105,7 +105,7 @@
     }
 
     // delay
-    NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 1 ];
+    NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 5 ];
     [NSThread sleepUntilDate:future];
 
     // register the attack on user
