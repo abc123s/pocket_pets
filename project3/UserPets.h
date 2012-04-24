@@ -10,12 +10,13 @@
 
 @interface UserPets : NSObject
 
-@property (strong, nonatomic) NSArray *petList;
-
 // Return true if there is a previous game going on
 + (BOOL)anyPets;
 
-// Create a new user plist of pets with a first pet
+// Create a new NSUserDefaults with a first pet
++ (void)initNewWithName:(NSString *)name;
+
+// Add new pet
 + (void)initWithName:(NSString *)name;
 
 // Return array of user pets
