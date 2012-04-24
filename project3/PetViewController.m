@@ -156,9 +156,9 @@
 - (IBAction)battle:(id)sender
 {
     BattleViewController *controller = [[BattleViewController alloc] 
-                                        initWithNibName:@"BattleViewController" 
+                                        initWithNibName:@"BattleViewController"
+                                        controller:self
                                         bundle:nil];
-    controller.delegate = self;
     
     [self presentModalViewController:controller animated:YES];
     // [self presentViewController:controller animated:YES completion:NULL];

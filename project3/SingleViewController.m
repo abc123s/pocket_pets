@@ -67,33 +67,4 @@
     return self;
 }
 
-- (IBAction)battle:(id)sender
-{
-    BattleViewController *controller = [[BattleViewController alloc] 
-                                        initWithNibName:@"BattleViewController" 
-                                             controller:self 
-                                                 bundle:nil];
-    
-    // [self presentModalViewController:controller animated:YES];
-    [self presentViewController:controller animated:YES completion:NULL];
-
-}
-
-#pragma mark - BattleViewControllerDelegate
-
-- (void)battleViewControllerDidFinish:(BattleViewController *)controller
-{
-    // [self dismissModalViewControllerAnimated:YES];
-    [self dismissViewControllerAnimated:YES completion:NULL];
-
-}
-
-- (Pet *)passPet
-{
-    return [UserPets findPetWithName: self.name.text];
-}
-
-
-
-
 @end

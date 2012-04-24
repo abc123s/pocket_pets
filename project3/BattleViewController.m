@@ -94,6 +94,8 @@
     self.oppPetPic.image = [UIImage imageNamed:self.opponent.oppPath];    
     
     // register the attack on the opponent
+    NSLog(self.state.attack1Message);
+    NSLog(self.state.attack2Message);
     self.msg.text = self.state.attack1Message;
     self.oppPetHP.text = [NSString stringWithFormat:@"%d/%d", self.opponent.hp, self.opponent.full];
     self.oppPetBar.progress = (float)self.opponent.hp / (float)self.opponent.full;
@@ -105,7 +107,7 @@
     }
 
     // delay
-    NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 5 ];
+    NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 3 ];
     [NSThread sleepUntilDate:future];
 
     // register the attack on user
@@ -118,12 +120,6 @@
     {
         [self end:@"Defeat."];
     }
-    
-    // delay
-    future = [NSDate dateWithTimeIntervalSinceNow: 1 ];
-    [NSThread sleepUntilDate:future];
-    
-    // clear
 }
 
 - (IBAction)attack:(id)sender
