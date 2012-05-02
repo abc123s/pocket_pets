@@ -32,6 +32,7 @@
                                                                     actions, @"actions", nil];
     
     /* EXTRA PETS */
+    /*
     NSDictionary *petx = [NSDictionary dictionaryWithObjectsAndKeys: @"Bulbasaur", @"name",
                          [NSNumber numberWithInt:1] , @"level", 
                          [NSNumber numberWithInt:-1], @"hp",
@@ -42,15 +43,18 @@
                           [NSNumber numberWithInt:-1], @"hp",
                           [NSNumber numberWithInt:0], @"xp", 
                           actions, @"actions", nil];
-    
+    */
+     
     // create pets dictionary
     NSMutableDictionary *pets = [[NSMutableDictionary alloc] init];
     [pets setObject:pet forKey:[pet objectForKey:@"name"]];
     
     /* EXTRAS */
+    /*
     [pets setObject:petx forKey:[petx objectForKey:@"name"]];
     [pets setObject:pety forKey:[pety objectForKey:@"name"]];
-    
+    */
+     
     // create user dictionary
     NSMutableDictionary *user = [[NSMutableDictionary alloc] init];
     [user setObject:pets forKey:@"pets"];
@@ -68,21 +72,31 @@
 }
 
 // Create new user pet
-+ (void)initWithName:(NSString *)name
++ (void)createPet:(Pet *)pet
 {
-    // create pet
-    NSArray *actions = [NSArray arrayWithObject: @"Tackle"];
-    NSDictionary *pet = [NSDictionary dictionaryWithObjectsAndKeys: name, @"name",
-                         [NSNumber numberWithInt:1] , @"level", 
-                         [NSNumber numberWithInt:-1], @"hp",
-                         [NSNumber numberWithInt:0], @"xp", 
-                         actions, @"actions", nil];
-    
-    // update pets dictionary
+    // retrieve defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    // TODO: validation to ensure no duplicates?
-    [[defaults objectForKey:@"pets"] setObject:pet forKey:[pet objectForKey:@"name"]];
+    // retrieve pets
+    NSMutableDictionary *pets = [[NSMutableDictionary alloc] init];
+    [pets addEntriesFromDictionary:[defaults objectForKey:@"pets"]];
+    
+    // parse actions (pet.actions is array of tuples)
+    NSMutableArray *realActions = [NSMutableArray arrayWithCapacity:4];
+    for (NSArray *action in pet.actions) {
+        [realActions addObject:[action objectAtIndex:0]];
+    }
+
+    // create pet; note that it starts with 0 xp 
+    NSDictionary *target = [NSDictionary dictionaryWithObjectsAndKeys: pet.name, @"name",
+                         [NSNumber numberWithInt:pet.level] , @"level", 
+                         [NSNumber numberWithInt:pet.hp], @"hp",
+                         [NSNumber numberWithInt:0], @"xp", 
+                         realActions, @"actions", nil];
+    
+    // save
+    [pets setObject:target forKey:pet.name];
+    [defaults setObject:pets forKey:@"pets"];
     [defaults synchronize];
 }
 
@@ -144,6 +158,7 @@
     [target setObject:[NSNumber numberWithInt:pet.hp] forKey:@"hp"];
     [target setObject:[NSNumber numberWithInt:pet.exp] forKey:@"xp"];
     
+    // parse actions (pet.actions stores an array of tuples)
     NSMutableArray *realActions = [NSMutableArray arrayWithCapacity:4];
     for (NSArray *action in pet.actions) {
         [realActions addObject:[action objectAtIndex:0]];
