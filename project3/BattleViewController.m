@@ -23,6 +23,9 @@
 @property (strong, nonatomic) CLGeocoder *geocoder;
 @property (assign, nonatomic) dispatch_group_t locationGroup;
 @property (assign, nonatomic) dispatch_group_t geocoderGroup;
+@property (assign, nonatomic) dispatch_group_t waterGroup;
+
+@property (assign, nonatomic) BOOL inWater;
 @property (weak, nonatomic) BattleState *state;
 @property (strong, nonatomic) NSDate *attackTimer;
 
@@ -37,7 +40,9 @@
 @synthesize locationManager = _locationManager;
 @synthesize locationGroup = _locationGroup;
 @synthesize geocoderGroup = _geocoderGroup;
+@synthesize waterGroup = _waterGroup;
 @synthesize geocoder = _geocoder;
+@synthesize inWater = _inWater;
 @synthesize battle = _battle;
 @synthesize state = _state;
 @synthesize pet = _pet;
@@ -266,41 +271,8 @@
         dispatch_group_enter(self.geocoderGroup);
         
         // Determine correct pokemon type.
-        [self.geocoder 
-         reverseGeocodeLocation: self.locationManager.location
-         completionHandler:^(NSArray *placemarks, NSError *error) 
-         {
-             if (error != nil) 
-             {
-                 // Generate opponent, currently hardcoded
-                 self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
-                                                          andType:nil];
-             }
-             else 
-             {
-                 CLPlacemark *curPlacemark = [placemarks objectAtIndex:0];
-                 if (curPlacemark.inlandWater != nil || curPlacemark.ocean != nil)
-                 {
-                     self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
-                                                              andType:@"Water"];
-                 }
-                 else if (false) //elevation stuff to be added later
-                 {
-                     self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
-                                                              andType:@"Air"];
-                 }
-                 else 
-                 {
-                     self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
-                                                              andType:@"Ground"];
-                 }
-             }
-             
-             // finished determining opponent, unblock.
-             dispatch_group_leave(self.geocoderGroup);
-             
-         }];
-
+        [self locationType:newLocation];
+        
         // wait until we get a satisfactory opponent back; make sure 
         // main loop is still running.
         while (dispatch_group_wait(self.geocoderGroup, DISPATCH_TIME_NOW)) {
@@ -324,6 +296,120 @@
     
     dispatch_group_leave(self.locationGroup);
     
+}
+
+#pragma mark - Geocoder stuff.
+
+- (void)locationType:(CLLocation *)location
+{
+    // check locations near current location to see if near water.
+    CLLocation *location1 = [[CLLocation alloc] 
+                             initWithLatitude:location.coordinate.latitude
+                             longitude:location.coordinate.longitude + .0001];
+    CLLocation *location2 = [[CLLocation alloc] 
+                             initWithLatitude:location.coordinate.latitude
+                             longitude: location.coordinate.longitude - .0001];
+    CLLocation *location3 = [[CLLocation alloc] 
+                             initWithLatitude:location.coordinate.latitude + .0001
+                             longitude:location.coordinate.longitude];
+    CLLocation *location4 = [[CLLocation alloc] 
+                             initWithLatitude:location.coordinate.latitude -.0001
+                             longitude:location.coordinate.longitude];
+    
+    self.waterGroup = dispatch_group_create();
+    // check nearby locations for water
+    [self checkInWater:location1];
+    while (dispatch_group_wait(self.waterGroup, DISPATCH_TIME_NOW)) {
+        NSLog(@"waiting");
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.f]];
+    }
+    
+    [self checkInWater:location2];
+    while (dispatch_group_wait(self.waterGroup, DISPATCH_TIME_NOW)) {
+        NSLog(@"waiting");
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.f]];
+    }
+    
+    [self checkInWater:location3];
+    while (dispatch_group_wait(self.waterGroup, DISPATCH_TIME_NOW)) {
+        NSLog(@"waiting");
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.f]];
+    }
+    
+    [self checkInWater:location4];
+    
+    // wait until we check all nearby locations; make sure 
+    // main loop is still running.
+    while (dispatch_group_wait(self.waterGroup, DISPATCH_TIME_NOW)) {
+        NSLog(@"waiting");
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.f]];
+    }
+    dispatch_release(self.waterGroup);
+    
+    [self.geocoder 
+     reverseGeocodeLocation: self.locationManager.location
+     completionHandler:^(NSArray *placemarks, NSError *error) 
+     {
+         if (error == nil) 
+         {
+             CLPlacemark *curPlacemark = [placemarks objectAtIndex:0];
+             if (false) //elevation stuff to be added later
+             {
+                 self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                                          andType:@"Air"];
+             }
+             else 
+             {
+                 if (curPlacemark.inlandWater != nil || 
+                     curPlacemark.ocean != nil ||
+                     self.inWater == YES)
+                 {
+                     self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                                              andType:@"Water"];
+                 }
+                 else 
+                 {
+                     self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                                          andType:@"Ground"];
+                 }
+             }
+         }
+         else 
+         {
+             // Generate random opponent.
+             self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                                      andType:nil];
+            
+         }
+         
+         // finished determining opponent, unblock.
+         dispatch_group_leave(self.geocoderGroup);
+         
+     }];
+    
+}
+
+- (void)checkInWater:(CLLocation *)location
+{
+    dispatch_group_enter(self.waterGroup);
+
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init]; 
+    [geocoder
+     reverseGeocodeLocation:location 
+     completionHandler:^(NSArray *placemarks, NSError *error) 
+     {
+         NSLog(@"success");
+         CLPlacemark *curPlacemark = [placemarks objectAtIndex:0];
+         if (curPlacemark.inlandWater != nil || curPlacemark.ocean != nil)
+         {
+             self.inWater = YES;
+         }
+         dispatch_group_leave(self.waterGroup);
+     }];
 }
 
 @end
