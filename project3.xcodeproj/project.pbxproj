@@ -251,7 +251,6 @@
 		F0B12BA11545E70400F608A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EE7AA8931551B09E00EE718B /* items.plist */,
 				EE7AA88A1551A50C00EE718B /* Squirtlebattle.png */,
 				EE7AA88B1551A50C00EE718B /* Squirtleopp.png */,
 				EE7AA88C1551A50C00EE718B /* Squirtlesprite.jpg */,
@@ -268,6 +267,7 @@
 				F0A4ADCE15469BEF00C9DFA4 /* Pikachuopp.png */,
 				F0A4ADCF15469BEF00C9DFA4 /* Pikachusprite.jpg */,
 				F0B12C8515464C7700F608A6 /* project3.xcdatamodel */,
+				EE7AA8931551B09E00EE718B /* items.plist */,
 				EED25EA41546296700863984 /* actions.plist */,
 				EED25EA11546272F00863984 /* pets.plist */,
 				F0B12C131546007300F608A6 /* 23-bird.png */,
