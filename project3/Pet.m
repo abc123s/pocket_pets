@@ -144,7 +144,19 @@ NSInteger compareScores(id score1, id score2, void *context);
 
 - (NSArray *)levelUpWithActions:(NSArray *)actions 
 {
+    // increase level
     self.level += 1;
+    
+    //recalculate stats
+    self.attack = [[self.petData objectForKey:@"attackbase"] intValue] + 
+    [[self.petData objectForKey:@"attackmult"] intValue] * self.level; 
+    self.defense = [[self.petData objectForKey:@"defensebase"] intValue] + 
+    [[self.petData objectForKey:@"defensemult"] intValue] * self.level; 
+    self.speed = [[self.petData objectForKey:@"speedbase"] intValue] + 
+    [[self.petData objectForKey:@"speedmult"] intValue] * self.level; 
+    self.special = [[self.petData objectForKey:@"specialbase"] intValue] + 
+    [[self.petData objectForKey:@"specialmult"] intValue] * self.level; 
+    
     NSDictionary *actionDict = [self.petData objectForKey:@"actions"];
 
     // Find new actions to learn.
