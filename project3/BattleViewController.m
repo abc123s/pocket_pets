@@ -103,7 +103,7 @@
             self.locationManager.distanceFilter = 500;
 
         }
-        //Create the geocoder if this object does not already have one.
+        // Create the geocoder if this object does not already have one.
         if (self.geocoder == nil)
         {
             self.geocoder = [[CLGeocoder alloc] init];
@@ -257,7 +257,7 @@
 {
     if (buttonIndex == 0)
     {
-        // [UserPets savePet:self.pet];
+        [UserPets savePet:self.pet];
         [self.delegate battleViewControllerDidFinish:self];
     }
 }

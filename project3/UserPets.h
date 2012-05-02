@@ -18,7 +18,7 @@
 + (void)initNewWithName:(NSString *)name;
 
 // Add new pet
-+ (void)initWithName:(NSString *)name;
++ (void)createPet:(Pet *)pet;
 
 // Return array of user pets
 + (NSArray *)currentPets;
