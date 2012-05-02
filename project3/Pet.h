@@ -28,6 +28,8 @@
 @property (strong, nonatomic) NSString *spritePath;
 @property (strong, nonatomic) NSString *battlePath;
 @property (strong, nonatomic) NSString *oppPath;
+@property (strong, nonatomic) NSDictionary *petData;
+
 
 
 
@@ -47,8 +49,5 @@
 // Level up the current pet, returning an array of actions to choose
 // from if applicable.
 - (NSArray *)levelUp;
-
-// Update the pet's actions. 
-- (void)updateActions:(NSArray *)actions; 
 
 @end

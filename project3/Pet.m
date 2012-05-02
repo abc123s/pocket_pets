@@ -26,6 +26,7 @@
 @synthesize spritePath = _spritePath;
 @synthesize battlePath = _battlePath;
 @synthesize oppPath = _oppPath;
+@synthesize petData = _petData;
 
 
 // helper function prototypes
@@ -40,21 +41,23 @@ NSInteger compareScores(id score1, id score2, void *context);
 {
     if (self = [super init])
     {
-        // load dictionary of base pets
-        NSDictionary *pets = [NSDictionary dictionaryWithContentsOfFile: 
-                          [[NSBundle mainBundle] pathForResource:@"pets" 
-                                                          ofType:@"plist"]];
-        NSDictionary *mypet = [pets objectForKey:name];
-
+        if (self.petData == nil)
+        {
+            // load dictionary of base pets
+            NSDictionary *pets = [NSDictionary dictionaryWithContentsOfFile: 
+                                  [[NSBundle mainBundle] pathForResource:@"pets" 
+                                                                  ofType:@"plist"]];
+            self.petData = [pets objectForKey:name];
+        }
         self.name = [NSMutableString stringWithString:name];
         self.level = level;
         self.exp = exp;
-        self.type = [mypet objectForKey:@"type"];
-        self.spritePath = [mypet objectForKey:@"spritepath"];
-        self.battlePath = [mypet objectForKey:@"battlepath"];
-        self.oppPath = [mypet objectForKey:@"opppath"];
-        self.full = [[mypet objectForKey:@"hpbase"] intValue] + 
-        [[mypet objectForKey:@"hpmult"] intValue] * level; 
+        self.type = [self.petData objectForKey:@"type"];
+        self.spritePath = [self.petData objectForKey:@"spritepath"];
+        self.battlePath = [self.petData objectForKey:@"battlepath"];
+        self.oppPath = [self.petData objectForKey:@"opppath"];
+        self.full = [[self.petData objectForKey:@"hpbase"] intValue] + 
+        [[self.petData objectForKey:@"hpmult"] intValue] * level; 
         
         // flag for new pet, with -1
         if (hp < 0)
@@ -62,14 +65,14 @@ NSInteger compareScores(id score1, id score2, void *context);
         else
             self.hp = hp;
         
-        self.attack = [[mypet objectForKey:@"attackbase"] intValue] + 
-        [[mypet objectForKey:@"attackmult"] intValue] * level; 
-        self.defense = [[mypet objectForKey:@"defensebase"] intValue] + 
-        [[pets objectForKey:@"defensemult"] intValue] * level; 
-        self.speed = [[mypet objectForKey:@"speedbase"] intValue] + 
-        [[mypet objectForKey:@"speedmult"] intValue] * level; 
-        self.special = [[mypet objectForKey:@"specialbase"] intValue] + 
-        [[mypet objectForKey:@"specialmult"] intValue] * level; 
+        self.attack = [[self.petData objectForKey:@"attackbase"] intValue] + 
+        [[self.petData objectForKey:@"attackmult"] intValue] * level; 
+        self.defense = [[self.petData objectForKey:@"defensebase"] intValue] + 
+        [[self.petData objectForKey:@"defensemult"] intValue] * level; 
+        self.speed = [[self.petData objectForKey:@"speedbase"] intValue] + 
+        [[self.petData objectForKey:@"speedmult"] intValue] * level; 
+        self.special = [[self.petData objectForKey:@"specialbase"] intValue] + 
+        [[self.petData objectForKey:@"specialmult"] intValue] * level; 
         self.actions = [NSMutableArray arrayWithCapacity:4];
         for (NSString *action in actions)
         {
@@ -113,9 +116,9 @@ NSInteger compareScores(id score1, id score2, void *context);
         approxLevel += (arc4random() % (level/4)) - (level/2);
     }
     
-    NSDictionary *mypet = [pets objectForKey:name];
+    self.petData = [pets objectForKey:name];
     
-    NSDictionary *actionDict = [mypet objectForKey:@"actions"];
+    NSDictionary *actionDict = [self.petData objectForKey:@"actions"];
     
     NSArray* myActionKeys = 
     [[[actionDict allKeys] filteredArrayUsingPredicate: 
@@ -133,21 +136,29 @@ NSInteger compareScores(id score1, id score2, void *context);
     
     return [self initWithName:name 
                      andLevel:approxLevel
-                        andHp:[[mypet objectForKey:@"hpbase"] intValue] + [[mypet objectForKey:@"hpmult"] intValue] * level
+                        andHp:-1
                        andExp:0 
                    andActions:myActions];
     
 }
 
-// Implement later
-- (NSArray *)levelUp 
-{    
+- (NSArray *)levelUpWithActions:(NSArray *)actions 
+{
+    self.level += 1;
+    NSDictionary *actionDict = [self.petData objectForKey:@"actions"];
+
+    // Find new actions to learn.
+    NSArray *newActions = 
+    [[actionDict allKeys] filteredArrayUsingPredicate: 
+     [NSPredicate predicateWithBlock:
+      ^BOOL(id evaluatedObject, NSDictionary *bindings) 
+      {
+          return ([evaluatedObject intValue] == self.level);
+      }]];
+    
+    return [actions arrayByAddingObjectsFromArray:newActions];
 }
 
-//Implement later
-- (void)updateActions
-{
-}
          
 #pragma mark - helper function
 /*
