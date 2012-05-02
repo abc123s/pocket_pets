@@ -68,6 +68,12 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.delegate = controller;
+
+        self.attackTimer = [NSDate date]; // Initialize attack time record
+
+        NSLog(@"%@ defaults = %@", [self class], 
+              [[NSUserDefaults standardUserDefaults] 
+               persistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]]);
         
         // Take in pet
         self.pet = [self.delegate passPet];
@@ -82,7 +88,7 @@
             self.locationManager.distanceFilter = 500;
 
         }
-        //Create the geocoder if this object does not already have one.
+        // Create the geocoder if this object does not already have one.
         if (self.geocoder == nil)
         {
             self.geocoder = [[CLGeocoder alloc] init];
