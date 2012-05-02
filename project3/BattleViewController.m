@@ -26,6 +26,7 @@
 
 - (void)show:(BOOL)new;  // update screen info
 - (void)prog; // update second progress bar
+- (void)end:(NSString *)message; // alert view on endgame
 
 @end
 
@@ -102,6 +103,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+// Helper function to bundle all UI updates
 - (void)show:(BOOL)new
 {
     // first attack
@@ -154,10 +156,13 @@
     // check if end
     if (self.pet.hp <= 0)
     {
-        [self end:@"Defeat."];
+        [self performSelector:@selector(end:)
+                   withObject:@"Defeat."
+                   afterDelay:2.0];
     }
 }
 
+// Helper function for delayed display of battle information
 - (void)prog
 {
     [self.proPetBar setProgress:(float)self.pet.hp / (float)self.pet.full animated:YES];
@@ -172,12 +177,13 @@
     }
 }
 
+// Attack button
 - (IBAction)attack:(id)sender
 {
     NSTimeInterval howRecent = [self.attackTimer timeIntervalSinceNow];
 
     // delay ability to attack 
-    if (abs(howRecent) > 2.0)
+    if (abs(howRecent) > 0.5)
     {
         // Make an attack    
         self.state = [self.battle doAction1:[self.pet.actions objectAtIndex:0]  
@@ -185,7 +191,6 @@
         
         // Show results
         [self show:NO];
-        
         self.attackTimer = [NSDate date];
     }
 }
@@ -230,9 +235,56 @@
         // Turn off location manager.
         [self.locationManager stopUpdatingLocation];
         
-        // Initialize attack time record
-        self.attackTimer = [NSDate date];
-        [self show:YES];
+        // Determine correct pokemon type.
+        [self.geocoder 
+         reverseGeocodeLocation: self.locationManager.location
+         completionHandler:^(NSArray *placemarks, NSError *error) 
+         {
+             if (error != nil) 
+             {
+                 // Generate opponent, currently hardcoded
+                 self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                                          andType:nil];
+                 
+                 // Initialize battle
+                 self.battle = [[Battle alloc] initWithPet1:self.pet andPet2:self.opponent];
+                 
+                 // Turn off location manager.
+                 [self.locationManager stopUpdatingLocation];
+                 
+                 // Update UI
+                 self.attackTimer = [NSDate date]; // Initialize attack time record
+                 [self show:YES];
+             }
+             else 
+             {
+                 CLPlacemark *curPlacemark = [placemarks objectAtIndex:0];
+                 if (curPlacemark.inlandWater != nil || curPlacemark.ocean != nil)
+                 {
+                     self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                                              andType:@"Water"];
+                 }
+                 else if (false) //elevation stuff to be added later
+                 {
+                     self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                                              andType:@"Air"];
+                 }
+                 else 
+                 {
+                     self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                                              andType:@"Ground"];
+                 }
+                 
+                 // Initialize battle
+                 self.battle = [[Battle alloc] initWithPet1:self.pet 
+                                                    andPet2:self.opponent];
+                 
+                 // Update UI
+                 self.attackTimer = [NSDate date]; // Initialize attack time record 
+                 [self show:YES];
+             }
+         }];
+
     }
 }
 
