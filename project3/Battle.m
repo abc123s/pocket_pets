@@ -92,7 +92,8 @@
     if ([itemtype isEqualToString:@"catch"])
     {
         float catchProb1 = 100. / sqrt(((float)self.pet2.speed)/10) * 
-        (self.pet2.full - self.pet2.hp) / self.pet2.full;
+        (self.pet2.full - self.pet2.hp) / self.pet2.full * 
+        [[item objectForKey:itemtype] floatValue];
         if ((arc4random() % 100) > catchProb1)
         {
             msg2 = [NSString stringWithFormat:@"You threw %@ at %@. It worked!", 
