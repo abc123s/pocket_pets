@@ -23,6 +23,7 @@
 
 @synthesize scrollView = _scrollView;
 @synthesize pageControl = _pageControl;
+@synthesize battle = _battle;
 @synthesize viewControllers = _viewControllers;
 @synthesize pets = _pets;
 @synthesize pages = _pages;
@@ -61,6 +62,13 @@
 
 - (void)show
 {
+    
+    NSLog(@"%@ defaults = %@", [self class], 
+          [[NSUserDefaults standardUserDefaults] 
+           persistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]]);
+    
+
+    
     // Retrieve all pets
     self.pets = [UserPets currentPets];
     
@@ -170,6 +178,7 @@
 - (void)battleViewControllerDidFinish:(BattleViewController *)controller
 {
     [self dismissModalViewControllerAnimated:YES];
+    [self show];
     // [self dismissViewControllerAnimated:YES completion:NULL];
     
 }
@@ -205,6 +214,13 @@
     [self loadScrollViewWithPage:page + 1];
     
     // A possible optimization would be to unload the views+controllers which are no longer visible
+    
+    // Hide the battle button if the pet is dead...
+    if ([self passPet].hp == 0)
+        self.battle.enabled = NO;
+    else 
+        self.battle.enabled = YES;
+    
 }
 
 // At the begin of scroll dragging, reset the boolean used when scrolls originate from the UIPageControl

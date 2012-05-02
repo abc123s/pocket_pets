@@ -60,10 +60,6 @@
     if (self) {
         self.delegate = controller;
         
-        NSLog(@"%@ defaults = %@", [self class], 
-              [[NSUserDefaults standardUserDefaults] 
-               persistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]]);
-        
         // Take in pet
         self.pet = [self.delegate passPet];
         
@@ -214,7 +210,7 @@
 {
     if (buttonIndex == 0)
     {
-        // [UserPets savePet:self.pet];
+        [UserPets savePet:self.pet];
         [self.delegate battleViewControllerDidFinish:self];
     }
 }

@@ -34,6 +34,7 @@ NSInteger compareScores(id score1, id score2, void *context);
 // initialize pet
 - (id)initWithName:(NSString *)name 
           andLevel:(int)level
+             andHp:(int)hp
             andExp:(int)exp
           andActions:(NSArray *)actions 
 {
@@ -54,7 +55,13 @@ NSInteger compareScores(id score1, id score2, void *context);
         self.oppPath = [mypet objectForKey:@"opppath"];
         self.full = [[mypet objectForKey:@"hpbase"] intValue] + 
         [[mypet objectForKey:@"hpmult"] intValue] * level; 
-        self.hp = self.full;
+        
+        // flag for new pet, with -1
+        if (hp < 0)
+            self.hp = self.full;
+        else
+            self.hp = hp;
+        
         self.attack = [[mypet objectForKey:@"attackbase"] intValue] + 
         [[mypet objectForKey:@"attackmult"] intValue] * level; 
         self.defense = [[mypet objectForKey:@"defensebase"] intValue] + 
@@ -125,7 +132,8 @@ NSInteger compareScores(id score1, id score2, void *context);
                                      notFoundMarker:@""];
     
     return [self initWithName:name 
-                     andLevel:approxLevel 
+                     andLevel:approxLevel
+                        andHp:[[mypet objectForKey:@"hpbase"] intValue] + [[mypet objectForKey:@"hpmult"] intValue] * level
                        andExp:0 
                    andActions:myActions];
     

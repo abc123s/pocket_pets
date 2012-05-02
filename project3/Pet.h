@@ -36,6 +36,7 @@
 // Initialize a new pet.
 - (id)initWithName:(NSString *)name 
           andLevel:(int)level
+             andHp:(int)hp
             andExp:(int)exp
           andActions:(NSArray *)actions;
 

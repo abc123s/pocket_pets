@@ -27,16 +27,19 @@
     NSArray *actions = [NSArray arrayWithObject: @"Tackle"];
     NSDictionary *pet = [NSDictionary dictionaryWithObjectsAndKeys: name, @"name",
                                                                     [NSNumber numberWithInt:1] , @"level", 
+                                                                    [NSNumber numberWithInt:-1], @"hp",
                                                                     [NSNumber numberWithInt:0], @"xp", 
                                                                     actions, @"actions", nil];
     
     /* EXTRA PETS */
     NSDictionary *petx = [NSDictionary dictionaryWithObjectsAndKeys: @"Bulbasaur", @"name",
                          [NSNumber numberWithInt:1] , @"level", 
+                         [NSNumber numberWithInt:-1], @"hp",
                          [NSNumber numberWithInt:0], @"xp", 
                          actions, @"actions", nil];
     NSDictionary *pety = [NSDictionary dictionaryWithObjectsAndKeys: @"Pikachu", @"name",
                           [NSNumber numberWithInt:1] , @"level", 
+                          [NSNumber numberWithInt:-1], @"hp",
                           [NSNumber numberWithInt:0], @"xp", 
                           actions, @"actions", nil];
     
@@ -71,6 +74,7 @@
     NSArray *actions = [NSArray arrayWithObject: @"Tackle"];
     NSDictionary *pet = [NSDictionary dictionaryWithObjectsAndKeys: name, @"name",
                          [NSNumber numberWithInt:1] , @"level", 
+                         [NSNumber numberWithInt:-1], @"hp",
                          [NSNumber numberWithInt:0], @"xp", 
                          actions, @"actions", nil];
     
@@ -98,6 +102,7 @@
     {
         [new addObject:[[Pet alloc] initWithName:[pet objectForKey:@"name"]
                                         andLevel:[[pet objectForKey:@"level"] intValue]
+                                           andHp:[[pet objectForKey:@"hp"] intValue]
                                           andExp:[[pet objectForKey:@"xp"] intValue]
                                       andActions:[pet objectForKey:@"actions"]]];
     }
@@ -117,6 +122,7 @@
     // create pet
     return [[Pet alloc] initWithName:[target objectForKey:@"name"]
                             andLevel:[[target objectForKey:@"level"] intValue]
+                               andHp:[[target objectForKey:@"hp"] intValue]
                               andExp:[[target objectForKey:@"xp"] intValue]
                           andActions:[target objectForKey:@"actions"]];
 }
@@ -124,7 +130,30 @@
 // Save pet info
 + (void)savePet:(Pet *)pet
 {
+    // retrieve defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    // retrieve pets
+    NSMutableDictionary *pets = [[NSMutableDictionary alloc] init];
+    [pets addEntriesFromDictionary:[defaults objectForKey:@"pets"]];
+    
+    // retrieve pet
+    NSMutableDictionary *target = [[NSMutableDictionary alloc] init];
+    [target addEntriesFromDictionary:[pets objectForKey:pet.name]];
+    [target setObject:[NSNumber numberWithInt:pet.level] forKey:@"level"];
+    [target setObject:[NSNumber numberWithInt:pet.hp] forKey:@"hp"];
+    [target setObject:[NSNumber numberWithInt:pet.exp] forKey:@"xp"];
+    
+    NSMutableArray *realActions = [NSMutableArray arrayWithCapacity:4];
+    for (NSArray *action in pet.actions) {
+        [realActions addObject:[action objectAtIndex:0]];
+    }
+    [target setObject:realActions forKey:@"actions"];
+    
+    // save
+    [pets setObject:target forKey:pet.name];
+    [defaults setObject:pets forKey:@"pets"];
+    [defaults synchronize];
 }
 
 @end
