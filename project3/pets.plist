@@ -4,6 +4,17 @@
 <dict>
 	<key>Pikachu</key>
 	<dict>
+		<key>actions</key>
+		<dict>
+			<key>15</key>
+			<string>Thunder</string>
+			<key>10</key>
+			<string>Shock</string>
+			<key>5</key>
+			<string>Scratch</string>
+			<key>0</key>
+			<string>Tackle</string>
+		</dict>
 		<key>battlepath</key>
 		<string>Pikachubattle.png</string>
 		<key>opppath</key>
@@ -11,7 +22,7 @@
 		<key>spritepath</key>
 		<string>Pikachusprite.jpg</string>
 		<key>type</key>
-		<string>ground</string>
+		<string>Ground</string>
 		<key>hpbase</key>
 		<integer>20</integer>
 		<key>hpmult</key>
@@ -35,6 +46,17 @@
 	</dict>
 	<key>Charmander</key>
 	<dict>
+		<key>actions</key>
+		<dict>
+			<key>15</key>
+			<string>Flame Attack</string>
+			<key>10</key>
+			<string>Ember</string>
+			<key>5</key>
+			<string>Scratch</string>
+			<key>0</key>
+			<string>Tackle</string>
+		</dict>
 		<key>battlepath</key>
 		<string>Charmanderbattle.png</string>
 		<key>opppath</key>
@@ -42,7 +64,7 @@
 		<key>spritepath</key>
 		<string>Charmandersprite.jpg</string>
 		<key>type</key>
-		<string>ground</string>
+		<string>Ground</string>
 		<key>hpbase</key>
 		<integer>25</integer>
 		<key>hpmult</key>
@@ -66,6 +88,17 @@
 	</dict>
 	<key>Bulbasaur</key>
 	<dict>
+		<key>actions</key>
+		<dict>
+			<key>15</key>
+			<string>Leaf Attack</string>
+			<key>10</key>
+			<string>Vine Whip</string>
+			<key>5</key>
+			<string>Roar</string>
+			<key>0</key>
+			<string>Tackle</string>
+		</dict>
 		<key>battlepath</key>
 		<string>Bulbasaurbattle.png</string>
 		<key>opppath</key>
@@ -73,7 +106,7 @@
 		<key>spritepath</key>
 		<string>Bulbasaursprite.jpg</string>
 		<key>type</key>
-		<string>ground</string>
+		<string>Ground</string>
 		<key>hpbase</key>
 		<integer>30</integer>
 		<key>hpmult</key>
@@ -94,6 +127,48 @@
 		<integer>40</integer>
 		<key>specialmult</key>
 		<integer>8</integer>
+	</dict>
+	<key>Squirtle</key>
+	<dict>
+		<key>actions</key>
+		<dict>
+			<key>15</key>
+			<string>Wave</string>
+			<key>10</key>
+			<string>Water Gun</string>
+			<key>5</key>
+			<string>Roar</string>
+			<key>0</key>
+			<string>Tackle</string>
+		</dict>
+		<key>battlepath</key>
+		<string>Squirtlebattle.png</string>
+		<key>opppath</key>
+		<string>Squirtleopp.png</string>
+		<key>spritepath</key>
+		<string>Squirtlesprite.jpg</string>
+		<key>type</key>
+		<string>Water</string>
+		<key>hpbase</key>
+		<integer>25</integer>
+		<key>hpmult</key>
+		<integer>3</integer>
+		<key>attackbase</key>
+		<integer>25</integer>
+		<key>attackmult</key>
+		<integer>5</integer>
+		<key>defensebase</key>
+		<integer>75</integer>
+		<key>defensemult</key>
+		<integer>18</integer>
+		<key>speedbase</key>
+		<integer>15</integer>
+		<key>speedmult</key>
+		<integer>5</integer>
+		<key>specialbase</key>
+		<integer>30</integer>
+		<key>specialmult</key>
+		<integer>6</integer>
 	</dict>
 </dict>
 </plist>

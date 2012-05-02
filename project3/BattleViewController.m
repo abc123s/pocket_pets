@@ -20,6 +20,7 @@
 @property (strong, nonatomic) Pet *opponent;
 @property (strong, nonatomic) Battle *battle;
 @property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLGeocoder *geocoder;
 @property (weak, nonatomic) BattleState *state;
 
 // update screen info
@@ -30,6 +31,7 @@
 @implementation BattleViewController
 
 @synthesize locationManager = _locationManager;
+@synthesize geocoder = _geocoder;
 @synthesize battle = _battle;
 @synthesize state = _state;
 @synthesize pet = _pet;
@@ -68,7 +70,13 @@
             self.locationManager.distanceFilter = 500;
 
         }
-        [self.locationManager startMonitoringSignificantLocationChanges];
+        //Create the geocoder if this object does not already have one.
+        if (self.geocoder == nil)
+        {
+            self.geocoder = [[CLGeocoder alloc] init];
+        }
+        
+        [self.locationManager startUpdatingLocation];
         
     }
     return self;
@@ -157,8 +165,8 @@
 
 #pragma mark - CLLocation delegate functions.
 
-// Once you find a location, choose a pokemone of the correct type, 
-// start the battle, and stop updating location.
+// Once you find a location, stop updating location, and use reverse
+// geocoding to figure out what type of pokemon to generate.
 - (void)locationManager:(CLLocationManager *)locationManager 
     didUpdateToLocation:(CLLocation *)newLocation 
            fromLocation:(CLLocation *)oldLocation
@@ -166,36 +174,71 @@
     // If it's a relatively recent event, turn off updates to save power
     NSDate* eventDate = newLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) < 15.0)
+    if (abs(howRecent) < 15.0 && newLocation.horizontalAccuracy < 15.0)
     {
         NSLog(@"latitude %+.6f, longitude %+.6f\n",
               newLocation.coordinate.latitude,
               newLocation.coordinate.longitude);
         
-        // Generate opponent, currently hardcoded
-        self.opponent = [[Pet alloc] initWithName:@"Pikachu" 
-                                         andLevel:1 
-                                           andExp:0 
-                                       andActions:[NSArray arrayWithObject:@"Tackle"]];
-        
-        // Initialize battle
-        self.battle = [[Battle alloc] initWithPet1:self.pet andPet2:self.opponent];
-        
         // Turn off location manager.
         [self.locationManager stopUpdatingLocation];
         
-        [self show];
+        // Determine correct pokemon type.
+        [self.geocoder 
+         reverseGeocodeLocation: self.locationManager.location
+         completionHandler:^(NSArray *placemarks, NSError *error) 
+         {
+             if (error != nil) 
+             {
+                 // Generate opponent, currently hardcoded
+                 self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                                          andType:nil];
+                 
+                 // Initialize battle
+                 self.battle = [[Battle alloc] initWithPet1:self.pet andPet2:self.opponent];
+                 
+                 // Turn off location manager.
+                 [self.locationManager stopUpdatingLocation];
+                 
+                 [self show];
+             }
+             else 
+             {
+                 CLPlacemark *curPlacemark = [placemarks objectAtIndex:0];
+                 if (curPlacemark.inlandWater != nil || curPlacemark.ocean != nil)
+                 {
+                     self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                                              andType:@"Water"];
+                 }
+                 else if (false) //elevation stuff to be added later
+                 {
+                     self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                                              andType:@"Air"];
+                 }
+                 else 
+                 {
+                     self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                                              andType:@"Ground"];
+                 }
+                 
+                 // Initialize battle
+                 self.battle = [[Battle alloc] initWithPet1:self.pet 
+                                                    andPet2:self.opponent];
+                 
+                 // Update UI
+                 [self show];
+             }
+         }];
+
     }
 }
 
 // If location determination failed, just pick a random pokemon.
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
 {
-    // Generate opponent, currently hardcoded
-    self.opponent = [[Pet alloc] initWithName:@"Pikachu" 
-                                     andLevel:1 
-                                       andExp:0 
-                                   andActions:[NSArray arrayWithObject:@"Tackle"]];
+    // Generate random opponent
+    self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                             andType:nil];
     
     // Initialize battle
     self.battle = [[Battle alloc] initWithPet1:self.pet andPet2:self.opponent];
