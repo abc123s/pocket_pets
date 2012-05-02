@@ -53,8 +53,14 @@
     [user setObject:pets forKey:@"pets"];
     
     // register user
+    NSMutableDictionary *placeholder = [[NSMutableDictionary alloc] init];
+    [placeholder setObject:@"" forKey:@"pets"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults registerDefaults:user];
+    [defaults registerDefaults:placeholder];
+    
+    // save new pets
+    defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:pets forKey:@"pets"];
     [defaults synchronize];
 }
 
@@ -68,7 +74,7 @@
                          [NSNumber numberWithInt:0], @"xp", 
                          actions, @"actions", nil];
     
-    // create pets dictionary
+    // update pets dictionary
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     // TODO: validation to ensure no duplicates?

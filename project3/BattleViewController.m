@@ -60,6 +60,10 @@
     if (self) {
         self.delegate = controller;
         
+        NSLog(@"%@ defaults = %@", [self class], 
+              [[NSUserDefaults standardUserDefaults] 
+               persistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]]);
+        
         // Take in pet
         self.pet = [self.delegate passPet];
         
