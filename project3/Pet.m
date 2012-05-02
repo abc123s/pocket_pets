@@ -28,19 +28,23 @@
 @synthesize oppPath = _oppPath;
 
 
+// helper function prototypes
+NSInteger compareScores(id score1, id score2, void *context);
+
 // initialize pet
 - (id)initWithName:(NSString *)name 
           andLevel:(int)level
             andExp:(int)exp
           andActions:(NSArray *)actions 
 {
-    // load dictionary of base pets
-    NSDictionary *pets = [NSDictionary dictionaryWithContentsOfFile: 
-                          [[NSBundle mainBundle] pathForResource:@"pets" 
-                                                          ofType:@"plist"]];
-    NSDictionary *mypet = [pets objectForKey:name];
     if (self = [super init])
     {
+        // load dictionary of base pets
+        NSDictionary *pets = [NSDictionary dictionaryWithContentsOfFile: 
+                          [[NSBundle mainBundle] pathForResource:@"pets" 
+                                                          ofType:@"plist"]];
+        NSDictionary *mypet = [pets objectForKey:name];
+
         self.name = [NSMutableString stringWithString:name];
         self.level = level;
         self.exp = exp;
@@ -76,15 +80,80 @@
     return self;
 }
 
+- (id)initRandomWithLevel:(int)level andType:(NSString *)type
+{
+    // load dictionary of base pets
+    NSDictionary *pets = [NSDictionary dictionaryWithContentsOfFile: 
+                          [[NSBundle mainBundle] pathForResource:@"pets" 
+                                                          ofType:@"plist"]];
+        
+    NSArray *petsOfType = 
+    [[pets keysOfEntriesPassingTest:^BOOL(id key, id obj, BOOL *stop) 
+      {
+          if (type == nil)
+              return YES;
+          else 
+          {
+              return([[obj objectForKey:@"type"] isEqualToString: type]);
+          }
+      }] allObjects];
+    NSLog([NSString stringWithFormat:@"%d", petsOfType.count]);
+    NSString *name = [petsOfType objectAtIndex:(arc4random() 
+                      % petsOfType.count)];
+    int approxLevel = level;
+    if (level >= 4)
+    {
+        approxLevel += (arc4random() % (level/4)) - (level/2);
+    }
+    
+    NSDictionary *mypet = [pets objectForKey:name];
+    
+    NSDictionary *actionDict = [mypet objectForKey:@"actions"];
+    
+    NSArray* myActionKeys = 
+    [[[actionDict allKeys] filteredArrayUsingPredicate: 
+         [NSPredicate predicateWithBlock:
+          ^BOOL(id evaluatedObject, NSDictionary *bindings) 
+          {
+              return ([evaluatedObject intValue] < approxLevel);
+          }]] sortedArrayUsingFunction:compareLevels context:nil];
+    
+    if (myActionKeys.count > 4) 
+        myActionKeys = [myActionKeys subarrayWithRange: NSMakeRange(0,4)];
+    
+    NSArray* myActions = [actionDict objectsForKeys:myActionKeys 
+                                     notFoundMarker:@""];
+    
+    return [self initWithName:name 
+                     andLevel:approxLevel 
+                       andExp:0 
+                   andActions:myActions];
+    
+}
+
 // Implement later
 - (NSArray *)levelUp 
-{
-    return [NSArray init];
+{    
 }
 
 //Implement later
 - (void)updateActions
 {
 }
-
+         
+#pragma mark - helper function
+/*
+ * Helper function to compare scores.
+ */
+NSInteger compareLevels(id level1, id level2, void *context) 
+{
+    int v1 = [level2 intValue];
+    int v2 = [level1 intValue];
+    if (v1 > v2)
+        return NSOrderedAscending;
+    else if (v1 < v2)
+        return NSOrderedDescending;
+    else
+        return NSOrderedSame;
+}
 @end

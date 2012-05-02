@@ -39,6 +39,10 @@
             andExp:(int)exp
           andActions:(NSArray *)actions;
 
+// Initialize a random pet.
+- (id)initRandomWithLevel:(int)level 
+                  andType:(NSString *)type;
+
 // Level up the current pet, returning an array of actions to choose
 // from if applicable.
 - (NSArray *)levelUp;
