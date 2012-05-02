@@ -183,6 +183,7 @@
     [self.msg performSelector:@selector(setText:)
                    withObject:self.state.attack2Message
                    afterDelay:2.0];
+    
     // only delay on attack mode, not on initial display
     if (new)
     {
