@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE7AA8861551A4F000EE718B /* Pidgeybattle.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7AA8831551A4F000EE718B /* Pidgeybattle.png */; };
+		EE7AA8871551A4F000EE718B /* Pidgeyopp.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7AA8841551A4F000EE718B /* Pidgeyopp.png */; };
+		EE7AA8881551A4F000EE718B /* Pidgeysprite.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EE7AA8851551A4F000EE718B /* Pidgeysprite.jpg */; };
+		EE7AA88D1551A50C00EE718B /* Squirtlebattle.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7AA88A1551A50C00EE718B /* Squirtlebattle.png */; };
+		EE7AA88E1551A50C00EE718B /* Squirtleopp.png in Resources */ = {isa = PBXBuildFile; fileRef = EE7AA88B1551A50C00EE718B /* Squirtleopp.png */; };
+		EE7AA88F1551A50C00EE718B /* Squirtlesprite.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EE7AA88C1551A50C00EE718B /* Squirtlesprite.jpg */; };
 		EED25EA21546272F00863984 /* pets.plist in Resources */ = {isa = PBXBuildFile; fileRef = EED25EA11546272F00863984 /* pets.plist */; };
 		EED25EA51546296700863984 /* actions.plist in Resources */ = {isa = PBXBuildFile; fileRef = EED25EA41546296700863984 /* actions.plist */; };
 		EEEC04041550BC4A007B42C1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEC04031550BC4A007B42C1 /* CoreLocation.framework */; };
@@ -67,6 +73,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EE7AA8831551A4F000EE718B /* Pidgeybattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pidgeybattle.png; sourceTree = "<group>"; };
+		EE7AA8841551A4F000EE718B /* Pidgeyopp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pidgeyopp.png; sourceTree = "<group>"; };
+		EE7AA8851551A4F000EE718B /* Pidgeysprite.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Pidgeysprite.jpg; sourceTree = "<group>"; };
+		EE7AA88A1551A50C00EE718B /* Squirtlebattle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Squirtlebattle.png; sourceTree = "<group>"; };
+		EE7AA88B1551A50C00EE718B /* Squirtleopp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Squirtleopp.png; sourceTree = "<group>"; };
+		EE7AA88C1551A50C00EE718B /* Squirtlesprite.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Squirtlesprite.jpg; sourceTree = "<group>"; };
 		EED25EA11546272F00863984 /* pets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pets.plist; sourceTree = "<group>"; };
 		EED25EA41546296700863984 /* actions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = actions.plist; sourceTree = "<group>"; };
 		EEEC04031550BC4A007B42C1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -232,6 +244,12 @@
 		F0B12BA11545E70400F608A6 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EE7AA88A1551A50C00EE718B /* Squirtlebattle.png */,
+				EE7AA88B1551A50C00EE718B /* Squirtleopp.png */,
+				EE7AA88C1551A50C00EE718B /* Squirtlesprite.jpg */,
+				EE7AA8831551A4F000EE718B /* Pidgeybattle.png */,
+				EE7AA8841551A4F000EE718B /* Pidgeyopp.png */,
+				EE7AA8851551A4F000EE718B /* Pidgeysprite.jpg */,
 				F0A4ADC715469BEF00C9DFA4 /* Bulbasaurbattle.png */,
 				F0A4ADC815469BEF00C9DFA4 /* Bulbasauropp.png */,
 				F0A4ADC915469BEF00C9DFA4 /* Bulbasaursprite.jpg */,
@@ -367,6 +385,12 @@
 				F0A4ADDF1546A15800C9DFA4 /* PetViewController.xib in Resources */,
 				F0A4ADEC1546B69B00C9DFA4 /* BattleViewController.xib in Resources */,
 				F0D3058F15470EB8009F11F8 /* README in Resources */,
+				EE7AA8861551A4F000EE718B /* Pidgeybattle.png in Resources */,
+				EE7AA8871551A4F000EE718B /* Pidgeyopp.png in Resources */,
+				EE7AA8881551A4F000EE718B /* Pidgeysprite.jpg in Resources */,
+				EE7AA88D1551A50C00EE718B /* Squirtlebattle.png in Resources */,
+				EE7AA88E1551A50C00EE718B /* Squirtleopp.png in Resources */,
+				EE7AA88F1551A50C00EE718B /* Squirtlesprite.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

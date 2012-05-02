@@ -132,5 +132,31 @@
 		<key>specialmult</key>
 		<integer>3</integer>
 	</dict>
+	<key>Gust</key>
+	<dict>
+		<key>damagebase</key>
+		<integer>40</integer>
+		<key>attackmult</key>
+		<integer>3</integer>
+		<key>defensemult</key>
+		<integer>0</integer>
+		<key>speedmult</key>
+		<integer>1</integer>
+		<key>specialmult</key>
+		<integer>3</integer>
+	</dict>
+	<key>Air Attack</key>
+	<dict>
+		<key>damagebase</key>
+		<integer>40</integer>
+		<key>attackmult</key>
+		<integer>3</integer>
+		<key>defensemult</key>
+		<integer>0</integer>
+		<key>speedmult</key>
+		<integer>1</integer>
+		<key>specialmult</key>
+		<integer>3</integer>
+	</dict>
 </dict>
 </plist>

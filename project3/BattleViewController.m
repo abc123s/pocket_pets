@@ -16,18 +16,23 @@
 
 @interface BattleViewController ()
 
-@property (strong, nonatomic) Pet *pet;
-@property (strong, nonatomic) Pet *opponent;
-@property (strong, nonatomic) Battle *battle;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLGeocoder *geocoder;
 @property (assign, nonatomic) dispatch_group_t locationGroup;
 @property (assign, nonatomic) dispatch_group_t geocoderGroup;
 @property (assign, nonatomic) dispatch_group_t waterGroup;
 
+@property (strong, nonatomic) NSString *currentElement;
+@property (strong, nonatomic) NSMutableString *currentText;
+@property (assign, nonatomic) dispatch_group_t airGroup;
+
+@property (assign, nonatomic) float elevation;
 @property (assign, nonatomic) BOOL inWater;
-@property (weak, nonatomic) BattleState *state;
 @property (strong, nonatomic) NSDate *attackTimer;
+@property (strong, nonatomic) Battle *battle;
+@property (strong, nonatomic) Pet *pet;
+@property (strong, nonatomic) Pet *opponent;
+@property (weak, nonatomic) BattleState *state;
 
 - (void)show:(BOOL)new;  // update screen info
 - (void)prog; // update second progress bar
@@ -37,18 +42,28 @@
 
 @implementation BattleViewController
 
+// Location Variables
 @synthesize locationManager = _locationManager;
 @synthesize locationGroup = _locationGroup;
 @synthesize geocoderGroup = _geocoderGroup;
 @synthesize waterGroup = _waterGroup;
 @synthesize geocoder = _geocoder;
+
+// XML Parsing Variables
+@synthesize currentElement = _currentElement;
+@synthesize currentText = _currentText;
+@synthesize airGroup = _airGroup;
+
+// Battle Variables
+@synthesize elevation = _elevation;
 @synthesize inWater = _inWater;
-@synthesize battle = _battle;
 @synthesize state = _state;
+@synthesize attackTimer = _attackTimer;
+@synthesize battle = _battle;
 @synthesize pet = _pet;
 @synthesize opponent = _opponent;
-@synthesize attackTimer = _attackTimer;
 
+// UI Variables
 @synthesize delegate = _delegate;
 @synthesize proPetName = _proPetName;
 @synthesize oppPetName = _oppPetName;
@@ -302,74 +317,73 @@
 
 - (void)locationType:(CLLocation *)location
 {
-    // check locations near current location to see if near water.
-    CLLocation *location1 = [[CLLocation alloc] 
-                             initWithLatitude:location.coordinate.latitude
-                             longitude:location.coordinate.longitude + .0001];
-    CLLocation *location2 = [[CLLocation alloc] 
-                             initWithLatitude:location.coordinate.latitude
-                             longitude: location.coordinate.longitude - .0001];
-    CLLocation *location3 = [[CLLocation alloc] 
-                             initWithLatitude:location.coordinate.latitude + .0001
-                             longitude:location.coordinate.longitude];
-    CLLocation *location4 = [[CLLocation alloc] 
-                             initWithLatitude:location.coordinate.latitude -.0001
-                             longitude:location.coordinate.longitude];
+    // get elevation data from google for current gps location
+    NSString *url = 
+    [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/elevation/xml?locations=%f,%f&sensor=true",
+     location.coordinate.latitude, location.coordinate.longitude];
     
-    /* 
-     * You can't make multiple geolocation requests at the same time; if you 
-     * do, all your requests seem to lock. Accordingly, we use dispatch_groups
-     * to make sure only one request is being made at a time.
-     */
+    // parse xml
+    NSXMLParser *parser = [[NSXMLParser alloc] 
+                           initWithContentsOfURL:[NSURL URLWithString:url]];
+    [parser setDelegate: self];
     
-    self.waterGroup = dispatch_group_create();
-    // check nearby locations for water
-    [self checkInWater:location1];
-    while (dispatch_group_wait(self.waterGroup, DISPATCH_TIME_NOW)) {
-        NSLog(@"waiting");
+    self.airGroup = dispatch_group_create();
+    dispatch_group_enter(self.airGroup);
+    
+    [parser parse];
+    
+    // wait until we get an altitude back.
+    while (dispatch_group_wait(self.airGroup, DISPATCH_TIME_NOW)) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
                                  beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.f]];
     }
     
-    [self checkInWater:location2];
-    while (dispatch_group_wait(self.waterGroup, DISPATCH_TIME_NOW)) {
-        NSLog(@"waiting");
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.f]];
+    dispatch_release(self.airGroup);
+     
+    NSLog([NSString stringWithFormat:@"%f", location.altitude]);
+    NSLog([NSString stringWithFormat:@"%f", self.elevation]);
+    
+    if (self.elevation > (location.altitude + 10)) 
+    {
+        self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+                                                 andType:@"Air"];
+        // finished determining opponent, unblock.    
+        dispatch_group_leave(self.geocoderGroup);
+
     }
+    else 
+    {
+        // check locations near current location to see if near water.
+        CLLocation *location1 = [[CLLocation alloc] 
+                                 initWithLatitude:location.coordinate.latitude
+                                 longitude:location.coordinate.longitude + .0002];
+        CLLocation *location2 = [[CLLocation alloc] 
+                                 initWithLatitude:location.coordinate.latitude
+                                 longitude: location.coordinate.longitude - .0002];
+        CLLocation *location3 = [[CLLocation alloc] 
+                                 initWithLatitude:location.coordinate.latitude + .0002
+                                 longitude:location.coordinate.longitude];
+        CLLocation *location4 = [[CLLocation alloc] 
+                                 initWithLatitude:location.coordinate.latitude -.0002
+                                 longitude:location.coordinate.longitude];
     
-    [self checkInWater:location3];
-    while (dispatch_group_wait(self.waterGroup, DISPATCH_TIME_NOW)) {
-        NSLog(@"waiting");
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.f]];
-    }
+        self.waterGroup = dispatch_group_create();
     
-    [self checkInWater:location4];
+        // check nearby locations for water
+        [self checkInWater:location1];
+        [self checkInWater:location2];    
+        [self checkInWater:location3];   
+        [self checkInWater:location4];
     
-    // wait until we check all nearby locations; make sure 
-    // main loop is still running.
-    while (dispatch_group_wait(self.waterGroup, DISPATCH_TIME_NOW)) {
-        NSLog(@"waiting");
-        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
-                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.f]];
-    }
-    dispatch_release(self.waterGroup);
+        dispatch_release(self.waterGroup);
     
-    [self.geocoder 
-     reverseGeocodeLocation: self.locationManager.location
-     completionHandler:^(NSArray *placemarks, NSError *error) 
-     {
-         if (error == nil) 
+        [self.geocoder 
+         reverseGeocodeLocation: self.locationManager.location
+         completionHandler:^(NSArray *placemarks, NSError *error) 
          {
-             CLPlacemark *curPlacemark = [placemarks objectAtIndex:0];
-             if (false) //elevation stuff to be added later
+             if (error == nil) 
              {
-                 self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
-                                                          andType:@"Air"];
-             }
-             else 
-             {
+                 CLPlacemark *curPlacemark = [placemarks objectAtIndex:0];
                  if (curPlacemark.inlandWater != nil || 
                      curPlacemark.ocean != nil ||
                      self.inWater == YES)
@@ -383,21 +397,29 @@
                                                           andType:@"Ground"];
                  }
              }
-         }
-         else 
-         {
-             // Generate random opponent.
-             self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
+             else 
+             {
+                 // Generate random opponent.
+                 self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
                                                       andType:nil];
             
-         }
+             }
          
-         // finished determining opponent, unblock.
-         dispatch_group_leave(self.geocoderGroup);
+             // finished determining opponent, unblock.
+             dispatch_group_leave(self.geocoderGroup);
          
-     }];
-    
+         }];
+    }
 }
+
+/* 
+ * A function that checks if a location is a body of water.
+ * Apple doesn't seem to let you make multiple reverseGeocodeLocation requests
+ * at the same time; if it detects that these requests are being made 
+ * concurrently, it seems to deny all requests. Accordingly, we use
+ * dispatch_groups here to guarantee that all these requests are being made
+ * sequentially. 
+ */
 
 - (void)checkInWater:(CLLocation *)location
 {
@@ -408,7 +430,6 @@
      reverseGeocodeLocation:location 
      completionHandler:^(NSArray *placemarks, NSError *error) 
      {
-         NSLog(@"success");
          CLPlacemark *curPlacemark = [placemarks objectAtIndex:0];
          if (curPlacemark.inlandWater != nil || curPlacemark.ocean != nil)
          {
@@ -416,6 +437,41 @@
          }
          dispatch_group_leave(self.waterGroup);
      }];
+    
+    while (dispatch_group_wait(self.waterGroup, DISPATCH_TIME_NOW)) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                 beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.f]];
+    }
+
 }
+
+#pragma mark - NSXMLParser stuff.
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName 
+  namespaceURI:(NSString *)namespaceURI qualifiedName:
+(NSString *)qName attributes:(NSDictionary *)attributeDict
+{
+    self.currentElement = [NSString stringWithString:elementName];
+    if ([elementName isEqualToString:@"elevation"]) {
+        self.currentText = [[NSMutableString alloc] init];
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string{
+    if ([self.currentElement isEqualToString:@"elevation"]) {
+        [self.currentText appendString:string];
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName 
+  namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+    if ([elementName isEqualToString:@"elevation"]) 
+    {
+        
+        self.elevation = [self.currentText floatValue];
+        dispatch_group_leave(self.airGroup);
+    }
+}
+
 
 @end

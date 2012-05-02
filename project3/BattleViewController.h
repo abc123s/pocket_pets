@@ -18,7 +18,8 @@
 @end
 
 @interface BattleViewController : UIViewController <UIAlertViewDelegate,
-                                                    CLLocationManagerDelegate>                                          
+                                                    CLLocationManagerDelegate, 
+                                                    NSXMLParserDelegate>                                          
 
 @property (weak, nonatomic) id <BattleViewControllerDelegate> delegate;
 

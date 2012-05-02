@@ -170,5 +170,47 @@
 		<key>specialmult</key>
 		<integer>6</integer>
 	</dict>
+	<key>Pidgey</key>
+	<dict>
+		<key>actions</key>
+		<dict>
+			<key>15</key>
+			<string>Air Attack</string>
+			<key>10</key>
+			<string>Gust</string>
+			<key>5</key>
+			<string>Scratch</string>
+			<key>0</key>
+			<string>Tackle</string>
+		</dict>
+		<key>battlepath</key>
+		<string>Pidgeybattle.png</string>
+		<key>opppath</key>
+		<string>Pidgeyopp.png</string>
+		<key>spritepath</key>
+		<string>Pidgeysprite.jpg</string>
+		<key>type</key>
+		<string>Air</string>
+		<key>hpbase</key>
+		<integer>15</integer>
+		<key>hpmult</key>
+		<integer>2</integer>
+		<key>attackbase</key>
+		<integer>30</integer>
+		<key>attackmult</key>
+		<integer>6</integer>
+		<key>defensebase</key>
+		<integer>100</integer>
+		<key>defensemult</key>
+		<integer>25</integer>
+		<key>speedbase</key>
+		<integer>50</integer>
+		<key>speedmult</key>
+		<integer>10</integer>
+		<key>specialbase</key>
+		<integer>20</integer>
+		<key>specialmult</key>
+		<integer>4</integer>
+	</dict>
 </dict>
 </plist>
