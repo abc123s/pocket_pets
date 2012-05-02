@@ -144,7 +144,9 @@ NSInteger compareScores(id score1, id score2, void *context);
 
 - (NSArray *)levelUpWithActions:(NSArray *)actions 
 {
+    // increase level
     self.level += 1;
+    
     NSDictionary *actionDict = [self.petData objectForKey:@"actions"];
 
     // Find new actions to learn.
