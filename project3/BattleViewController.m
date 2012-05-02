@@ -21,6 +21,8 @@
 @property (strong, nonatomic) Battle *battle;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLGeocoder *geocoder;
+@property (assign, nonatomic) dispatch_group_t locationGroup;
+@property (assign, nonatomic) dispatch_group_t geocoderGroup;
 @property (weak, nonatomic) BattleState *state;
 @property (strong, nonatomic) NSDate *attackTimer;
 
@@ -33,6 +35,8 @@
 @implementation BattleViewController
 
 @synthesize locationManager = _locationManager;
+@synthesize locationGroup = _locationGroup;
+@synthesize geocoderGroup = _geocoderGroup;
 @synthesize geocoder = _geocoder;
 @synthesize battle = _battle;
 @synthesize state = _state;
@@ -59,7 +63,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.delegate = controller;
-        
+
+        self.attackTimer = [NSDate date]; // Initialize attack time record
+
         NSLog(@"%@ defaults = %@", [self class], 
               [[NSUserDefaults standardUserDefaults] 
                persistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]]);
@@ -83,8 +89,25 @@
             self.geocoder = [[CLGeocoder alloc] init];
         }
         
-        [self.locationManager startUpdatingLocation];
+        self.locationGroup = dispatch_group_create();
+        dispatch_group_enter(self.locationGroup);
         
+        [self.locationManager startUpdatingLocation];
+           
+        // wait until we get a satisfactory opponent back; make sure 
+        // main loop is still running.
+        while (dispatch_group_wait(self.locationGroup, DISPATCH_TIME_NOW)) {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                     beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.f]];
+        }
+        dispatch_release(self.locationGroup);
+        
+        // Turn off location manager.
+        [self.locationManager stopUpdatingLocation];
+        
+        // Initialize battle
+        self.battle = [[Battle alloc] initWithPet1:self.pet andPet2:self.opponent];
+
     }
     return self;
 }
@@ -92,7 +115,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //[self show];
+    [self show:YES];
 }
 
 - (void)viewDidUnload
@@ -239,6 +262,9 @@
         // Turn off location manager.
         [self.locationManager stopUpdatingLocation];
         
+        self.geocoderGroup = dispatch_group_create();
+        dispatch_group_enter(self.geocoderGroup);
+        
         // Determine correct pokemon type.
         [self.geocoder 
          reverseGeocodeLocation: self.locationManager.location
@@ -249,16 +275,6 @@
                  // Generate opponent, currently hardcoded
                  self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
                                                           andType:nil];
-                 
-                 // Initialize battle
-                 self.battle = [[Battle alloc] initWithPet1:self.pet andPet2:self.opponent];
-                 
-                 // Turn off location manager.
-                 [self.locationManager stopUpdatingLocation];
-                 
-                 // Update UI
-                 self.attackTimer = [NSDate date]; // Initialize attack time record
-                 [self show:YES];
              }
              else 
              {
@@ -278,16 +294,23 @@
                      self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
                                                               andType:@"Ground"];
                  }
-                 
-                 // Initialize battle
-                 self.battle = [[Battle alloc] initWithPet1:self.pet 
-                                                    andPet2:self.opponent];
-                 
-                 // Update UI
-                 self.attackTimer = [NSDate date]; // Initialize attack time record 
-                 [self show:YES];
              }
+             
+             // finished determining opponent, unblock.
+             dispatch_group_leave(self.geocoderGroup);
+             
          }];
+
+        // wait until we get a satisfactory opponent back; make sure 
+        // main loop is still running.
+        while (dispatch_group_wait(self.geocoderGroup, DISPATCH_TIME_NOW)) {
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                     beforeDate:[NSDate dateWithTimeIntervalSinceNow:1.f]];
+        }
+        dispatch_release(self.geocoderGroup);
+
+        //finished determining opponent, unblock.
+        dispatch_group_leave(self.locationGroup);
 
     }
 }
@@ -299,14 +322,8 @@
     self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
                                              andType:nil];
     
-    // Initialize battle
-    self.battle = [[Battle alloc] initWithPet1:self.pet andPet2:self.opponent];
+    dispatch_group_leave(self.locationGroup);
     
-    // Turn off location manager.
-    [self.locationManager stopUpdatingLocation];
-    
-    self.attackTimer = [NSDate date];
-    [self show:YES];
 }
 
 @end
