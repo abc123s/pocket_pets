@@ -2,7 +2,7 @@
 //  Battle.h
 //  project3
 //
-//  Created by Will Sun on 4/23/12.
+//  Created by Peter Zhang on 4/23/12.
 //  Copyright (c) 2012 Harvard University. All rights reserved.
 //
 
@@ -16,5 +16,7 @@
 - (id)initWithPet1:(Pet *)pet1 andPet2:(Pet *)pet2;
 
 - (BattleState *)doAction1:(NSString *)action1 andAction2:(NSString *)action2;
+
+- (BattleState *)useItem1:(NSString *)item1 andAction2:(NSString *)action2;
 
 @end
