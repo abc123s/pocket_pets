@@ -72,7 +72,8 @@
                       self.pet2.name, [action2 objectAtIndex:0], self.pet1.name];
     }
     BattleState *curState = [[BattleState alloc] initWithAttack1Message:msg1
-                                                      andAttack2Message:msg2];
+                                                      andAttack2Message:msg2 
+                                                              andCaught:NO];
     return curState;
 }          
 

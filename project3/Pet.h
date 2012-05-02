@@ -50,7 +50,4 @@
 // from if applicable.
 - (NSArray *)levelUp;
 
-// Update the pet's actions. 
-- (void)updateActions:(NSArray *)actions; 
-
 @end
