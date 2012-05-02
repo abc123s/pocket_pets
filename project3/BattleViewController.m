@@ -21,9 +21,10 @@
 @property (strong, nonatomic) Battle *battle;
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) BattleState *state;
+@property (strong, nonatomic) NSDate *attackTimer;
 
-// update screen info
-- (void)show;
+- (void)show:(BOOL)new;  // update screen info
+- (void)prog; // update second progress bar
 
 @end
 
@@ -34,6 +35,7 @@
 @synthesize state = _state;
 @synthesize pet = _pet;
 @synthesize opponent = _opponent;
+@synthesize attackTimer = _attackTimer;
 
 @synthesize delegate = _delegate;
 @synthesize proPetName = _proPetName;
@@ -92,21 +94,28 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (void)show
+- (void)show:(BOOL)new
 {
     // first attack
     self.proPetName.text = self.pet.name;
     self.oppPetName.text = self.opponent.name;
     self.proPetPic.image = [UIImage imageNamed:self.pet.battlePath];
     self.oppPetPic.image = [UIImage imageNamed:self.opponent.oppPath];    
-    
+
     // register the attack on the opponent
-    NSLog(self.state.attack1Message);
-    NSLog(self.state.attack2Message);
     self.msg.text = self.state.attack1Message;
     self.oppPetHP.text = [NSString stringWithFormat:@"%d/%d", self.opponent.hp, self.opponent.full];
-    self.oppPetBar.progress = (float)self.opponent.hp / (float)self.opponent.full;
-
+    [self.oppPetBar setProgress:(float)self.opponent.hp / (float)self.opponent.full animated:YES];
+    if ((float)self.opponent.hp / (float)self.opponent.full <= 0.1)
+    {
+        [self.oppPetBar setProgressTintColor:[UIColor redColor]];
+    }
+    else
+    {
+        [self.oppPetBar setProgressTintColor:
+                [UIColor colorWithRed:43.0/255.0 green:134.0/255.0 blue: 225.0/255.0 alpha: 1]];
+    }
+    
     // check if end
     if (self.opponent.hp <= 0)
     {
@@ -114,9 +123,25 @@
     }
 
     // register the attack on user
-    self.msg.text = self.state.attack2Message;
-    self.proPetHP.text = [NSString stringWithFormat:@"%d/%d", self.pet.hp, self.pet.full];
-    self.proPetBar.progress = (float)self.pet.hp / (float)self.pet.full;
+    [self.msg performSelector:@selector(setText:)
+                   withObject:self.state.attack2Message
+                   afterDelay:2.0];
+    // only delay on attack mode, not on initial display
+    if (new)
+    {
+        [self.proPetBar setProgress:(float)self.pet.hp / (float)self.pet.full animated:YES];
+        self.proPetHP.text = [NSString stringWithFormat:@"%d/%d", self.pet.hp, self.pet.full];
+    }
+    else
+    {
+        [self performSelector:@selector(prog)
+                   withObject:nil
+                   afterDelay:2.0];
+        [self.proPetHP performSelector:@selector(setText:)
+                            withObject:[NSString stringWithFormat:@"%d/%d", self.pet.hp, self.pet.full]
+                            afterDelay:2.0];
+    }
+    
 
     // check if end
     if (self.pet.hp <= 0)
@@ -125,14 +150,36 @@
     }
 }
 
+- (void)prog
+{
+    [self.proPetBar setProgress:(float)self.pet.hp / (float)self.pet.full animated:YES];
+    if ((float)self.pet.hp / (float)self.pet.full <= 0.1)
+    {
+        [self.proPetBar setProgressTintColor:[UIColor redColor]];
+    }
+    else
+    {
+        [self.proPetBar setProgressTintColor:
+         [UIColor colorWithRed:43.0/255.0 green:134.0/255.0 blue: 225.0/255.0 alpha: 1]];
+    }
+}
+
 - (IBAction)attack:(id)sender
 {
-    // Make an attack    
-    self.state = [self.battle doAction1:[self.pet.actions objectAtIndex:0]  
-                             andAction2:[self.opponent.actions objectAtIndex:0]];
-    
-    // Show results
-    [self show];
+    NSTimeInterval howRecent = [self.attackTimer timeIntervalSinceNow];
+
+    // delay ability to attack 
+    if (abs(howRecent) > 2.0)
+    {
+        // Make an attack    
+        self.state = [self.battle doAction1:[self.pet.actions objectAtIndex:0]  
+                                 andAction2:[self.opponent.actions objectAtIndex:0]];
+        
+        // Show results
+        [self show:NO];
+        
+        self.attackTimer = [NSDate date];
+    }
 }
 
 - (void)end:(NSString *)message
@@ -184,7 +231,9 @@
         // Turn off location manager.
         [self.locationManager stopUpdatingLocation];
         
-        [self show];
+        // Initialize attack time record
+        self.attackTimer = [NSDate date];
+        [self show:YES];
     }
 }
 
@@ -203,7 +252,8 @@
     // Turn off location manager.
     [self.locationManager stopUpdatingLocation];
     
-    [self show];
+    self.attackTimer = [NSDate date];
+    [self show:YES];
 }
 
 @end

@@ -161,7 +161,6 @@
 		F0B12B8B1545E70400F608A6 = {
 			isa = PBXGroup;
 			children = (
-				EEEC04031550BC4A007B42C1 /* CoreLocation.framework */,
 				F0D3058E15470EB8009F11F8 /* README */,
 				F0B12BA01545E70400F608A6 /* project3 */,
 				F0B12BCC1545E70400F608A6 /* project3Tests */,
@@ -182,6 +181,7 @@
 		F0B12B991545E70400F608A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EEEC04031550BC4A007B42C1 /* CoreLocation.framework */,
 				F0B12C8715464CC000F608A6 /* CoreData.framework */,
 				F0B12B9A1545E70400F608A6 /* UIKit.framework */,
 				F0B12B9C1545E70400F608A6 /* Foundation.framework */,

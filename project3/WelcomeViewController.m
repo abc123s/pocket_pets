@@ -53,23 +53,25 @@
 {
     switch (buttonIndex) 
     {
-        case 0:
-        {
-            [UserPets initNewWithName:@"Pikachu"];
-            break;
-        }
         case 1:
         {
-            [UserPets initNewWithName:@"Charmander"];
+            [UserPets initNewWithName:@"Pikachu"];
+            [self dismissModalViewControllerAnimated:YES];
             break;
         }
         case 2:
         {
+            [UserPets initNewWithName:@"Charmander"];
+            [self dismissModalViewControllerAnimated:YES];
+            break;
+        }
+        case 3:
+        {
             [UserPets initNewWithName:@"Bulbasaur"];
+            [self dismissModalViewControllerAnimated:YES];
             break;
         }
     }
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)newGame
@@ -78,7 +80,7 @@
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Choose Pet"
                                                     message:nil 
                                                    delegate:self
-                                          cancelButtonTitle:nil 
+                                          cancelButtonTitle:@"Cancel" 
                                           otherButtonTitles:@"Pikachu", @"Charmander", @"Bulbasaur", nil];
 
     [alert show];

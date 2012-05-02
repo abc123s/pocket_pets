@@ -29,15 +29,24 @@
                                                                     [NSNumber numberWithInt:1] , @"level", 
                                                                     [NSNumber numberWithInt:0], @"xp", 
                                                                     actions, @"actions", nil];
+    
+    /* EXTRA PETS */
     NSDictionary *petx = [NSDictionary dictionaryWithObjectsAndKeys: @"Bulbasaur", @"name",
                          [NSNumber numberWithInt:1] , @"level", 
                          [NSNumber numberWithInt:0], @"xp", 
                          actions, @"actions", nil];
+    NSDictionary *pety = [NSDictionary dictionaryWithObjectsAndKeys: @"Pikachu", @"name",
+                          [NSNumber numberWithInt:1] , @"level", 
+                          [NSNumber numberWithInt:0], @"xp", 
+                          actions, @"actions", nil];
     
     // create pets dictionary
     NSMutableDictionary *pets = [[NSMutableDictionary alloc] init];
     [pets setObject:pet forKey:[pet objectForKey:@"name"]];
+    
+    /* EXTRAS */
     [pets setObject:petx forKey:[petx objectForKey:@"name"]];
+    [pets setObject:pety forKey:[pety objectForKey:@"name"]];
     
     // create user dictionary
     NSMutableDictionary *user = [[NSMutableDictionary alloc] init];
