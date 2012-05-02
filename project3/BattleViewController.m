@@ -316,6 +316,12 @@
                              initWithLatitude:location.coordinate.latitude -.0001
                              longitude:location.coordinate.longitude];
     
+    /* 
+     * You can't make multiple geolocation requests at the same time; if you 
+     * do, all your requests seem to lock. Accordingly, we use dispatch_groups
+     * to make sure only one request is being made at a time.
+     */
+    
     self.waterGroup = dispatch_group_create();
     // check nearby locations for water
     [self checkInWater:location1];
