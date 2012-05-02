@@ -11,12 +11,15 @@
 #import "UserPets.h"
 #import "Battle.h"
 #import "BattleState.h"
+#import <CoreLocation/CoreLocation.h>
+
 
 @interface BattleViewController ()
 
 @property (strong, nonatomic) Pet *pet;
 @property (strong, nonatomic) Pet *opponent;
 @property (strong, nonatomic) Battle *battle;
+@property (strong, nonatomic) CLLocationManager *locationManager;
 @property (weak, nonatomic) BattleState *state;
 
 // update screen info
@@ -26,6 +29,7 @@
 
 @implementation BattleViewController
 
+@synthesize locationManager = _locationManager;
 @synthesize battle = _battle;
 @synthesize state = _state;
 @synthesize pet = _pet;
@@ -51,17 +55,20 @@
     if (self) {
         self.delegate = controller;
         
-        // Generate opponent, currently hardcoded
-        self.opponent = [[Pet alloc] initWithName:@"Pikachu" 
-                                         andLevel:1 
-                                           andExp:0 
-                                       andActions:[NSArray arrayWithObject:@"Tackle"]];   
-        
         // Take in pet
         self.pet = [self.delegate passPet];
         
-        // Initialize battle
-        self.battle = [[Battle alloc] initWithPet1:self.pet andPet2:self.opponent];
+        // Create the location manager if this object does not
+        // already have one.
+        if (nil == self.locationManager)
+        {
+            self.locationManager = [[CLLocationManager alloc] init];
+            self.locationManager.delegate = self;
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters;
+            self.locationManager.distanceFilter = 500;
+
+        }
+        [self.locationManager startMonitoringSignificantLocationChanges];
         
     }
     return self;
@@ -70,7 +77,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self show];
+    //[self show];
 }
 
 - (void)viewDidUnload
@@ -105,10 +112,6 @@
     {
         [self end:@"Victorious!"];
     }
-
-    // delay
-    NSDate *future = [NSDate dateWithTimeIntervalSinceNow: 3 ];
-    [NSThread sleepUntilDate:future];
 
     // register the attack on user
     self.msg.text = self.state.attack2Message;
@@ -152,6 +155,55 @@
     }
 }
 
+#pragma mark - CLLocation delegate functions.
 
+// Once you find a location, choose a pokemone of the correct type, 
+// start the battle, and stop updating location.
+- (void)locationManager:(CLLocationManager *)locationManager 
+    didUpdateToLocation:(CLLocation *)newLocation 
+           fromLocation:(CLLocation *)oldLocation
+{
+    // If it's a relatively recent event, turn off updates to save power
+    NSDate* eventDate = newLocation.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) < 15.0)
+    {
+        NSLog(@"latitude %+.6f, longitude %+.6f\n",
+              newLocation.coordinate.latitude,
+              newLocation.coordinate.longitude);
+        
+        // Generate opponent, currently hardcoded
+        self.opponent = [[Pet alloc] initWithName:@"Pikachu" 
+                                         andLevel:1 
+                                           andExp:0 
+                                       andActions:[NSArray arrayWithObject:@"Tackle"]];
+        
+        // Initialize battle
+        self.battle = [[Battle alloc] initWithPet1:self.pet andPet2:self.opponent];
+        
+        // Turn off location manager.
+        [self.locationManager stopUpdatingLocation];
+        
+        [self show];
+    }
+}
+
+// If location determination failed, just pick a random pokemon.
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    // Generate opponent, currently hardcoded
+    self.opponent = [[Pet alloc] initWithName:@"Pikachu" 
+                                     andLevel:1 
+                                       andExp:0 
+                                   andActions:[NSArray arrayWithObject:@"Tackle"]];
+    
+    // Initialize battle
+    self.battle = [[Battle alloc] initWithPet1:self.pet andPet2:self.opponent];
+    
+    // Turn off location manager.
+    [self.locationManager stopUpdatingLocation];
+    
+    [self show];
+}
 
 @end

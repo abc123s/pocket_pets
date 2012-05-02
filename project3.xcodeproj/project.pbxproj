@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EED25EA21546272F00863984 /* pets.plist in Resources */ = {isa = PBXBuildFile; fileRef = EED25EA11546272F00863984 /* pets.plist */; };
 		EED25EA51546296700863984 /* actions.plist in Resources */ = {isa = PBXBuildFile; fileRef = EED25EA41546296700863984 /* actions.plist */; };
+		EEEC04041550BC4A007B42C1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEC04031550BC4A007B42C1 /* CoreLocation.framework */; };
 		F0A4ADB715466BAE00C9DFA4 /* SingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A4ADB515466BAD00C9DFA4 /* SingleViewController.m */; };
 		F0A4ADB815466BAE00C9DFA4 /* SingleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADB615466BAD00C9DFA4 /* SingleViewController.xib */; };
 		F0A4ADC01546896B00C9DFA4 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A4ADBE1546896B00C9DFA4 /* WelcomeViewController.m */; };
@@ -68,6 +69,7 @@
 /* Begin PBXFileReference section */
 		EED25EA11546272F00863984 /* pets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pets.plist; sourceTree = "<group>"; };
 		EED25EA41546296700863984 /* actions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = actions.plist; sourceTree = "<group>"; };
+		EEEC04031550BC4A007B42C1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		F0A4ADB415466BAD00C9DFA4 /* SingleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleViewController.h; sourceTree = "<group>"; };
 		F0A4ADB515466BAD00C9DFA4 /* SingleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleViewController.m; sourceTree = "<group>"; };
 		F0A4ADB615466BAD00C9DFA4 /* SingleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleViewController.xib; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEEC04041550BC4A007B42C1 /* CoreLocation.framework in Frameworks */,
 				F0B12C8815464CC000F608A6 /* CoreData.framework in Frameworks */,
 				F0B12B9B1545E70400F608A6 /* UIKit.framework in Frameworks */,
 				F0B12B9D1545E70400F608A6 /* Foundation.framework in Frameworks */,
@@ -158,6 +161,7 @@
 		F0B12B8B1545E70400F608A6 = {
 			isa = PBXGroup;
 			children = (
+				EEEC04031550BC4A007B42C1 /* CoreLocation.framework */,
 				F0D3058E15470EB8009F11F8 /* README */,
 				F0B12BA01545E70400F608A6 /* project3 */,
 				F0B12BCC1545E70400F608A6 /* project3Tests */,

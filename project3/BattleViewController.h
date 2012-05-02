@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 #import "Pet.h"
 
 @class BattleViewController;
@@ -16,7 +17,8 @@
 - (Pet *)passPet; 
 @end
 
-@interface BattleViewController : UIViewController <UIAlertViewDelegate>
+@interface BattleViewController : UIViewController <UIAlertViewDelegate,
+                                                    CLLocationManagerDelegate>                                          
 
 @property (weak, nonatomic) id <BattleViewControllerDelegate> delegate;
 
