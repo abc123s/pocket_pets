@@ -48,6 +48,6 @@
 
 // Level up the current pet, returning an array of actions to choose
 // from if applicable.
-- (NSArray *)levelUpWithActions:(NSArray *)actions;
+- (NSArray *)levelUp:;
 
 @end
