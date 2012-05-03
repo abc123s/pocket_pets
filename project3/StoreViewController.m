@@ -7,6 +7,8 @@
 //
 
 #import "StoreViewController.h"
+#import "Item.h"
+#import "User.h"
 
 @interface StoreViewController ()
 
@@ -14,10 +16,17 @@
 
 @implementation StoreViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+@synthesize store = _store;
+@synthesize tableView = _tableView;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil 
+               bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithStyle:style];
-    if (self) {
+    if ([super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
+    {
+        // Load in data
+        self.store = [NSArray arrayWithArray:[Item store]];
+        
         self.title = NSLocalizedString(@"Store", @"Store");
         self.tabBarItem.image = [UIImage imageNamed:@"24-gift"];
     }
@@ -51,26 +60,62 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.store count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Initialize cell
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
+                                      reuseIdentifier:CellIdentifier];
+    }
     
     // Configure the cell...
+    NSDictionary *item = [self.store objectAtIndex:indexPath.row];
+    cell.textLabel.text = [item objectForKey:@"name"];
+    NSString *itemType = [item objectForKey:@"type"];
+    if ([itemType isEqualToString:@"catch"])
+    {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"Catch: %f mult", 
+                                     [[item objectForKey:itemType] floatValue]];
+    }
+    else if ([itemType isEqualToString:@"heal"])
+    {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"Heal: %d hp",
+                                     [[item objectForKey:itemType] intValue]];
+    }
+    
+    UIButton *customButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    [customButton addTarget:self action:@selector(purchase:) forControlEvents: UIControlEventTouchUpInside];
+    [customButton setTag:9001]; // to ensure correct button
+    [cell addSubview:customButton];
+    [cell setIndentationWidth:45];
+    [cell setIndentationLevel:1];
     
     return cell;
+}
+
+// To be called on button press
+- (void)purchase:(UIButton *)sender
+{
+    // Double-check correct button
+    if (sender.tag == 9001)
+    {
+        UITableViewCell *cell = ((UITableViewCell *)[sender superview]);
+        NSString *item = [[self.store objectAtIndex:[self.tableView indexPathForCell:cell].row] objectForKey:@"name"];
+        [User addItem:item];
+    }
 }
 
 /*

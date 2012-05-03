@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StoreViewController : UITableViewController
+@interface StoreViewController : UIViewController <UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *store;
 
 @end

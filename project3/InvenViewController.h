@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InvenViewController : UITableViewController
+@interface InvenViewController : UIViewController <UITableViewDataSource>
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) NSArray *inven;
 
 @end

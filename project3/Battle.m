@@ -52,7 +52,7 @@
         // update health
         self.pet2.hp = self.pet2.hp - [[action1 objectAtIndex: 1] intValue];
         
-        //update exp
+        // update exp
         self.pet1.exp += (self.pet2.level * 2)/ self.pet1.level;
         
         if (self.pet2.hp < 0)

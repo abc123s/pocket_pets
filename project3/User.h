@@ -25,9 +25,6 @@
 // Return array of user pets
 + (NSArray *)currentPets;
 
-// Find specific pet
-+ (Pet *)findPetWithName:(NSString *) name;
-
 // Update pet
 + (void)savePet:(Pet *)pet;
 

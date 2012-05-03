@@ -14,6 +14,14 @@
 
 @interface PetViewController ()
 
+// helpers for alert view on level up
+@property (strong, nonatomic) NSMutableArray *heldActions;
+@property (assign, nonatomic) BOOL filter;
+@property (strong, nonatomic) NSString *heldName;
+@property (assign, nonatomic) int heldLevel;
+@property (assign, nonatomic) int heldHp;
+@property (assign, nonatomic) int heldExp;
+
 - (void)show;
 - (void)loadScrollViewWithPage:(int)page;
 
@@ -27,6 +35,13 @@
 @synthesize viewControllers = _viewControllers;
 @synthesize pets = _pets;
 @synthesize pages = _pages;
+
+@synthesize heldActions = _heldActions;
+@synthesize filter = _filter;
+@synthesize heldName = _heldName;
+@synthesize heldLevel = _heldLevel;
+@synthesize heldHp = _heldHp;
+@synthesize heldExp = _heldExp;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -138,6 +153,13 @@
         
         [self.scrollView addSubview:controller.view];
     }
+    
+    // Hide the battle button if the pet is dead...
+    if ([self passPet].hp == 0)
+        self.battle.enabled = NO;
+    else 
+        self.battle.enabled = YES;
+    
 }
 
 - (IBAction)changePage:(id)sender
@@ -173,44 +195,98 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if (self.filter)
+    {
+        // remove selected action
+        for (NSUInteger i = 0; i < [self.heldActions count]; i++)
+        {
+            if (buttonIndex == i)
+                [self.heldActions removeObjectAtIndex:i];
+        }
         
-    if (buttonIndex == 0)
-        [self.delegate battleViewControllerDidFinish:self withPet:self.pet];
+        // save new pet
+        [User savePet:[[Pet alloc] initWithName:self.heldName
+                                       andLevel:self.heldLevel
+                                          andHp:self.heldHp 
+                                         andExp:self.heldExp 
+                                     andActions:self.heldActions]];
+    }
+    else 
+    {
+        [self dismissModalViewControllerAnimated:YES];
+        [self show];
+    }
 }
 
 
 #pragma mark - BattleViewControllerDelegate
 - (void)battleViewControllerDidFinish:(BattleViewController *)controller withPet:(Pet *)pet
 {
+    NSLog(@"THIS IS A TEST");
+    NSLog(pet.name);
+    
     BOOL lvl = (pet.exp > 100);
     if (lvl)
-    {
+    {        
         // level up the pet
-        NSArray *newActions = [NSArray arrayWithArray:[pet levelUpWithActions]];
-        if ([newActions count] > 4)
+        self.heldActions = [NSArray arrayWithArray:[pet levelUp]];
+        
+        // discard one of the actions
+        if ([self.heldActions count] > 4)
         {
-            // show alert to pick 
-        }
-        
-        // show alert
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Level Up!"
-                                                        message:[NSString string                
-                                                       delegate:self
-                                              cancelButtonTitle:@"Return"
-                                              otherButtonTitles:nil];
-        [alert show];
-        
+            self.filter = YES;
+                    
+            // save pet info for alert view
+            self.heldName = [NSString stringWithFormat:@"%@", pet.name];
+            self.heldLevel = pet.level;
+            self.heldHp = pet.hp;
+            self.heldExp = pet.exp;
 
+            // show alert to pick action to discard
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Level Up!"
+                                                            message:@"Please pick action to discard"                                                     
+                                                           delegate:self
+                                                  cancelButtonTitle:nil                                                        
+                                                  otherButtonTitles:nil];
+            // add buttons
+            for (NSUInteger i = 0; i < [self.heldActions count]; i++)
+                [alert addButtonWithTitle:[self.heldActions objectAtIndex:i]];
+            
+            [alert show];
+        }
+        else
+        {
+            self.filter = NO;
+            
+            // save leveled-up pet
+            [User savePet:[[Pet alloc] initWithName:pet.name
+                                           andLevel:pet.level
+                                              andHp:pet.hp 
+                                             andExp:pet.exp 
+                                         andActions:self.heldActions]];
+            
+            // show congratulations alert
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Level Up!"
+                                                            message:[NSString 
+                                                                        stringWithFormat:@"%@ is stronger!", pet.name]                                                    
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Great!"                                         
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }
+    else
+    {
+        [User savePet:pet];
+        [self dismissModalViewControllerAnimated:YES];
+        [self show];
     }
     
-    [self dismissModalViewControllerAnimated:YES];
-    [self show];
 }
 
 - (Pet *)passPet
 {
     return [self.pets objectAtIndex:self.pageControl.currentPage];
-    // return [User findPetWithName: self.name.text];
 }
 
 
@@ -238,13 +314,6 @@
     [self loadScrollViewWithPage:page + 1];
     
     // A possible optimization would be to unload the views+controllers which are no longer visible
-    
-    // Hide the battle button if the pet is dead...
-    if ([self passPet].hp == 0)
-        self.battle.enabled = NO;
-    else 
-        self.battle.enabled = YES;
-    
 }
 
 // At the begin of scroll dragging, reset the boolean used when scrolls originate from the UIPageControl

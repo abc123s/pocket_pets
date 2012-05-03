@@ -217,6 +217,7 @@
         // check if end
         if (self.pet.hp <= 0)
         {
+            self.pet.hp = 0;
             [self performSelector:@selector(end:)
                        withObject:@"Defeat."
                        afterDelay:2.0];
@@ -286,6 +287,7 @@
     }
 }
 
+// Called when the battle is over
 - (void)end:(NSString *)message
 {
     // show alert

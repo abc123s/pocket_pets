@@ -11,6 +11,10 @@
 @interface Item : NSObject {
 }
 
+// Return dictionary representing specific item
 + (NSDictionary *)lookupItemWithName:(NSString *)name; 
+
+// Return array of dictionaries for each item possible
++ (NSArray *)store;
 
 @end

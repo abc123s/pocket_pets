@@ -142,7 +142,8 @@ NSInteger compareScores(id score1, id score2, void *context);
     
 }
 
-- (NSArray *)levelUpWithActions:(NSArray *)actions 
+// Level up a pet and return the array of new actions (might be more than the allotted 4!)
+- (NSArray *)levelUp
 {
     // increase level
     self.level += 1;
@@ -150,6 +151,15 @@ NSInteger compareScores(id score1, id score2, void *context);
     // fix xp
     self.exp -= 100;
     
+    // restore hp
+    self.hp = self.full;
+    
+    // construct array of action names
+    NSMutableArray *actions = [[NSMutableArray alloc] init];
+    for (NSArray *action in self.actions)
+        [actions addObject:[action objectAtIndex:0]];
+    
+    // retrieve all possible actions
     NSDictionary *actionDict = [self.petData objectForKey:@"actions"];
 
     // Find new actions to learn.

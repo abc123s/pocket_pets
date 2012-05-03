@@ -129,23 +129,6 @@
     return new;
 }
 
-// Retrieve info on a given pet
-+ (Pet *)findPetWithName:(NSString *)name
-{
-    // retrieve defaults
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    // retrieve pet
-    NSDictionary *target = [[defaults objectForKey:@"pets"] objectForKey:name];
-
-    // create pet
-    return [[Pet alloc] initWithName:[target objectForKey:@"name"]
-                            andLevel:[[target objectForKey:@"level"] intValue]
-                               andHp:[[target objectForKey:@"hp"] intValue]
-                              andExp:[[target objectForKey:@"xp"] intValue]
-                          andActions:[target objectForKey:@"actions"]];
-}
-
 // Save pet info
 + (void)savePet:(Pet *)pet
 {    

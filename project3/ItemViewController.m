@@ -92,7 +92,7 @@
     
     if ([itemType isEqualToString:@"catch"])
     {
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"Catch: %f prob", 
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"Catch: %f mult", 
                                             [[item objectForKey:itemType] floatValue]];
     }
     else if ([itemType isEqualToString:@"heal"])

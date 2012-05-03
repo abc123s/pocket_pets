@@ -28,13 +28,11 @@
     
     // Override point for customization after application launch.
     UIViewController *pets = [[PetViewController alloc] initWithNibName:@"PetViewController" bundle:nil];
-    UIViewController *inven = [[InvenViewController alloc] initWithStyle:UITableViewStylePlain];
-    UIViewController *store = [[StoreViewController alloc] initWithStyle:UITableViewStylePlain];
-    UINavigationController *invenNav = [[UINavigationController alloc] initWithRootViewController:inven];
-    UINavigationController *storeNav = [[UINavigationController alloc] initWithRootViewController:store];
+    UIViewController *inven = [[InvenViewController alloc] initWithNibName:@"InvenViewController" bundle:nil];
+    UIViewController *store = [[StoreViewController alloc] initWithNibName:@"StoreViewController" bundle:nil];
     
     self.tabBarController = [[UITabBarController alloc] init];
-    self.tabBarController.viewControllers = [NSArray arrayWithObjects:pets, invenNav, storeNav, nil];
+    self.tabBarController.viewControllers = [NSArray arrayWithObjects:pets, inven, store, nil];
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
