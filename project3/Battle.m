@@ -49,7 +49,7 @@
         self.pet2.hp = self.pet2.hp - [[action1 objectAtIndex: 1] intValue];
         
         //update exp
-        self.pet1.exp += (self.pet2.level - self.pet1.level)/self.pet1.level * 10;
+        self.pet1.exp += (self.pet2.level * 2)/ self.pet1.level;
         
         if (self.pet2.hp < 0)
             self.pet2.hp = 0;
@@ -95,8 +95,8 @@
     
     if ([itemtype isEqualToString:@"catch"])
     {
-        float catchProb1 = 100. / sqrt(((float)self.pet2.speed)/10) * 
-        (self.pet2.full - self.pet2.hp) / self.pet2.full * 
+        float catchProb1 = 100. / sqrt(((float)self.pet2.speed)/10.) * 
+        ((float)self.pet2.full - (float)self.pet2.hp) / ((float) self.pet2.full) * 
         [[item objectForKey:itemtype] floatValue];
         if ((arc4random() % 100) > catchProb1)
         {
