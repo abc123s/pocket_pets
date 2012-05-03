@@ -1,1 +1,4 @@
-We're currently having trouble with the TabBarController, will fix that soon.
+We were able to implement all of the core features of app, including location and altitude tracking (location can be tested with the iOS simulator, altitude can be changed through the settings panel), as well as items, store, and fleeing from battles.
+For the location/altitude component, we had to find some workarounds to deal with Apple/API limits, by scheduling requests appropriately. With that said, we are able to check an area of nearby points to detect water, and are able to contact the Google Elevation API to assist with altitude determination relative to the phone's altitude.
+
+Because of time constraints and the complexity of our UI (Scroll Views, multiple delegates and modals), we were unable to complete our application tests. However, logic tests are fully implemented, ensuring that the back-end of our app is functional.
