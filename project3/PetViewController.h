@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "BattleViewController.h"
+#import "SettingsViewController.h"
 
 @interface PetViewController : UIViewController <UIScrollViewDelegate, 
                                                 UIAlertViewDelegate,
-                                                BattleViewControllerDelegate> 
+                                                BattleViewControllerDelegate,
+                                                SettingsViewControllerDelegate> 
 {
     BOOL pageControlUsed;
 }
@@ -27,5 +29,6 @@
 
 - (IBAction)changePage:(id)sender;
 - (IBAction)battle:(id)sender;
+- (IBAction)settings:(id)sender;
 
 @end

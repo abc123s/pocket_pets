@@ -14,6 +14,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "ActionViewController.h"
 
+#include "TargetConditionals.h"
 
 @interface BattleViewController ()
 
@@ -384,7 +385,14 @@
     NSLog([NSString stringWithFormat:@"%f", location.altitude]);
     NSLog([NSString stringWithFormat:@"%f", self.elevation]);
     
-    if (self.elevation > (location.altitude + 10)) 
+    // conditional code
+#if (TARGET_IPHONE_SIMULATOR)
+    float alt = [User getAlt];
+#else
+    float alt = location.altitude;
+#endif
+    
+    if ((self.elevation + 10) < alt) 
     {
         self.opponent = [[Pet alloc] initRandomWithLevel:self.pet.level 
                                                  andType:@"Air"];

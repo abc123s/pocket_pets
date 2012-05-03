@@ -11,6 +11,7 @@
 #import "BattleViewController.h"
 #import "Pet.h"
 #import "User.h"
+#import "SettingsViewController.h"
 
 @interface PetViewController ()
 
@@ -155,13 +156,6 @@
         
         [self.scrollView addSubview:controller.view];
     }
-    
-    // Hide the battle button if the pet is dead...
-    if ([self passPet].hp == 0)
-        self.battle.enabled = NO;
-    else 
-        self.battle.enabled = YES;
-    
 }
 
 - (IBAction)changePage:(id)sender
@@ -190,6 +184,16 @@
                                         controller:self
                                         bundle:nil];
     
+    [self presentModalViewController:controller animated:YES];
+}
+
+- (IBAction)settings:(id)sender
+{
+    SettingsViewController *controller = [[SettingsViewController alloc]
+                                          initWithNibName:@"SettingsViewController"
+                                          controller:self
+                                          bundle:nil];
+    controller.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentModalViewController:controller animated:YES];
 }
 
@@ -288,6 +292,11 @@
     return [self.pets objectAtIndex:self.pageControl.currentPage];
 }
 
+#pragma mark - SettingsViewControllerDelegate
+- (void)settingsViewControllerDidFinish:(SettingsViewController *)controller
+{
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 #pragma mark - scrollview
 
@@ -313,6 +322,12 @@
     [self loadScrollViewWithPage:page + 1];
     
     // A possible optimization would be to unload the views+controllers which are no longer visible
+    
+    // Hide the battle button if the pet is dead...
+    if ([self passPet].hp == 0)
+        self.battle.enabled = NO;
+    else 
+        self.battle.enabled = YES;
 }
 
 // At the begin of scroll dragging, reset the boolean used when scrolls originate from the UIPageControl

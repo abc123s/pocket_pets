@@ -39,4 +39,11 @@
 // Delete item
 + (void)deleteItem:(NSString *)item;
 
+// DEBUG:
+// Retrieve altitude
++ (float)getAlt;
+
+// Set altitude
++ (void)setAlt:(float)alt;
+
 @end

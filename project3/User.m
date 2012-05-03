@@ -64,6 +64,7 @@
     NSMutableDictionary *placeholder = [[NSMutableDictionary alloc] init];
     [placeholder setObject:@"" forKey:@"pets"];
     [placeholder setObject:@"" forKey:@"items"];
+    [placeholder setObject:@"" forKey:@"alt"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults registerDefaults:placeholder];
     
@@ -222,6 +223,28 @@
     
     // save
     [defaults setObject:items forKey:@"items"];
+    [defaults synchronize];
+}
+
+// DEBUG:
+// Get artificial altitude
++ (float)getAlt
+{
+    // retrieve defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // retrieve altitude
+    return [[defaults objectForKey:@"alt"] floatValue];
+}
+
+// Set artificial altitude
++ (void)setAlt:(float)alt
+{
+    // retrieve defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // set altitude
+    [defaults setObject:[NSNumber numberWithFloat:alt] forKey:@"alt"];
     [defaults synchronize];
 }
 

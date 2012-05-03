@@ -18,6 +18,8 @@
 		EED25EA21546272F00863984 /* pets.plist in Resources */ = {isa = PBXBuildFile; fileRef = EED25EA11546272F00863984 /* pets.plist */; };
 		EED25EA51546296700863984 /* actions.plist in Resources */ = {isa = PBXBuildFile; fileRef = EED25EA41546296700863984 /* actions.plist */; };
 		EEEC04041550BC4A007B42C1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEC04031550BC4A007B42C1 /* CoreLocation.framework */; };
+		F048294E15529EF00073ECBA /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F048294C15529EF00073ECBA /* SettingsViewController.m */; };
+		F048294F15529EF00073ECBA /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F048294D15529EF00073ECBA /* SettingsViewController.xib */; };
 		F055CC1215522D7000757927 /* ActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F055CC1015522D6E00757927 /* ActionViewController.m */; };
 		F055CC1315522D7000757927 /* ActionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F055CC1115522D6F00757927 /* ActionViewController.xib */; };
 		F055CC23155250C600757927 /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F055CC21155250C400757927 /* ItemViewController.m */; };
@@ -91,6 +93,9 @@
 		EED25EA11546272F00863984 /* pets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pets.plist; sourceTree = "<group>"; };
 		EED25EA41546296700863984 /* actions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = actions.plist; sourceTree = "<group>"; };
 		EEEC04031550BC4A007B42C1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F048294B15529EF00073ECBA /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		F048294C15529EF00073ECBA /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		F048294D15529EF00073ECBA /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		F055CC0F15522D6E00757927 /* ActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionViewController.h; sourceTree = "<group>"; };
 		F055CC1015522D6E00757927 /* ActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionViewController.m; sourceTree = "<group>"; };
 		F055CC1115522D6F00757927 /* ActionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionViewController.xib; sourceTree = "<group>"; };
@@ -247,6 +252,9 @@
 				F055CC20155250C300757927 /* ItemViewController.h */,
 				F055CC21155250C400757927 /* ItemViewController.m */,
 				F055CC22155250C500757927 /* ItemViewController.xib */,
+				F048294B15529EF00073ECBA /* SettingsViewController.h */,
+				F048294C15529EF00073ECBA /* SettingsViewController.m */,
+				F048294D15529EF00073ECBA /* SettingsViewController.xib */,
 				F0B12BE11545E74200F608A6 /* Battle.h */,
 				F0B12BE21545E74200F608A6 /* Battle.m */,
 				F0B12BE51545E74900F608A6 /* BattleState.h */,
@@ -418,6 +426,7 @@
 				EE7AA8941551B09E00EE718B /* items.plist in Resources */,
 				F055CC1315522D7000757927 /* ActionViewController.xib in Resources */,
 				F055CC24155250C600757927 /* ItemViewController.xib in Resources */,
+				F048294F15529EF00073ECBA /* SettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +478,7 @@
 				EE7AA8921551AD8700EE718B /* Item.m in Sources */,
 				F055CC1215522D7000757927 /* ActionViewController.m in Sources */,
 				F055CC23155250C600757927 /* ItemViewController.m in Sources */,
+				F048294E15529EF00073ECBA /* SettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
