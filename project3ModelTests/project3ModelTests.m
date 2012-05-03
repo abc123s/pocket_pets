@@ -1,14 +1,14 @@
 //
-//  project3Tests.m
-//  project3Tests
+//  project3ModelTests.m
+//  project3ModelTests
 //
-//  Created by Will Sun on 4/23/12.
+//  Created by Will Sun on 5/3/12.
 //  Copyright (c) 2012 Harvard University. All rights reserved.
 //
 
-#import "project3Tests.h"
+#import "project3ModelTests.h"
 
-@implementation project3Tests
+@implementation project3ModelTests
 
 - (void)setUp
 {
@@ -26,7 +26,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in project3Tests");
+    STFail(@"Unit tests are not implemented yet in project3ModelTests");
 }
 
 @end

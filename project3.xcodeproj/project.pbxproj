@@ -20,6 +20,11 @@
 		EEEC04041550BC4A007B42C1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEC04031550BC4A007B42C1 /* CoreLocation.framework */; };
 		F048294E15529EF00073ECBA /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F048294C15529EF00073ECBA /* SettingsViewController.m */; };
 		F048294F15529EF00073ECBA /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F048294D15529EF00073ECBA /* SettingsViewController.xib */; };
+		F048297B1552A7330073ECBA /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12BC61545E70400F608A6 /* SenTestingKit.framework */; };
+		F048297C1552A7330073ECBA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12B9A1545E70400F608A6 /* UIKit.framework */; };
+		F048297D1552A7330073ECBA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12B9C1545E70400F608A6 /* Foundation.framework */; };
+		F04829831552A7330073ECBA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F04829811552A7330073ECBA /* InfoPlist.strings */; };
+		F04829861552A7330073ECBA /* project3ModelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F04829851552A7330073ECBA /* project3ModelTests.m */; };
 		F055CC1215522D7000757927 /* ActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F055CC1015522D6E00757927 /* ActionViewController.m */; };
 		F055CC1315522D7000757927 /* ActionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F055CC1115522D6F00757927 /* ActionViewController.xib */; };
 		F055CC23155250C600757927 /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F055CC21155250C400757927 /* ItemViewController.m */; };
@@ -71,6 +76,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F048298B1552A7470073ECBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0B12B8D1545E70400F608A6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0B12B951545E70400F608A6;
+			remoteInfo = project3;
+		};
 		F0B12BCA1545E70400F608A6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F0B12B8D1545E70400F608A6 /* Project object */;
@@ -96,6 +108,12 @@
 		F048294B15529EF00073ECBA /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		F048294C15529EF00073ECBA /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		F048294D15529EF00073ECBA /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		F048297A1552A7330073ECBA /* project3ModelTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = project3ModelTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F04829801552A7330073ECBA /* project3ModelTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "project3ModelTests-Info.plist"; sourceTree = "<group>"; };
+		F04829821552A7330073ECBA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F04829841552A7330073ECBA /* project3ModelTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = project3ModelTests.h; sourceTree = "<group>"; };
+		F04829851552A7330073ECBA /* project3ModelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = project3ModelTests.m; sourceTree = "<group>"; };
+		F04829871552A7330073ECBA /* project3ModelTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "project3ModelTests-Prefix.pch"; sourceTree = "<group>"; };
 		F055CC0F15522D6E00757927 /* ActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionViewController.h; sourceTree = "<group>"; };
 		F055CC1015522D6E00757927 /* ActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionViewController.m; sourceTree = "<group>"; };
 		F055CC1115522D6F00757927 /* ActionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionViewController.xib; sourceTree = "<group>"; };
@@ -164,6 +182,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F04829761552A7330073ECBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F048297B1552A7330073ECBA /* SenTestingKit.framework in Frameworks */,
+				F048297C1552A7330073ECBA /* UIKit.framework in Frameworks */,
+				F048297D1552A7330073ECBA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F0B12B931545E70400F608A6 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -190,12 +218,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F048297E1552A7330073ECBA /* project3ModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				F04829841552A7330073ECBA /* project3ModelTests.h */,
+				F04829851552A7330073ECBA /* project3ModelTests.m */,
+				F048297F1552A7330073ECBA /* Supporting Files */,
+			);
+			path = project3ModelTests;
+			sourceTree = "<group>";
+		};
+		F048297F1552A7330073ECBA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F04829801552A7330073ECBA /* project3ModelTests-Info.plist */,
+				F04829811552A7330073ECBA /* InfoPlist.strings */,
+				F04829871552A7330073ECBA /* project3ModelTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		F0B12B8B1545E70400F608A6 = {
 			isa = PBXGroup;
 			children = (
 				F0D3058E15470EB8009F11F8 /* README */,
 				F0B12BA01545E70400F608A6 /* project3 */,
 				F0B12BCC1545E70400F608A6 /* project3Tests */,
+				F048297E1552A7330073ECBA /* project3ModelTests */,
 				F0B12B991545E70400F608A6 /* Frameworks */,
 				F0B12B971545E70400F608A6 /* Products */,
 			);
@@ -206,6 +255,7 @@
 			children = (
 				F0B12B961545E70400F608A6 /* project3.app */,
 				F0B12BC51545E70400F608A6 /* project3Tests.octest */,
+				F048297A1552A7330073ECBA /* project3ModelTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -327,6 +377,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F04829791552A7330073ECBA /* project3ModelTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F04829881552A7330073ECBA /* Build configuration list for PBXNativeTarget "project3ModelTests" */;
+			buildPhases = (
+				F04829751552A7330073ECBA /* Sources */,
+				F04829761552A7330073ECBA /* Frameworks */,
+				F04829771552A7330073ECBA /* Resources */,
+				F04829781552A7330073ECBA /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F048298C1552A7470073ECBA /* PBXTargetDependency */,
+			);
+			name = project3ModelTests;
+			productName = project3ModelTests;
+			productReference = F048297A1552A7330073ECBA /* project3ModelTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		F0B12B951545E70400F608A6 /* project3 */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0B12BD71545E70400F608A6 /* Build configuration list for PBXNativeTarget "project3" */;
@@ -386,11 +455,20 @@
 			targets = (
 				F0B12B951545E70400F608A6 /* project3 */,
 				F0B12BC41545E70400F608A6 /* project3Tests */,
+				F04829791552A7330073ECBA /* project3ModelTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F04829771552A7330073ECBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F04829831552A7330073ECBA /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F0B12B941545E70400F608A6 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -441,6 +519,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		F04829781552A7330073ECBA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
 		F0B12BC31545E70400F608A6 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -457,6 +548,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F04829751552A7330073ECBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F04829861552A7330073ECBA /* project3ModelTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F0B12B921545E70400F608A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -493,6 +592,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F048298C1552A7470073ECBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0B12B951545E70400F608A6 /* project3 */;
+			targetProxy = F048298B1552A7470073ECBA /* PBXContainerItemProxy */;
+		};
 		F0B12BCB1545E70400F608A6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F0B12B951545E70400F608A6 /* project3 */;
@@ -501,6 +605,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F04829811552A7330073ECBA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F04829821552A7330073ECBA /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		F0B12BA31545E70400F608A6 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -520,6 +632,40 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		F04829891552A7330073ECBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/project3.app/project3";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "project3ModelTests/project3ModelTests-Prefix.pch";
+				INFOPLIST_FILE = "project3ModelTests/project3ModelTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		F048298A1552A7330073ECBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/project3.app/project3";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "project3ModelTests/project3ModelTests-Prefix.pch";
+				INFOPLIST_FILE = "project3ModelTests/project3ModelTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 		F0B12BD51545E70400F608A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -624,6 +770,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F04829881552A7330073ECBA /* Build configuration list for PBXNativeTarget "project3ModelTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F04829891552A7330073ECBA /* Debug */,
+				F048298A1552A7330073ECBA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F0B12B901545E70400F608A6 /* Build configuration list for PBXProject "project3" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
