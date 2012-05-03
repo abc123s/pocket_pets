@@ -12,6 +12,7 @@
 #import "InvenViewController.h"
 #import "StoreViewController.h"
 #import "WelcomeViewController.h"
+#import "User.h"
 
 @implementation AppDelegate
 
@@ -33,6 +34,7 @@
     
     self.tabBarController = [[UITabBarController alloc] init];
     self.tabBarController.viewControllers = [NSArray arrayWithObjects:pets, inven, store, nil];
+    self.tabBarController.delegate = self;
     
     self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
@@ -71,12 +73,22 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-/*
+# pragma mark - UITabControllerDelegate
+
 // Optional UITabBarControllerDelegate method.
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
+    if (viewController.title == @"Inventory")
+        [self reload:(InvenViewController *)viewController];
 }
-*/
+
+// Helper function to reload inventory each time
+- (void)reload:(InvenViewController *)controller
+{
+    controller.inven = [NSArray arrayWithArray:[User currentItems]];
+    [controller.tableView reloadData];
+}
+
 
 /*
 // Optional UITabBarControllerDelegate method.

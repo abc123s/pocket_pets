@@ -77,10 +77,12 @@
 
 - (void)show
 {
-    
+    // PRINT DEFAULTS
+    /*
     NSLog(@"%@ defaults = %@", [self class], 
           [[NSUserDefaults standardUserDefaults] 
            persistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]]);
+    */
     
     // Retrieve all pets
     self.pets = [User currentPets];
@@ -222,9 +224,6 @@
 #pragma mark - BattleViewControllerDelegate
 - (void)battleViewControllerDidFinish:(BattleViewController *)controller withPet:(Pet *)pet
 {
-    NSLog(@"THIS IS A TEST");
-    NSLog(pet.name);
-    
     BOOL lvl = (pet.exp > 100);
     if (lvl)
     {        

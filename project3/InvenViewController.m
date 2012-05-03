@@ -33,8 +33,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Load in data
     self.inven = [NSArray arrayWithArray:[User currentItems]];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -51,10 +49,11 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (void)viewWillAppear
+- (void)viewWillAppear:(BOOL)animated
 {
-    // constantly refresh
+    // Load in data
     [self.tableView reloadData];
+    [super viewWillAppear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -102,6 +101,7 @@
                                      [[item objectForKey:itemType] intValue]];
     }
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

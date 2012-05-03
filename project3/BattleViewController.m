@@ -86,10 +86,6 @@
         self.delegate = controller;
 
         self.attackTimer = [NSDate date]; // Initialize attack time record
-
-        NSLog(@"%@ defaults = %@", [self class], 
-              [[NSUserDefaults standardUserDefaults] 
-               persistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]]);
         
         // Take in pet
         self.pet = [self.delegate passPet];

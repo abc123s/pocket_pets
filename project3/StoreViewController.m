@@ -103,6 +103,7 @@
     [cell setIndentationWidth:45];
     [cell setIndentationLevel:1];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;    
     return cell;
 }
 
