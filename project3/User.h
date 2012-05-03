@@ -8,8 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "Pet.h"
+#import "Item.h"
 
-@interface UserPets : NSObject
+@interface User : NSObject
 
 // Return true if there is no previous game
 + (BOOL)noPets;
@@ -17,6 +18,7 @@
 // Create a new NSUserDefaults with a first pet
 + (void)initNewWithName:(NSString *)name;
 
+// PETS:
 // Add new pet
 + (void)createPet:(Pet *)pet;
 
@@ -28,5 +30,16 @@
 
 // Update pet
 + (void)savePet:(Pet *)pet;
+
+
+// ITEMS:
+// Add new item
++ (void)addItem:(NSString *)item;
+
+// Return array of user items
++ (NSArray *)currentItems;
+
+// Delete item
++ (void)deleteItem:(NSString *)item;
 
 @end

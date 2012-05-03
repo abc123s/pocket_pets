@@ -7,7 +7,7 @@
 //
 
 #import "WelcomeViewController.h"
-#import "UserPets.h"
+#import "User.h"
 
 @interface WelcomeViewController ()
 
@@ -31,7 +31,7 @@
     [super viewDidLoad];
     
     // Hide continue game button if nothing to continue
-    if ([UserPets noPets])
+    if ([User noPets])
         self.continueGame.hidden = YES;
     else
         self.continueGame.hidden = NO;
@@ -55,19 +55,19 @@
     {
         case 1:
         {
-            [UserPets initNewWithName:@"Pikachu"];
+            [User initNewWithName:@"Pikachu"];
             [self dismissModalViewControllerAnimated:YES];
             break;
         }
         case 2:
         {
-            [UserPets initNewWithName:@"Charmander"];
+            [User initNewWithName:@"Charmander"];
             [self dismissModalViewControllerAnimated:YES];
             break;
         }
         case 3:
         {
-            [UserPets initNewWithName:@"Bulbasaur"];
+            [User initNewWithName:@"Bulbasaur"];
             [self dismissModalViewControllerAnimated:YES];
             break;
         }

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "Pet.h"
+#import "ActionViewController.h"
+#import "ItemViewController.h"
 
 @class BattleViewController;
 
@@ -19,7 +21,9 @@
 
 @interface BattleViewController : UIViewController <UIAlertViewDelegate,
                                                     CLLocationManagerDelegate, 
-                                                    NSXMLParserDelegate>                                          
+                                                    NSXMLParserDelegate,
+                                                    ActionViewControllerDelegate,
+                                                    ItemViewControllerDelegate>                                          
 
 @property (weak, nonatomic) id <BattleViewControllerDelegate> delegate;
 
@@ -38,5 +42,7 @@
                bundle:(NSBundle *)nibBundleOrNil;
 
 - (IBAction)attack:(id)sender;
+- (IBAction)flee:(id)sender;
+- (IBAction)item:(id)sender;
 
 @end

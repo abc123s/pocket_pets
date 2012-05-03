@@ -1,14 +1,14 @@
 //
-//  UserPets.m
+//  User.m
 //  project3
 //
 //  Created by Will Sun on 4/23/12.
 //  Copyright (c) 2012 Harvard University. All rights reserved.
 //
 
-#import "UserPets.h"
+#import "User.h"
 
-@implementation UserPets
+@implementation User
 
 // Return false if there is a previous game going on
 + (BOOL)noPets
@@ -32,12 +32,13 @@
                                                                     actions, @"actions", nil];
     
     /* EXTRA PETS */
-    /*
+    
     NSDictionary *petx = [NSDictionary dictionaryWithObjectsAndKeys: @"Bulbasaur", @"name",
                          [NSNumber numberWithInt:1] , @"level", 
                          [NSNumber numberWithInt:-1], @"hp",
                          [NSNumber numberWithInt:0], @"xp", 
                          actions, @"actions", nil];
+    /*
     NSDictionary *pety = [NSDictionary dictionaryWithObjectsAndKeys: @"Pikachu", @"name",
                           [NSNumber numberWithInt:1] , @"level", 
                           [NSNumber numberWithInt:-1], @"hp",
@@ -50,24 +51,27 @@
     [pets setObject:pet forKey:[pet objectForKey:@"name"]];
     
     /* EXTRAS */
-    /*
+    
     [pets setObject:petx forKey:[petx objectForKey:@"name"]];
+    /*
     [pets setObject:pety forKey:[pety objectForKey:@"name"]];
     */
      
-    // create user dictionary
-    NSMutableDictionary *user = [[NSMutableDictionary alloc] init];
-    [user setObject:pets forKey:@"pets"];
+    // create default items
+    NSArray *items = [NSArray arrayWithObjects:@"Potion", @"Potion", @"Pokeball", nil];
     
     // register user
     NSMutableDictionary *placeholder = [[NSMutableDictionary alloc] init];
     [placeholder setObject:@"" forKey:@"pets"];
+    [placeholder setObject:@"" forKey:@"items"];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults registerDefaults:placeholder];
     
     // save new pets
     defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:pets forKey:@"pets"];
+    [defaults setObject:items forKey:@"items"];
+    
     [defaults synchronize];
 }
 
@@ -83,7 +87,8 @@
     
     // parse actions (pet.actions is array of tuples)
     NSMutableArray *realActions = [NSMutableArray arrayWithCapacity:4];
-    for (NSArray *action in pet.actions) {
+    for (NSArray *action in pet.actions) 
+    {
         [realActions addObject:[action objectAtIndex:0]];
     }
 
@@ -160,7 +165,8 @@
     
     // parse actions (pet.actions stores an array of tuples)
     NSMutableArray *realActions = [NSMutableArray arrayWithCapacity:4];
-    for (NSArray *action in pet.actions) {
+    for (NSArray *action in pet.actions) 
+    {
         [realActions addObject:[action objectAtIndex:0]];
     }
     [target setObject:realActions forKey:@"actions"];
@@ -168,6 +174,71 @@
     // save
     [pets setObject:target forKey:pet.name];
     [defaults setObject:pets forKey:@"pets"];
+    [defaults synchronize];
+}
+
+// ITEMS:
+// Add new item
++ (void)addItem:(NSString *)item
+{
+    // retrieve defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // retrieve items
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    [items addObjectsFromArray:[defaults objectForKey:@"items"]];
+    
+    // add new item
+    [items addObject:item];
+    
+    // save
+    [defaults setObject:items forKey:@"items"];
+    [defaults synchronize];
+}
+
+// Return array of user items (as dictionaries)
++ (NSArray *)currentItems
+{
+    // retrieve defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // re-construct items as array of dictionaries (with name, type, heal/catch)
+    NSArray *items = [NSArray arrayWithArray:[defaults objectForKey:@"items"]];
+    NSMutableArray *newItems = [[NSMutableArray alloc] init];
+    for (NSString *item in items)
+    {
+        NSMutableDictionary *newItem = [NSMutableDictionary dictionaryWithCapacity:3];
+        [newItem addEntriesFromDictionary:[Item lookupItemWithName:item]];
+        [newItem setObject:item forKey:@"name"];
+        
+        [newItems addObject:newItem];
+    }
+    
+    return newItems;
+}
+
+// Delete item
++ (void)deleteItem:(NSString *)item
+{
+    // retrieve defaults
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    // retrieve items
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    [items addObjectsFromArray:[defaults objectForKey:@"items"]];
+    
+    // delete item
+    for (NSUInteger i = 0; i < [items count]; i++)
+    {
+        if ([[items objectAtIndex:i] isEqualToString:item])
+        {
+            [items removeObjectAtIndex:i];
+            break;
+        }
+    }
+    
+    // save
+    [defaults setObject:items forKey:@"items"];
     [defaults synchronize];
 }
 

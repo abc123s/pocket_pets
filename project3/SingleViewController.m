@@ -8,7 +8,7 @@
 
 #import "SingleViewController.h"
 #import "BattleViewController.h"
-#import "UserPets.h"
+#import "User.h"
 #import "PetViewController.h"
 
 @interface SingleViewController ()

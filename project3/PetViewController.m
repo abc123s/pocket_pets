@@ -10,7 +10,7 @@
 #import "SingleViewController.h"
 #import "BattleViewController.h"
 #import "Pet.h"
-#import "UserPets.h"
+#import "User.h"
 
 @interface PetViewController ()
 
@@ -70,7 +70,7 @@
 
     
     // Retrieve all pets
-    self.pets = [UserPets currentPets];
+    self.pets = [User currentPets];
     
     // Find number of user pets
     self.pages = [self.pets count];
@@ -169,8 +169,6 @@
                                         bundle:nil];
     
     [self presentModalViewController:controller animated:YES];
-    // [self presentViewController:controller animated:YES completion:NULL];
-    
 }
 
 #pragma mark - BattleViewControllerDelegate
@@ -179,14 +177,12 @@
 {
     [self dismissModalViewControllerAnimated:YES];
     [self show];
-    // [self dismissViewControllerAnimated:YES completion:NULL];
-    
 }
 
 - (Pet *)passPet
 {
     return [self.pets objectAtIndex:self.pageControl.currentPage];
-    // return [UserPets findPetWithName: self.name.text];
+    // return [User findPetWithName: self.name.text];
 }
 
 
