@@ -297,13 +297,12 @@
     [alert show];
 }
 
+#pragma mark - UIAlertViewDelegate
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0)
-    {
-        [User savePet:self.pet];
-        [self.delegate battleViewControllerDidFinish:self];
-    }
+        [self.delegate battleViewControllerDidFinish:self withPet:self.pet];
 }
 
 #pragma mark - CLLocation delegate functions.

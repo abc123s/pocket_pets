@@ -67,8 +67,6 @@
           [[NSUserDefaults standardUserDefaults] 
            persistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]]);
     
-
-    
     // Retrieve all pets
     self.pets = [User currentPets];
     
@@ -135,7 +133,7 @@
         controller.def.text = [NSString stringWithFormat:@"%d", selected.defense];
         controller.spd.text = [NSString stringWithFormat:@"%d", selected.speed];        
         controller.spc.text = [NSString stringWithFormat:@"%d", selected.special];
-        controller.exp.text = [NSString stringWithFormat:@"%d", selected.exp];
+        controller.exp.progress = (float)selected.exp / 100.;
         controller.hp.progress = (float)selected.hp / (float)selected.full;
         
         [self.scrollView addSubview:controller.view];
@@ -171,10 +169,40 @@
     [self presentModalViewController:controller animated:YES];
 }
 
-#pragma mark - BattleViewControllerDelegate
+#pragma mark - UIAlertViewDelegate
 
-- (void)battleViewControllerDidFinish:(BattleViewController *)controller
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+        
+    if (buttonIndex == 0)
+        [self.delegate battleViewControllerDidFinish:self withPet:self.pet];
+}
+
+
+#pragma mark - BattleViewControllerDelegate
+- (void)battleViewControllerDidFinish:(BattleViewController *)controller withPet:(Pet *)pet
+{
+    BOOL lvl = (pet.exp > 100);
+    if (lvl)
+    {
+        // level up the pet
+        NSArray *newActions = [NSArray arrayWithArray:[pet levelUpWithActions]];
+        if ([newActions count] > 4)
+        {
+            // show alert to pick 
+        }
+        
+        // show alert
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Level Up!"
+                                                        message:[NSString string                
+                                                       delegate:self
+                                              cancelButtonTitle:@"Return"
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+
+    }
+    
     [self dismissModalViewControllerAnimated:YES];
     [self show];
 }

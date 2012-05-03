@@ -20,8 +20,8 @@
 @property (nonatomic, weak) IBOutlet UILabel *def;
 @property (nonatomic, weak) IBOutlet UILabel *spd;
 @property (nonatomic, weak) IBOutlet UILabel *spc;
-@property (nonatomic, weak) IBOutlet UILabel *exp;
 @property (nonatomic, weak) IBOutlet UIProgressView *hp;
+@property (nonatomic, weak) IBOutlet UIProgressView *exp;
 @property (nonatomic, weak) IBOutlet UIImageView *petImage;
 
 @property (nonatomic, assign) int pageNumber;

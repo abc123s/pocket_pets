@@ -10,6 +10,7 @@
 #import "BattleViewController.h"
 
 @interface PetViewController : UIViewController <UIScrollViewDelegate, 
+                                                UIAlertViewDelegate,
                                                 BattleViewControllerDelegate> 
 {
     BOOL pageControlUsed;

@@ -148,7 +148,7 @@
 
 // Save pet info
 + (void)savePet:(Pet *)pet
-{
+{    
     // retrieve defaults
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -159,8 +159,8 @@
     // retrieve pet
     NSMutableDictionary *target = [[NSMutableDictionary alloc] init];
     [target addEntriesFromDictionary:[pets objectForKey:pet.name]];
-    [target setObject:[NSNumber numberWithInt:pet.level] forKey:@"level"];
     [target setObject:[NSNumber numberWithInt:pet.hp] forKey:@"hp"];
+    [target setObject:[NSNumber numberWithInt:pet.level] forKey:@"level"];
     [target setObject:[NSNumber numberWithInt:pet.exp] forKey:@"xp"];
     
     // parse actions (pet.actions stores an array of tuples)

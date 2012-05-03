@@ -147,6 +147,9 @@ NSInteger compareScores(id score1, id score2, void *context);
     // increase level
     self.level += 1;
     
+    // fix xp
+    self.exp -= 100;
+    
     NSDictionary *actionDict = [self.petData objectForKey:@"actions"];
 
     // Find new actions to learn.

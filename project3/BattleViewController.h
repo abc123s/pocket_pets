@@ -15,7 +15,7 @@
 @class BattleViewController;
 
 @protocol BattleViewControllerDelegate
-- (void)battleViewControllerDidFinish:(BattleViewController *)controller;
+- (void)battleViewControllerDidFinish:(BattleViewController *)controller withPet:(Pet *)pet;
 - (Pet *)passPet; 
 @end
 
