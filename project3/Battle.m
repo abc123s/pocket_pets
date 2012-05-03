@@ -45,7 +45,11 @@
         msg1 = [NSString stringWithFormat: @"%@ used %@ on %@. It hits!", 
                 self.pet1.name, [action1 objectAtIndex:0], self.pet2.name];
         
+        //update health
         self.pet2.hp = self.pet2.hp - [[action1 objectAtIndex: 1] intValue];
+        
+        //update exp
+        self.pet1.exp += (self.pet2.level - self.pet1.level)/self.pet1.level * 10;
         
         if (self.pet2.hp < 0)
             self.pet2.hp = 0;
