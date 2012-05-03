@@ -110,7 +110,7 @@
         float catchProb1 = 100. / sqrt(((float)self.pet2.speed)/10.) * 
         ((float)self.pet2.full - (float)self.pet2.hp) / ((float) self.pet2.full) * 
         [[item1 objectForKey:itemType] floatValue];
-        NSLog([NSString stringWithFormat:@"%f", catchProb1]);        
+
         if ((arc4random() % 100) < catchProb1)
         {
             msg1 = [NSString stringWithFormat:@"You threw %@ at %@. It worked!", 
@@ -173,7 +173,7 @@
     
     // Pet 1 flee attempt
     float fleeProb = 100. / sqrt(((float)self.pet1.speed)/10) * (self.pet1.full - self.pet1.hp) / self.pet1.full;
-    if ((arc4random() % 100) > fleeProb)
+    if ((arc4random() % 100) < fleeProb)
     {
         msg1 = [NSString stringWithFormat:@"You successfully fled!"];
         flee = YES;
