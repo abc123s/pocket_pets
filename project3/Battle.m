@@ -172,7 +172,7 @@
     BOOL flee = NO;
     
     // Pet 1 flee attempt
-    float fleeProb = 100. / sqrt(((float)self.pet1.speed)/10) * (self.pet1.full - self.pet1.hp) / self.pet1.full;
+    float fleeProb = 100. / sqrt(((float)self.pet2.speed)/10) * (self.pet2.full - self.pet2.hp) / self.pet2.full;
     if ((arc4random() % 100) < fleeProb)
     {
         msg1 = [NSString stringWithFormat:@"You successfully fled!"];
