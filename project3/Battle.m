@@ -39,7 +39,6 @@
 {
     float missProb1 = 100. * self.pet2.speed / (self.pet2.speed + self.pet1.speed);
     float missProb2 = 100. - missProb1;
-    NSLog([NSString stringWithFormat:@"%f, %f", missProb1, missProb2]);
     NSString *msg1;
     NSString *msg2;
     

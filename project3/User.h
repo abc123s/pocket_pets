@@ -28,7 +28,6 @@
 // Update pet
 + (void)savePet:(Pet *)pet;
 
-
 // ITEMS:
 // Add new item
 + (void)addItem:(NSString *)item;

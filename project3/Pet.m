@@ -107,7 +107,7 @@ NSInteger compareScores(id score1, id score2, void *context);
               return([[obj objectForKey:@"type"] isEqualToString: type]);
           }
       }] allObjects];
-    NSLog([NSString stringWithFormat:@"%d", petsOfType.count]);
+
     NSString *name = [petsOfType objectAtIndex:(arc4random() 
                       % petsOfType.count)];
     int approxLevel = level;
@@ -162,14 +162,19 @@ NSInteger compareScores(id score1, id score2, void *context);
     // retrieve all possible actions
     NSDictionary *actionDict = [self.petData objectForKey:@"actions"];
 
+    
+    
     // Find new actions to learn.
-    NSArray *newActions = 
+    NSArray *newKeys = 
     [[actionDict allKeys] filteredArrayUsingPredicate: 
      [NSPredicate predicateWithBlock:
       ^BOOL(id evaluatedObject, NSDictionary *bindings) 
       {
           return ([evaluatedObject intValue] == self.level);
       }]];
+    NSMutableArray *newActions = [[NSMutableArray alloc] init];
+    for (NSNumber *key in newKeys)
+        [newActions addObject:[actionDict objectForKey:key]];
     
     return [actions arrayByAddingObjectsFromArray:newActions];
 }
