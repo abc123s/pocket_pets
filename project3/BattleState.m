@@ -13,14 +13,17 @@
 @synthesize attack1Message = _attack1Message;
 @synthesize attack2Message = _attack2Message;
 @synthesize caught = _caught;
+@synthesize flee = _flee;
 
 - (id)initWithAttack1Message:(NSString *)msg1 
            andAttack2Message:(NSString *)msg2
                    andCaught:(BOOL)caught
+                     andFlee:(BOOL)flee
 {
     self.attack1Message = msg1;
     self.attack2Message = msg2;
     self.caught = caught;
+    self.flee = flee;
     return self;
 }
 

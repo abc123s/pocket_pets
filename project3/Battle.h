@@ -15,8 +15,13 @@
 
 - (id)initWithPet1:(Pet *)pet1 andPet2:(Pet *)pet2;
 
-- (BattleState *)doAction1:(NSString *)action1 andAction2:(NSString *)action2;
+// Attack
+- (BattleState *)doAction1:(NSArray *)action1 andAction2:(NSArray *)action2;
 
-- (BattleState *)useItem1:(NSString *)item1 andAction2:(NSString *)action2;
+// Use item
+- (BattleState *)useItem1:(NSDictionary *)item1 andAction2:(NSArray *)action2;
+
+// Flee attempt
+- (BattleState *)flee:(NSArray *)action2;
 
 @end

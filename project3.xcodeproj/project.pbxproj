@@ -18,6 +18,10 @@
 		EED25EA21546272F00863984 /* pets.plist in Resources */ = {isa = PBXBuildFile; fileRef = EED25EA11546272F00863984 /* pets.plist */; };
 		EED25EA51546296700863984 /* actions.plist in Resources */ = {isa = PBXBuildFile; fileRef = EED25EA41546296700863984 /* actions.plist */; };
 		EEEC04041550BC4A007B42C1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEEC04031550BC4A007B42C1 /* CoreLocation.framework */; };
+		F055CC1215522D7000757927 /* ActionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F055CC1015522D6E00757927 /* ActionViewController.m */; };
+		F055CC1315522D7000757927 /* ActionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F055CC1115522D6F00757927 /* ActionViewController.xib */; };
+		F055CC23155250C600757927 /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F055CC21155250C400757927 /* ItemViewController.m */; };
+		F055CC24155250C600757927 /* ItemViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F055CC22155250C500757927 /* ItemViewController.xib */; };
 		F0A4ADB715466BAE00C9DFA4 /* SingleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A4ADB515466BAD00C9DFA4 /* SingleViewController.m */; };
 		F0A4ADB815466BAE00C9DFA4 /* SingleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0A4ADB615466BAD00C9DFA4 /* SingleViewController.xib */; };
 		F0A4ADC01546896B00C9DFA4 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A4ADBE1546896B00C9DFA4 /* WelcomeViewController.m */; };
@@ -57,7 +61,7 @@
 		F0B12C161546007300F608A6 /* 23-bird.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B12C131546007300F608A6 /* 23-bird.png */; };
 		F0B12C171546007300F608A6 /* 24-gift.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B12C141546007300F608A6 /* 24-gift.png */; };
 		F0B12C181546007300F608A6 /* 36-toolbox.png in Resources */ = {isa = PBXBuildFile; fileRef = F0B12C151546007300F608A6 /* 36-toolbox.png */; };
-		F0B12C401546420F00F608A6 /* UserPets.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12C3F1546420F00F608A6 /* UserPets.m */; };
+		F0B12C401546420F00F608A6 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B12C3F1546420F00F608A6 /* User.m */; };
 		F0B12C8615464C7700F608A6 /* project3.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = F0B12C8515464C7700F608A6 /* project3.xcdatamodel */; };
 		F0B12C8815464CC000F608A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12C8715464CC000F608A6 /* CoreData.framework */; };
 		F0B12C8A15464D5C00F608A6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0B12C8715464CC000F608A6 /* CoreData.framework */; };
@@ -87,6 +91,12 @@
 		EED25EA11546272F00863984 /* pets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pets.plist; sourceTree = "<group>"; };
 		EED25EA41546296700863984 /* actions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = actions.plist; sourceTree = "<group>"; };
 		EEEC04031550BC4A007B42C1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F055CC0F15522D6E00757927 /* ActionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionViewController.h; sourceTree = "<group>"; };
+		F055CC1015522D6E00757927 /* ActionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionViewController.m; sourceTree = "<group>"; };
+		F055CC1115522D6F00757927 /* ActionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActionViewController.xib; sourceTree = "<group>"; };
+		F055CC20155250C300757927 /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
+		F055CC21155250C400757927 /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
+		F055CC22155250C500757927 /* ItemViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemViewController.xib; sourceTree = "<group>"; };
 		F0A4ADB415466BAD00C9DFA4 /* SingleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleViewController.h; sourceTree = "<group>"; };
 		F0A4ADB515466BAD00C9DFA4 /* SingleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleViewController.m; sourceTree = "<group>"; };
 		F0A4ADB615466BAD00C9DFA4 /* SingleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SingleViewController.xib; sourceTree = "<group>"; };
@@ -141,8 +151,8 @@
 		F0B12C131546007300F608A6 /* 23-bird.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "23-bird.png"; sourceTree = "<group>"; };
 		F0B12C141546007300F608A6 /* 24-gift.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "24-gift.png"; sourceTree = "<group>"; };
 		F0B12C151546007300F608A6 /* 36-toolbox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "36-toolbox.png"; sourceTree = "<group>"; };
-		F0B12C3E1546420F00F608A6 /* UserPets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPets.h; sourceTree = "<group>"; };
-		F0B12C3F1546420F00F608A6 /* UserPets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPets.m; sourceTree = "<group>"; };
+		F0B12C3E1546420F00F608A6 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; path = User.h; sourceTree = "<group>"; };
+		F0B12C3F1546420F00F608A6 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		F0B12C8515464C7700F608A6 /* project3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = project3.xcdatamodel; sourceTree = "<group>"; };
 		F0B12C8715464CC000F608A6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		F0D3058E15470EB8009F11F8 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README; path = project3/README; sourceTree = "<group>"; };
@@ -231,6 +241,12 @@
 				F0A4ADE81546B69900C9DFA4 /* BattleViewController.h */,
 				F0A4ADE91546B69A00C9DFA4 /* BattleViewController.m */,
 				F0A4ADEA1546B69A00C9DFA4 /* BattleViewController.xib */,
+				F055CC0F15522D6E00757927 /* ActionViewController.h */,
+				F055CC1015522D6E00757927 /* ActionViewController.m */,
+				F055CC1115522D6F00757927 /* ActionViewController.xib */,
+				F055CC20155250C300757927 /* ItemViewController.h */,
+				F055CC21155250C400757927 /* ItemViewController.m */,
+				F055CC22155250C500757927 /* ItemViewController.xib */,
 				F0B12BE11545E74200F608A6 /* Battle.h */,
 				F0B12BE21545E74200F608A6 /* Battle.m */,
 				F0B12BE51545E74900F608A6 /* BattleState.h */,
@@ -239,8 +255,8 @@
 				F0B12BE91545E74E00F608A6 /* Pet.m */,
 				F0B12BEB1545E75500F608A6 /* Action.h */,
 				F0B12BEC1545E75500F608A6 /* Action.m */,
-				F0B12C3E1546420F00F608A6 /* UserPets.h */,
-				F0B12C3F1546420F00F608A6 /* UserPets.m */,
+				F0B12C3E1546420F00F608A6 /* User.h */,
+				F0B12C3F1546420F00F608A6 /* User.m */,
 				EE7AA8901551AD8600EE718B /* Item.h */,
 				EE7AA8911551AD8700EE718B /* Item.m */,
 				F0B12BA11545E70400F608A6 /* Supporting Files */,
@@ -400,6 +416,8 @@
 				EE7AA88E1551A50C00EE718B /* Squirtleopp.png in Resources */,
 				EE7AA88F1551A50C00EE718B /* Squirtlesprite.jpg in Resources */,
 				EE7AA8941551B09E00EE718B /* items.plist in Resources */,
+				F055CC1315522D7000757927 /* ActionViewController.xib in Resources */,
+				F055CC24155250C600757927 /* ItemViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,13 +460,15 @@
 				F0B12BED1545E75500F608A6 /* Action.m in Sources */,
 				F0B12BF51545EEB400F608A6 /* StoreViewController.m in Sources */,
 				F0B12C061545FC7700F608A6 /* InvenViewController.m in Sources */,
-				F0B12C401546420F00F608A6 /* UserPets.m in Sources */,
+				F0B12C401546420F00F608A6 /* User.m in Sources */,
 				F0B12C8615464C7700F608A6 /* project3.xcdatamodel in Sources */,
 				F0A4ADB715466BAE00C9DFA4 /* SingleViewController.m in Sources */,
 				F0A4ADC01546896B00C9DFA4 /* WelcomeViewController.m in Sources */,
 				F0A4ADDE1546A15800C9DFA4 /* PetViewController.m in Sources */,
 				F0A4ADEB1546B69B00C9DFA4 /* BattleViewController.m in Sources */,
 				EE7AA8921551AD8700EE718B /* Item.m in Sources */,
+				F055CC1215522D7000757927 /* ActionViewController.m in Sources */,
+				F055CC23155250C600757927 /* ItemViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

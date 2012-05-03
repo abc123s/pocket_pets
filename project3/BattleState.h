@@ -14,9 +14,11 @@
 @property (weak, nonatomic) NSString *attack1Message;
 @property (weak, nonatomic) NSString *attack2Message;
 @property (assign, nonatomic) BOOL caught;
+@property (assign, nonatomic) BOOL flee;
 
 - (id)initWithAttack1Message:(NSString *)msg1 
            andAttack2Message:(NSString *)msg2
-                   andCaught:(BOOL)caught;
+                   andCaught:(BOOL)caught
+                     andFlee:(BOOL)flee;
 
 @end

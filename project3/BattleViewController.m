@@ -8,10 +8,11 @@
 
 #import "BattleViewController.h"
 #import "Pet.h"
-#import "UserPets.h"
+#import "User.h"
 #import "Battle.h"
 #import "BattleState.h"
 #import <CoreLocation/CoreLocation.h>
+#import "ActionViewController.h"
 
 
 @interface BattleViewController ()
@@ -173,40 +174,53 @@
                 [UIColor colorWithRed:43.0/255.0 green:134.0/255.0 blue: 225.0/255.0 alpha: 1]];
     }
     
-    // check if end
+    // check if end conditions
     if (self.opponent.hp <= 0)
     {
         [self end:@"Victorious!"];
     }
-
-    // register the attack on user
-    [self.msg performSelector:@selector(setText:)
-                   withObject:self.state.attack2Message
-                   afterDelay:2.0];
-    
-    // only delay on attack mode, not on initial display
-    if (new)
+    else if (self.state.caught)
     {
-        [self.proPetBar setProgress:(float)self.pet.hp / (float)self.pet.full animated:YES];
-        self.proPetHP.text = [NSString stringWithFormat:@"%d/%d", self.pet.hp, self.pet.full];
+        // Save new pokemon
+        [User createPet:self.opponent];
+        
+        [self end:[NSString stringWithFormat:@"Caught %@!", self.opponent.name]];
+    }
+    else if (self.state.flee)
+    {
+        [self end:@"Fled!"];
     }
     else
     {
-        [self performSelector:@selector(prog)
-                   withObject:nil
-                   afterDelay:2.0];
-        [self.proPetHP performSelector:@selector(setText:)
-                            withObject:[NSString stringWithFormat:@"%d/%d", self.pet.hp, self.pet.full]
-                            afterDelay:2.0];
-    }
-    
-
-    // check if end
-    if (self.pet.hp <= 0)
-    {
-        [self performSelector:@selector(end:)
-                   withObject:@"Defeat."
-                   afterDelay:2.0];
+        // register the attack on user
+        [self.msg performSelector:@selector(setText:)
+                       withObject:self.state.attack2Message
+                       afterDelay:2.0];
+        
+        // only delay on attack mode, not on initial display
+        if (new)
+        {
+            [self.proPetBar setProgress:(float)self.pet.hp / (float)self.pet.full animated:YES];
+            self.proPetHP.text = [NSString stringWithFormat:@"%d/%d", self.pet.hp, self.pet.full];
+        }
+        else
+        {
+            [self performSelector:@selector(prog)
+                       withObject:nil
+                       afterDelay:2.0];
+            [self.proPetHP performSelector:@selector(setText:)
+                                withObject:[NSString stringWithFormat:@"%d/%d", self.pet.hp, self.pet.full]
+                                afterDelay:2.0];
+        }
+        
+        
+        // check if end
+        if (self.pet.hp <= 0)
+        {
+            [self performSelector:@selector(end:)
+                       withObject:@"Defeat."
+                       afterDelay:2.0];
+        }
     }
 }
 
@@ -231,15 +245,44 @@
     NSTimeInterval howRecent = [self.attackTimer timeIntervalSinceNow];
 
     // delay ability to attack 
-    if (abs(howRecent) > 0.5)
+    if (abs(howRecent) > 2.0)
     {
-        // Make an attack    
-        self.state = [self.battle doAction1:[self.pet.actions objectAtIndex:0]  
-                                 andAction2:[self.opponent.actions objectAtIndex:0]];
+        ActionViewController *controller = [[ActionViewController alloc] initWithNibName:@"ActionViewController"
+                                                                              controller:self                                            bundle:nil];
+        [self presentModalViewController:controller animated:YES];
+    }
+}
+
+// Flee button
+- (IBAction)flee:(id)sender
+{
+    NSTimeInterval howRecent = [self.attackTimer timeIntervalSinceNow];
+    
+    // delay ability to flee
+    if (abs(howRecent) > 2.0)
+    {
+        // Make a flee attempt, randomly pick opponent's move
+        int attackChoice = arc4random() % [self.opponent.actions count];
+        self.state = [self.battle flee:[self.opponent.actions objectAtIndex:attackChoice]];
         
         // Show results
         [self show:NO];
         self.attackTimer = [NSDate date];
+    }
+}
+
+// Item button
+- (IBAction)item:(id)sender
+{
+    NSTimeInterval howRecent = [self.attackTimer timeIntervalSinceNow];
+    
+    // delay ability to use items
+    if (abs(howRecent) > 2.0)
+    {
+        ItemViewController *controller = [[ItemViewController alloc] initWithNibName:@"ItemViewController"
+                                                                          controller:self
+                                                                              bundle:nil];
+        [self presentModalViewController:controller animated:YES];
     }
 }
 
@@ -254,11 +297,11 @@
     [alert show];
 }
 
-- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0)
     {
-        [UserPets savePet:self.pet];
+        [User savePet:self.pet];
         [self.delegate battleViewControllerDidFinish:self];
     }
 }
@@ -297,7 +340,7 @@
         }
         dispatch_release(self.geocoderGroup);
 
-        //finished determining opponent, unblock.
+        // finished determining opponent, unblock.
         dispatch_group_leave(self.locationGroup);
 
     }
@@ -474,5 +517,55 @@
     }
 }
 
+#pragma mark - ActionViewControllerDelegate
+
+- (void)actionViewControllerBack:(ActionViewController *)controller
+{
+    // Dismiss modal
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)actionViewControllerDidFinish:(ActionViewController *)controller withAction:(NSArray *)action
+{
+    // Make an attack, randomly pick opponent's move
+    int attackChoice = arc4random() % [self.opponent.actions count];
+    self.state = [self.battle doAction1:action 
+                             andAction2:[self.opponent.actions objectAtIndex:attackChoice]];
+    
+    // Dismiss modal
+    [self dismissModalViewControllerAnimated:YES];
+    
+    // Show results
+    [self show:NO];
+    self.attackTimer = [NSDate date];
+}
+
+- (NSArray *)passActions
+{
+    return self.pet.actions;
+}
+
+#pragma mark - ItemViewControllerDelegate
+
+- (void)itemViewControllerBack:(ItemViewController *)controller
+{
+    // Dismiss modal
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)itemViewControllerDidFinish:(ItemViewController *)controller withItem:(NSDictionary *)item
+{
+    // Use an item, randomly pick opponent's move
+    int attackChoice = arc4random() % [self.opponent.actions count];
+    self.state = [self.battle useItem1:item
+                            andAction2:[self.opponent.actions objectAtIndex:attackChoice]];
+    
+    // Dismiss modal
+    [self dismissModalViewControllerAnimated:YES];
+    
+    // Show results
+    [self show:NO];
+    self.attackTimer = [NSDate date];
+}
 
 @end
