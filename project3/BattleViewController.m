@@ -125,7 +125,7 @@
         
         // Initialize battle
         self.battle = [[Battle alloc] initWithPet1:self.pet andPet2:self.opponent];
-
+        
     }
     return self;
 }
@@ -308,10 +308,10 @@
 
 // Once you find a location, stop updating location, and use reverse
 // geocoding to figure out what type of pokemon to generate.
-- (void)locationManager:(CLLocationManager *)locationManager 
-    didUpdateToLocation:(CLLocation *)newLocation 
-           fromLocation:(CLLocation *)oldLocation
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray<CLLocation *> *)locations
 {
+    CLLocation *newLocation = [locations lastObject];
     // If it's a relatively recent event, turn off updates to save power
     NSDate* eventDate = newLocation.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
@@ -357,11 +357,19 @@
 
 #pragma mark - Geocoder stuff.
 
+- (void)locationManager:(CLLocationManager *)manager
+didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    if (status == kCLAuthorizationStatusNotDetermined) {
+        [manager requestAlwaysAuthorization];
+    }
+}
+
 - (void)locationType:(CLLocation *)location
 {
     // get elevation data from google for current gps location
     NSString *url = 
-    [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/elevation/xml?locations=%f,%f&sensor=true",
+    [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/elevation/xml?locations=%f,%f&sensor=true",
      location.coordinate.latitude, location.coordinate.longitude];
     
     // parse xml

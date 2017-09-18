@@ -804,6 +804,7 @@
 				F0CBF1881552D60900E07CC9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

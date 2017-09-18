@@ -1,5 +1,7 @@
 # Pocket Pets
-A proof-of-concept AR game for iOS.
+*Pokemon GO before Pokemon GO was cool*
+
+A proof-of-concept AR game for iOS, written way back in 2012.
 
 # How To Play
 1. Choose a starter pocket pet
